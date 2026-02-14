@@ -34,7 +34,7 @@ export default function Index() {
                             <p className="text-sm font-mono text-cyan-400 mb-4">
                                 &gt; INTRODUCCIÓN: ¿Por qué N! es imposible?
                             </p>
-                            <Link to="/greedy">
+                            <Link to="/mbhb/greedy">
                                 <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8">
                                     Start Module 1: Trajectories <ArrowRight className="w-4 h-4" />
                                 </Button>

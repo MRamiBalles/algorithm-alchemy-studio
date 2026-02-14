@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SimulatedAnnealing from "./pages/SimulatedAnnealing";
@@ -29,26 +30,30 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/greedy" element={<Greedy />} />
-          <Route path="/localsearch" element={<LocalSearch />} />
-          <Route path="/sa" element={<SimulatedAnnealing />} />
-          <Route path="/tabu" element={<TabuSearch />} />
-          <Route path="/compare" element={<Comparison />} />
+          {/* Main Landing Page */}
+          <Route path="/" element={<Landing />} />
+
+          {/* MBHB Course Routes */}
+          <Route path="/mbhb" element={<Index />} />
+          <Route path="/mbhb/greedy" element={<Greedy />} />
+          <Route path="/mbhb/localsearch" element={<LocalSearch />} />
+          <Route path="/mbhb/sa" element={<SimulatedAnnealing />} />
+          <Route path="/mbhb/tabu" element={<TabuSearch />} />
+          <Route path="/mbhb/compare" element={<Comparison />} />
 
           {/* Practice 2a: Multi-Start */}
-          <Route path="/vns" element={<VNSPage />} />
+          <Route path="/mbhb/ils" element={<ILSPage />} />
+          <Route path="/mbhb/vns" element={<VNSPage />} />
+          <Route path="/mbhb/grasp" element={<GRASPPage />} />
 
           {/* Practice 2b: Evolutionary */}
-          <Route path="/ga" element={<GAPage />} />
-          <Route path="/chc" element={<CHCPage />} />
-          <Route path="/multimodal" element={<MultimodalPage />} />
+          <Route path="/mbhb/ga" element={<GAPage />} />
+          <Route path="/mbhb/chc" element={<CHCPage />} />
+          <Route path="/mbhb/multimodal" element={<MultimodalPage />} />
 
           {/* Practice 2c: Advanced */}
-          <Route path="/memetic" element={<MemeticPage />} />
-          <Route path="/nsga2" element={<NSGA2Page />} />
-
-
+          <Route path="/mbhb/memetic" element={<MemeticPage />} />
+          <Route path="/mbhb/nsga2" element={<NSGA2Page />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

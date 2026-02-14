@@ -29,29 +29,29 @@ const modules = [
     label: "Module 1: Trajectories",
     icon: Route,
     items: [
-      { title: "Greedy / Intro", url: "/greedy", icon: Route },
-      { title: "Local Search", url: "/localsearch", icon: Waypoints },
-      { title: "Simulated Annealing", url: "/sa", icon: Flame },
-      { title: "Tabu Search", url: "/tabu", icon: Search },
-      { title: "GRASP", url: "/grasp", icon: Shuffle }]
+      { title: "Greedy / Intro", url: "/mbhb/greedy", icon: Route },
+      { title: "Local Search", url: "/mbhb/localsearch", icon: Waypoints },
+      { title: "Simulated Annealing", url: "/mbhb/sa", icon: Flame },
+      { title: "Tabu Search", url: "/mbhb/tabu", icon: Search },
+      { title: "GRASP", url: "/mbhb/grasp", icon: Shuffle }]
 
   },
   {
     label: "Module 2: Multi-start",
     icon: Repeat,
     items: [
-      { title: "ILS", url: "/ils", icon: GitBranch },
-      { title: "VNS", url: "/vns", icon: Waypoints },
-      { title: "Multi-start", url: "/multistart", icon: Repeat }]
+      { title: "ILS", url: "/mbhb/ils", icon: GitBranch },
+      { title: "VNS", url: "/mbhb/vns", icon: Waypoints },
+      { title: "Multi-start", url: "/mbhb/multistart", icon: Repeat }]
 
   },
   {
     label: "Module 3: Bio-inspired",
     icon: Dna,
     items: [
-      { title: "Genetic Algorithm", url: "/ga", icon: Dna },
-      { title: "CHC", url: "/chc", icon: Bug },
-      { title: "Ant Colony", url: "/aco", icon: Waypoints }]
+      { title: "Genetic Algorithm", url: "/mbhb/ga", icon: Dna },
+      { title: "CHC", url: "/mbhb/chc", icon: Bug },
+      { title: "Ant Colony", url: "/mbhb/aco", icon: Waypoints }]
 
   }];
 
