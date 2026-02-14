@@ -10,15 +10,9 @@ import Greedy from "./pages/Greedy";
 import LocalSearch from "./pages/LocalSearch";
 import TabuSearch from "./pages/TabuSearch";
 import Comparison from "./pages/Comparison";
-import {
-  GRASPPage,
-  ILSPage,
-  VNSPage,
-  MultiStartPage,
-  GAPage,
-  CHCPage,
-  ACOPage,
-} from "./pages/algorithms";
+import GRASPPage from "./pages/GRASP";
+import ILSPage from "./pages/ILS";
+import VNSPage from "./pages/VNS";
 
 const queryClient = new QueryClient();
 
@@ -35,13 +29,12 @@ const App = () => (
           <Route path="/sa" element={<SimulatedAnnealing />} />
           <Route path="/tabu" element={<TabuSearch />} />
           <Route path="/compare" element={<Comparison />} />
+
+          {/* Practice 2a: Multi-Start */}
           <Route path="/grasp" element={<GRASPPage />} />
           <Route path="/ils" element={<ILSPage />} />
           <Route path="/vns" element={<VNSPage />} />
-          <Route path="/multistart" element={<MultiStartPage />} />
-          <Route path="/ga" element={<GAPage />} />
-          <Route path="/chc" element={<CHCPage />} />
-          <Route path="/aco" element={<ACOPage />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

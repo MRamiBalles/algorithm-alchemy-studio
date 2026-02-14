@@ -41,4 +41,11 @@ export interface Subject {
     title: string;
     description: string;
     modules: CourseModule[];
+    recommendedReadings?: {
+        title: string;
+        author: string;
+        year?: number;
+        url?: string;
+        description?: string;
+    }[];
 }
