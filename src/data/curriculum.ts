@@ -26,6 +26,7 @@ export interface ContentUnit {
 export interface CourseModule {
   id: string;
   title: string;
+  description?: string;
   units: ContentUnit[];
 }
 
