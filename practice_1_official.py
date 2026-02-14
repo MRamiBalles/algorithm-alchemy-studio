@@ -97,7 +97,7 @@ class ProgressBar:
     def update(self, iteration, current_cost=None):
         percent = "{0:.1f}".format(100 * (iteration / float(self.total)))
         filled_length = int(self.length * iteration // self.total)
-        bar = '█' * filled_length + '-' * (self.length - filled_length)
+        bar = '=' * filled_length + '-' * (self.length - filled_length)
         
         stats = ""
         if current_cost is not None:
