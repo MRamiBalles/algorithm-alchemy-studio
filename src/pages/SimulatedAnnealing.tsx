@@ -9,10 +9,12 @@ import { FormulaOverlay } from "@/components/visualizer/FormulaOverlay";
 import { useSimulatedAnnealing } from "@/hooks/useSimulatedAnnealing";
 import { NUG5 } from "@/data/benchmarks";
 import { QAPInstance } from "@/lib/algorithms/qap";
-import { SAParams, DEFAULT_SA_PARAMS, calculateInitialTemperature } from "@/lib/algorithms/sa";
-import { HybridLabLayout } from "@/components/layout/HybridLabLayout";
+import { SAParams, DEFAULT_SA_PARAMS } from "@/lib/algorithms/sa";
+import { TabbedLabLayout } from "@/components/layout/TabbedLabLayout";
+import { TheoryViewer } from "@/components/content/TheoryViewer";
 import { CodeDeck } from "@/components/ui/CodeDeck";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { saNotes } from "@/data/lessons/sa_notes";
 
 export default function SimulatedAnnealing() {
   const [instance, setInstance] = useState<QAPInstance>(NUG5);
@@ -35,9 +37,8 @@ export default function SimulatedAnnealing() {
     ? history[0]?.temperature ?? 0
     : 0;
 
-  // Hardcoded data for the Hybrid Lab demo
-  const videoSrc = "/content/mbhb/mod1/1.3_simulated_annealing_lecture.mp4"; // Correct path
-  const codeSnippets = [
+  const videoSrc = "/content/mbhb/mod1/1.3_simulated_annealing_lecture.mp4";
+  const saSnippets = [
     {
       language: "cpp" as const,
       label: "Esquema Cauchy (C++)",
@@ -74,24 +75,7 @@ if delta < 0 or math.exp(-delta / temp) > random.random():
     }
   ];
 
-  const LeftPanelContent = (
-    <div className="flex flex-col h-full gap-4">
-      {/* Video Section */}
-      <div className="shrink-0">
-        <h3 className="text-xs font-mono text-cyan-500 mb-2 uppercase tracking-widest">
-          Lecture: Topic 1.3
-        </h3>
-        <VideoPlayer src={videoSrc} />
-      </div>
-
-      {/* Code Deck Section */}
-      <div className="flex-1 min-h-0">
-        <CodeDeck snippets={codeSnippets} />
-      </div>
-    </div>
-  );
-
-  const RightPanelContent = (
+  const VisualizerContent = (
     <div className="flex-1 flex flex-col min-w-0 h-full">
       <div className="flex-1 relative p-4 flex flex-col gap-4 overflow-hidden h-full">
         {/* Title Bar inside Visualizer */}
@@ -168,11 +152,13 @@ if delta < 0 or math.exp(-delta / temp) > random.random():
   return (
     <AppLayout>
       <div className="flex-1 flex min-h-0 overflow-hidden">
-        {/* Main Content with Hybrid Layout */}
+        {/* Main Content with Tabbed Layout */}
         <div className="flex-1 min-w-0">
-          <HybridLabLayout
-            leftPanel={LeftPanelContent}
-            rightPanel={RightPanelContent}
+          <TabbedLabLayout
+            video={<VideoPlayer src={videoSrc} />}
+            theory={<TheoryViewer content={saNotes} />}
+            code={<CodeDeck snippets={saSnippets} />}
+            visualizer={VisualizerContent}
           />
         </div>
 

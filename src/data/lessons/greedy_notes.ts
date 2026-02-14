@@ -1,51 +1,58 @@
 export const greedyNotes = `
-# Problema de Asignación Cuadrática (QAP)
+# Tema 1.1: Introducción y Algoritmos Constructivos
 
-El **QAP** (*Quadratic Assignment Problem*) es uno de los problemas más difíciles de la optimización combinatoria (NP-Hard).
+> **Objetivo de la Unidad:** Comprender la formulación matemática del Problema de Asignación Cuadrática (QAP) y la aplicación de heurísticas constructivas basadas en potenciales.
 
-## Definición Formal
+## 1. El Problema de Asignación Cuadrática (QAP)
 
-Dados **$n$** instalaciones y **$n$** localizaciones, con:
-*   $F_{ij}$: Flujo de material entre la instalación $i$ y la instalación $j$.
-*   $D_{kl}$: Distancia entre la localización $k$ y la localización $l$.
+El QAP, introducido porKoopmans y Beckmann (1957), modela la asignación de **$n$** instalaciones a **$n$** localizaciones con el objetivo de minimizar el coste de transporte total, que depende del flujo de materiales y la distancia entre ubicaciones.
 
-El objetivo es encontrar una permutación $\pi$ que minimice el coste total:
+### Definición Formal
+
+Sea $n$ el número de instalaciones y localizaciones. Se definen las matrices:
+*   $F = [f_{ij}]$: Matriz de **Flujo** (cantidad de material entre la instalación $i$ y la $j$).
+*   $D = [d_{kl}]$: Matriz de **Distancia** (distancia entre la localización $k$ y la $l$).
+
+Buscamos una permutación $\pi: \{1,..,n\} \to \{1,..,n\}$ que minimice:
 
 $$
-\min_{\pi \in S_n} \sum_{i=1}^{n} \sum_{j=1}^{n} F_{ij} \cdot D_{\pi(i)\pi(j)}
+\min_{\pi \in S_n} \sum_{i=1}^{n} \sum_{j=1}^{n} f_{ij} \cdot d_{\pi(i)\pi(j)}
 $$
 
 ---
 
-# Algoritmo Goloso (Greedy)
+## 2. Heurística Golosa (Greedy)
 
-Los algoritmos constructivos generan una solución desde cero, tomando decisiones miopes (locales) en cada paso. Para el QAP, una heurística efectiva se basa en **Potenciales**.
+Los algoritmos constructivos generan una solución paso a paso, tomando la mejor decisión local en cada iteración sin "mirar atrás". Para el QAP, utilizamos la **Estrategia de Potenciales**.
 
-## Concepto de Potencial
+### Hipótesis Heurística
+> "Las instalaciones con mayor interacción (flujo) deberían situarse en las localizaciones más centrales (menor distancia agregada)."
 
-La intuición es simple:
-> "Las instalaciones con **mucho flujo** deben estar en las localizaciones **más céntricas** (menor distancia total a otras)."
+### Cálculo de Potenciales
 
-### 1. Potencial de Flujo ($P_i^{flow}$)
-Suma del flujo que sale/entra de la instalación $i$:
-$$ P_i^{flow} = \sum_{j=1}^{n} (F_{ij} + F_{ji}) $$
+Para formalizar esta intuición, definimos dos vectores:
 
-### 2. Potencial de Distancia ($P_k^{dist}$)
-Suma de las distancias desde la localización $k$ a todas las demás:
-$$ P_k^{dist} = \sum_{l=1}^{n} (D_{kl} + D_{lk}) $$
+1.  **Potencial de Flujo ($P_i^{flow}$):** Suma del flujo total asociado a la instalación $i$.
+    $$ P_i^{flow} = \sum_{j=1}^{n} (f_{ij} + f_{ji}) $$
 
-## Procedimiento
+2.  **Potencial de Distancia ($P_k^{dist}$):** Suma de las distancias desde la localización $k$ a todas las demás.
+    $$ P_k^{dist} = \sum_{l=1}^{n} (d_{kl} + d_{lk}) $$
 
-1.  Calcular el vector de **Potenciales de Flujo** para todas las unidades.
-2.  Calcular el vector de **Potenciales de Distancia** para todas las localizaciones.
-3.  Ordenar las **Unidades** de mayor a menor flujo ($P^{flow} \downarrow$).
-4.  Ordenar las **Localizaciones** de menor a mayor distancia ($P^{dist} \uparrow$).
-5.  Asignar la unidad $i$-ésima ordenada a la localización $i$-ésima ordenada.
+### Algoritmo Paso a Paso
+
+1.  **Calcular** $P^{flow}$ para todas las instalaciones ($i=1..n$).
+2.  **Calcular** $P^{dist}$ para todas las localizaciones ($k=1..n$).
+3.  **Ordenar** las instalaciones de tal forma que $P^{flow}_{(1)} \ge P^{flow}_{(2)} \ge ... \ge P^{flow}_{(n)}$.
+4.  **Ordenar** las localizaciones de tal forma que $P^{dist}_{(1)} \le P^{dist}_{(2)} \le ... \le P^{dist}_{(n)}$.
+5.  **Asignar** la instalación con el $k$-ésimo mayor flujo a la localización con la $k$-ésima menor distancia.
 
 $$
-\pi(\text{Unidad}_i) = \text{Localización}_i
+\pi(\text{Instalación}_k) = \text{Localización}_k
 $$
 
-## Complejidad
-Este algoritmo es extremadamente rápido: **$O(n^2)$** para calcular potenciales y **$O(n \log n)$** para ordenar.
+---
+
+### Referencias Bibliográficas
+*   **Departamento de Tecnologías de la Información, Universidad de Huelva.** *Metaheurísticas Bioinspiradas e Híbridas: Tema 1.1 Introducción*. V2024.
+*   **Taillard, E. D.** (1991). *Robust taboo search for the quadratic assignment problem*. Parallel Computing, 17(4-5), 443-455.
 `;

@@ -5,19 +5,20 @@ import { useSimulatedAnnealing } from "@/hooks/useSimulatedAnnealing"; // Reusin
 import { NUG5 } from "@/data/benchmarks";
 import { QAPInstance } from "@/lib/algorithms/qap";
 import { DEFAULT_SA_PARAMS } from "@/lib/algorithms/sa";
-import { HybridLabLayout } from "@/components/layout/HybridLabLayout";
+import { TabbedLabLayout } from "@/components/layout/TabbedLabLayout";
+import { TheoryViewer } from "@/components/content/TheoryViewer";
 import { CodeDeck } from "@/components/ui/CodeDeck";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { tabuNotes } from "@/data/lessons/tabu_notes";
 
 export default function TabuSearch() {
     const [instance] = useState<QAPInstance>(NUG5);
     // We reuse the SA hook just to get a valid 'currentStep' structure for the visualizer
-    // In a real implementation, we would have a useTabuSearch hook
     const { currentStep } = useSimulatedAnnealing(instance, DEFAULT_SA_PARAMS);
 
     const videoSrc = "/content/mbhb/mod1/1.4_tabu_search.mp4"; // Short video
 
-    const codeSnippets = [
+    const tabuSnippets = [
         {
             language: "cpp" as const,
             label: "Estructura: Lista Tabú (C++)",
@@ -97,21 +98,7 @@ tabu_list[move_j][move_i] = unlock_iter`,
         }
     ];
 
-    const LeftPanelContent = (
-        <div className="flex flex-col h-full gap-4">
-            <div className="shrink-0">
-                <h3 className="text-xs font-mono text-cyan-500 mb-2 uppercase tracking-widest">
-                    Topic 1.4: Memoria
-                </h3>
-                <VideoPlayer src={videoSrc} />
-            </div>
-            <div className="flex-1 min-h-0">
-                <CodeDeck snippets={codeSnippets} />
-            </div>
-        </div>
-    );
-
-    const RightPanelContent = (
+    const VisualizerContent = (
         <div className="flex-1 flex flex-col min-w-0 h-full">
             <div className="flex-1 relative p-4 flex flex-col gap-4 overflow-hidden h-full">
                 <div className="flex items-center justify-between shrink-0">
@@ -147,9 +134,11 @@ tabu_list[move_j][move_i] = unlock_iter`,
     return (
         <AppLayout>
             <div className="flex-1 flex min-h-0 overflow-hidden">
-                <HybridLabLayout
-                    leftPanel={LeftPanelContent}
-                    rightPanel={RightPanelContent}
+                <TabbedLabLayout
+                    video={<VideoPlayer src={videoSrc} />}
+                    theory={<TheoryViewer content={tabuNotes} />}
+                    code={<CodeDeck snippets={tabuSnippets} />}
+                    visualizer={VisualizerContent}
                 />
             </div>
         </AppLayout>

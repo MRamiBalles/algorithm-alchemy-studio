@@ -5,85 +5,57 @@ import { useSimulatedAnnealing } from "@/hooks/useSimulatedAnnealing";
 import { NUG5 } from "@/data/benchmarks";
 import { QAPInstance } from "@/lib/algorithms/qap";
 import { DEFAULT_SA_PARAMS } from "@/lib/algorithms/sa";
-import { HybridLabLayout } from "@/components/layout/HybridLabLayout";
+import { TabbedLabLayout } from "@/components/layout/TabbedLabLayout";
+import { TheoryViewer } from "@/components/content/TheoryViewer";
 import { CodeDeck } from "@/components/ui/CodeDeck";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { lsNotes } from "@/data/lessons/ls_notes";
 
 export default function LocalSearch() {
     const [instance] = useState<QAPInstance>(NUG5);
+    // Reusing SA hook for visualizer grid state
     const { currentStep } = useSimulatedAnnealing(instance, DEFAULT_SA_PARAMS);
 
     const videoSrc = "/content/mbhb/mod1/1.2_local_search.mp4";
-    const codeSnippets = [
-        {
-            language: "cpp" as const,
-            label: "Operador 2-Opt (C++)",
-            code: `void swap_move(vector<int>& p, int i, int j) {
-    int temp = p[i];
-    p[i] = p[j];
-    p[j] = temp;
-}`
-        },
+    const localSnippets = [
         {
             language: "python" as const,
-            label: "Operador 2-Opt (Python)",
-            code: `def swap_move(p, i, j):
-    # Intercambio simple en Python
-    p[i], p[j] = p[j], p[i]`
-        },
-        {
-            language: "cpp" as const,
-            label: "Búsqueda Local (C++)",
-            code: `bool improve = true;
-while (improve) {
-    improve = false;
-    for (int i=0; i<n; i++) {
-        for (int j=i+1; j<n; j++) {
-            if (delta_cost(i, j) < 0) {
-                apply_swap(i, j);
-                improve = true;
-                break; // Primer Vecino (First Improvement)
-            }
-        }
-    }
-}`
-        },
-        {
-            language: "python" as const,
-            label: "Búsqueda Local (Python)",
-            code: `improve = True
-while improve:
-    improve = False
-    for i in range(n):
-        for j in range(i + 1, n):
-            # Evaluamos el vecino con Delta
-            if delta_cost(i, j) < 0:
-                swap_move(p, i, j)
-                improve = True
-                break # First Improvement`
+            label: "Local Search (Best Imp)",
+            code: `def local_search_best_improvement(problem, initial_sol):
+    current_sol = list(initial_sol)
+    current_cost = problem.evaluate(current_sol)
+    
+    while True:
+        best_delta = 0
+        best_move = None
+        
+        # Evaluar TODA la vecindad
+        for i in range(problem.n):
+            for j in range(i + 1, problem.n):
+                delta = problem.delta_evaluate(current_sol, i, j)
+                if delta < best_delta: 
+                    best_delta = delta
+                    best_move = (i, j)
+        
+        # Si no hay mejora, paramos (Óptimo Local)
+        if best_move is None:
+            break
+            
+        # Aplicar movimiento
+        i, j = best_move
+        current_sol[i], current_sol[j] = current_sol[j], current_sol[i]
+        current_cost += best_delta
+        
+    return current_sol, current_cost`
         }
     ];
 
-    const LeftPanelContent = (
-        <div className="flex flex-col h-full gap-4">
-            <div className="shrink-0">
-                <h3 className="text-xs font-mono text-cyan-500 mb-2 uppercase tracking-widest">
-                    Lecture: Topic 1.2
-                </h3>
-                <VideoPlayer src={videoSrc} />
-            </div>
-            <div className="flex-1 min-h-0">
-                <CodeDeck snippets={codeSnippets} />
-            </div>
-        </div>
-    );
-
-    const RightPanelContent = (
+    const VisualizerContent = (
         <div className="flex-1 flex flex-col min-w-0 h-full">
             <div className="flex-1 relative p-4 flex flex-col gap-4 overflow-hidden h-full">
                 <div className="flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-lg font-bold text-foreground">Local Search (Hill Climbing)</h2>
+                        <h2 className="text-lg font-bold text-foreground">Búsqueda Local</h2>
                         <span className="text-[10px] font-mono text-muted-foreground bg-secondary/50 px-2 py-0.5 rounded">
                             {instance.name} (n={instance.size})
                         </span>
@@ -99,7 +71,7 @@ while improve:
                             }
                         />
                         <p className="text-center text-xs text-muted-foreground mt-4 font-mono">
-                            (Visualizer Reused from SA Module)
+                            (Visualizador Muestra Estado Inicial)
                         </p>
                     </div>
                 </div>
@@ -110,9 +82,11 @@ while improve:
     return (
         <AppLayout>
             <div className="flex-1 flex min-h-0 overflow-hidden">
-                <HybridLabLayout
-                    leftPanel={LeftPanelContent}
-                    rightPanel={RightPanelContent}
+                <TabbedLabLayout
+                    video={<VideoPlayer src={videoSrc} />}
+                    theory={<TheoryViewer content={lsNotes} />}
+                    code={<CodeDeck snippets={localSnippets} />}
+                    visualizer={VisualizerContent}
                 />
             </div>
         </AppLayout>
