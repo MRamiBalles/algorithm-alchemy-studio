@@ -18,8 +18,7 @@ import CHCPage from "./pages/CHC";
 import MultimodalPage from "./pages/Multimodal";
 import MemeticPage from "./pages/Memetic";
 import NSGA2Page from "./pages/NSGA2";
-import MemeticPage from "./pages/Memetic";
-import NSGA2Page from "./pages/NSGA2";
+
 
 const queryClient = new QueryClient();
 
@@ -49,9 +48,7 @@ const App = () => (
           <Route path="/memetic" element={<MemeticPage />} />
           <Route path="/nsga2" element={<NSGA2Page />} />
 
-          {/* Practice 2c: Advanced */}
-          <Route path="/memetic" element={<MemeticPage />} />
-          <Route path="/nsga2" element={<NSGA2Page />} />
+
 
           <Route path="*" element={<NotFound />} />
         </Routes>

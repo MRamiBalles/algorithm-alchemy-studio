@@ -5,7 +5,6 @@ import {
     shuffleSublist
 } from './qap';
 import { localSearchFirstImprovement } from './multiStart';
-import { localSearchFirstImprovement } from './multiStart';
 
 export interface EvoYield {
     population: { permutation: number[]; cost: number }[];
@@ -505,3 +504,4 @@ function hammingDistance(p1: number[], p2: number[]): number {
 
         return fronts;
     }
+}
