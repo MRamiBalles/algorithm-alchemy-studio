@@ -1,25 +1,86 @@
+```
 import { useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { CHR12A, NUG5, TAI10A } from "@/data/benchmarks";
 import { greedyConstructive, calculateCost } from "@/lib/algorithms/greedy";
 import { localSearchBestImprovement } from "@/lib/algorithms/ls";
 import { tabuSearch } from "@/lib/algorithms/tabu";
-import { Play, RotateCcw } from "lucide-react";
+import { Play, Loader2 } from "lucide-react";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { toast } from "sonner";
 
 export default function Comparison() {
     const [running, setRunning] = useState(false);
     const [data, setData] = useState<any[]>([]);
+    const [selectedFile, setSelectedFile] = useState("nug5.dat");
+    const [instance, setInstance] = useState<any>(NUG5);
+    const [loading, setLoading] = useState(false);
+
+    // QAP Parser
+    const parseQAP = (text: string) => {
+        const tokens = text.trim().split(/\s+/).map(Number);
+        let ptr = 0;
+        const n = tokens[ptr++];
+
+        // Skip empty/0 if any (some formats have n n)
+        if (tokens[ptr] === n) ptr++;
+
+        const flow: number[][] = [];
+        for (let i = 0; i < n; i++) {
+            flow.push(tokens.slice(ptr, ptr + n));
+            ptr += n;
+        }
+
+        const dist: number[][] = [];
+        for (let i = 0; i < n; i++) {
+            dist.push(tokens.slice(ptr, ptr + n));
+            ptr += n;
+        }
+
+        return { n, flow, dist, optimal: 0 }; // optimal unknown from dat
+    };
+
+    const loadInstance = async (filename: string) => {
+        setLoading(true);
+        try {
+            const res = await fetch(`/ datasets / ${ filename } `);
+            if (!res.ok) throw new Error("Failed to load dataset");
+            const text = await res.text();
+            const parsed = parseQAP(text);
+            setInstance(parsed);
+            setData([]); // Reset chart
+            toast.success(`Cargado ${ filename } (N = ${ parsed.n })`);
+        } catch (e) {
+            toast.error("Error cargando el dataset");
+            console.error(e);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Load on select change
+    const handleSelectChange = (val: string) => {
+        setSelectedFile(val);
+        loadInstance(val);
+    };
 
     const runBenchmark = async () => {
+        if (!instance) return;
         setRunning(true);
         setData([]);
 
-        // Use CHR12A for comparison (N=12)
-        const instance = CHR12A;
-        const maxIter = 50; // Limit iterations for chart readability
+        // Wait a frame to render loading state
+        await new Promise(r => setTimeout(r, 100));
+
+        const maxIter = instance.n > 50 ? 20 : 50; // Fewer iters for big instances
 
         // 1. Greedy
         const greedySol = greedyConstructive(instance);
@@ -77,10 +138,23 @@ export default function Comparison() {
                             Comparativa de rendimiento en tiempo real (Nug12)
                         </p>
                     </div>
-                    <Button onClick={runBenchmark} disabled={running} className="gap-2">
-                        {running ? <RotateCcw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
-                        {running ? "Ejecutando..." : "Ejecutar Benchmark"}
-                    </Button>
+                    <div className="flex items-center gap-4">
+                        <Select value={selectedFile} onValueChange={handleSelectChange}>
+                            <SelectTrigger className="w-[180px] bg-slate-900 border-slate-700">
+                                <SelectValue placeholder="Dataset" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="nug5.dat">Nug5 (Test)</SelectItem>
+                                <SelectItem value="tai25b.dat">Tai25b (Práctica)</SelectItem>
+                                <SelectItem value="sko90.dat">Sko90 (Big)</SelectItem>
+                            </SelectContent>
+                        </Select>
+
+                        <Button onClick={runBenchmark} disabled={running || loading} className="gap-2 min-w-[140px]">
+                            {running || loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+                            {running ? "Calculando..." : "Ejecutar"}
+                        </Button>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
