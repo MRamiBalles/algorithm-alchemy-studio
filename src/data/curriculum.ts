@@ -12,13 +12,23 @@ export const CURRICULUM: Subject[] = [
         description: 'Fundamentos de optimización, búsquedas locales y algoritmos basados en trayectoria única.',
         units: [
           {
+            id: '1.0',
+            title: 'Tema 1.0: Introducción (Problemas Imposibles)',
+            description: 'Por qué necesitamos la IA Heurística.',
+            type: 'video',
+            metadata: { format: 'lecture', duration: 10, tags: ['#Intro', '#Complejidad'] },
+            assets: {
+              videoUrl: '/content/mbhb/mod1/Resolviendo_problemas_imposibles.mp4'
+            }
+          },
+          {
             id: '1.1',
             title: 'Tema 1.1: Introducción y Algoritmos Constructivos',
             description: 'El problema QAP y heurísticas voraces (Greedy).',
             type: 'combined',
             metadata: { format: 'lecture', duration: 15, tags: ['#Greedy', '#QAP'] },
             assets: {
-              videoUrl: '/content/mbhb/mod1/1.1_greedy.mp4',
+              videoUrl: '/content/mbhb/mod1/Optimización_Heurística.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/01 Tema_1.1_V1_2024.pdf'
             }
           },
@@ -29,7 +39,7 @@ export const CURRICULUM: Subject[] = [
             type: 'combined',
             metadata: { format: 'lecture', duration: 20, tags: ['#LocalSearch', '#2Opt'] },
             assets: {
-              videoUrl: '/content/mbhb/mod1/1.2_local_search.mp4',
+              videoUrl: '/content/mbhb/mod1/Algoritmos_de_Búsqueda_Local.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/02 Tema_1.2_V1_V2024.pdf'
             }
           },
@@ -40,7 +50,7 @@ export const CURRICULUM: Subject[] = [
             type: 'combined',
             metadata: { format: 'lecture', duration: 25, tags: ['#SimulatedAnnealing', '#Metropolis'] },
             assets: {
-              videoUrl: '/content/mbhb/mod1/1.3_simulated_annealing_lecture.mp4',
+              videoUrl: '/content/mbhb/mod1/Enfriamiento_Simulado.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/03 Tema_1.3_V1_2024.pdf'
             }
           },
@@ -51,7 +61,7 @@ export const CURRICULUM: Subject[] = [
             type: 'combined',
             metadata: { format: 'lecture', duration: 30, tags: ['#TabuSearch', '#Memoria'] },
             assets: {
-              videoUrl: '/content/mbhb/mod1/1.4_tabu_search.mp4',
+              videoUrl: '/content/mbhb/mod1/Búsqueda_Tabú__La_Memoria.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/04 Tema_1.4_V2_2024.pdf'
             }
           },
@@ -62,6 +72,7 @@ export const CURRICULUM: Subject[] = [
             type: 'video',
             metadata: { format: 'lecture', duration: 20 },
             assets: {
+              videoUrl: '/content/mbhb/mod1/La_búsqueda_de_lo_mejor.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/05 Tema 1.5_V_2024.pdf'
             }
           },
@@ -72,6 +83,7 @@ export const CURRICULUM: Subject[] = [
             type: 'video',
             metadata: { format: 'lecture', duration: 20 },
             assets: {
+              videoUrl: '/content/mbhb/mod1/Escapar_la_trampa_del_algoritmo.mp4',
               notesUrl: '/content/mbhb/MBYHB/Teoria/06 Tema 1.6_V_2024.pdf'
             }
           }
