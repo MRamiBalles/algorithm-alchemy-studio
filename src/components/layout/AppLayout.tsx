@@ -1,11 +1,8 @@
 import { ReactNode } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
+import { AppFooter } from "./AppFooter";
 import { Menu } from "lucide-react";
-
-interface AppLayoutProps {
-  children: ReactNode;
-}
 
 export function AppLayout({ children }: AppLayoutProps) {
   return (
@@ -23,6 +20,7 @@ export function AppLayout({ children }: AppLayoutProps) {
           <div className="flex-1 flex flex-col min-h-0">
             {children}
           </div>
+          <AppFooter />
         </div>
       </div>
     </SidebarProvider>
