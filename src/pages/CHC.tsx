@@ -42,8 +42,8 @@ export default function CHCPage() {
                 const next = generatorRef.current.next();
                 if (next.done) {
                     stop();
-                } else {
-                    setCurrentState(next.value);
+                } else if (next.value) {
+                    setCurrentState(next.value as EvoYield);
                 }
             }, 100);
         }
@@ -150,8 +150,8 @@ threshold--;`
                             <p>Cross-Generational elitist selection, Heterogeneous recombination, Cataclysmic mutation.</p>
                             <ul>
                                 <li><strong>Selección Elitista (C):</strong> Los N mejores de Padres + Hijos pasan.</li>
-                                <li><strong>Prevensión Incesto (H):</strong> Solo cruza si $dist > d$. Si no, baja $d$.</li>
-                                <li><strong>Reinicio Cataclísmico (C):</strong> Cuando $d=0$ (convergencia), reinicia la población mutando drásticamente al mejor.</li>
+                                <li><strong>Prevensión Incesto (H):</strong> Solo cruza si dist {'>'} d. Si no, baja d.</li>
+                                <li><strong>Reinicio Cataclísmico (C):</strong> Cuando d=0 (convergencia), reinicia la población mutando drásticamente al mejor.</li>
                             </ul>
                         </div>
                     }
