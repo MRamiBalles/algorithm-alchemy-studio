@@ -26,14 +26,14 @@ export function AppFooter() {
 
                     {/* Donation */}
                     <a
-                        href="https://www.paypal.com/paypalme/ramiballes96"
+                        href="https://www.paypal.com/pools/c/9mDEoTV8OH"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group"
                     >
                         <Button variant="outline" size="sm" className="gap-2 border-pink-500/30 hover:bg-pink-500/10 hover:text-pink-400 transition-colors">
                             <Heart className="w-3.5 h-3.5 group-hover:fill-current" />
-                            <span>Invítame a un café (PayPal)</span>
+                            <span>Apoyar el Proyecto (Crowdfunding)</span>
                         </Button>
                     </a>
 

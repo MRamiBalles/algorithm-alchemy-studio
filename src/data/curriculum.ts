@@ -12,9 +12,9 @@ export const CURRICULUM: Subject[] = [
         description: 'Fundamentos de optimización, búsquedas locales y algoritmos basados en trayectoria única.',
         units: [
           {
-            id: '1.0',
-            title: 'Tema 1.0: Introducción (Problemas Imposibles)',
-            description: 'Por qué necesitamos la IA Heurística.',
+            id: 'intro',
+            title: 'Intro: Resolviendo Problemas Imposibles',
+            description: 'El Muro de la Complejidad y la necesidad de la IA.',
             type: 'video',
             metadata: { format: 'lecture', duration: 10, tags: ['#Intro', '#Complejidad'] },
             assets: {
