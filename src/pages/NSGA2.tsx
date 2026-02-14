@@ -43,8 +43,8 @@ export default function NSGA2Page() {
                 const next = generatorRef.current.next();
                 if (next.done) {
                     stop();
-                } else {
-                    setCurrentState(next.value);
+                } else if (next.value) {
+                    setCurrentState(next.value as MultiObjYield);
                 }
             }, 100);
         }

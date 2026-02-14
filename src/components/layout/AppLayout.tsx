@@ -4,7 +4,7 @@ import { AppSidebar } from "./AppSidebar";
 import { AppFooter } from "./AppFooter";
 import { Menu } from "lucide-react";
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout({ children }: { children: ReactNode }) {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">

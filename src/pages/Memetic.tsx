@@ -43,8 +43,8 @@ export default function MemeticPage() {
                 const next = generatorRef.current.next();
                 if (next.done) {
                     stop();
-                } else {
-                    setCurrentState(next.value);
+                } else if (next.value) {
+                    setCurrentState(next.value as EvoYield);
                 }
             }, 100);
         }
