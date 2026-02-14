@@ -18,7 +18,7 @@ export default function Greedy() {
     const codeSnippets = [
         {
             language: "cpp" as const,
-            label: "Evaluación Delta",
+            label: "Evaluación Delta (C++)",
             code: `int delta_cost(int i, int j, const vector<int>& p) {
     int delta = 0;
     // Calcular solo la diferencia de arcos afectados
@@ -34,13 +34,39 @@ export default function Greedy() {
 }`
         },
         {
+            language: "python" as const,
+            label: "Evaluación Delta (Python)",
+            code: `def delta_cost(i, j, p, flow, dist):
+    delta = 0
+    n = len(p)
+    # Cálculo O(n) eficiente
+    for k in range(n):
+        if k != i and k != j:
+            # Diferencia de costes al intercambiar i y j
+            term1 = (flow[i][k] - flow[j][k])
+            term2 = (dist[p[j]][p[k]] - dist[p[i]][p[k]])
+            delta += term1 * term2
+            # ... términos simétricos
+    return delta`
+        },
+        {
             language: "cpp" as const,
-            label: "Algoritmo Greedy (Constructivo)",
+            label: "Greedy (C++)",
             code: `vector<int> greedy_constructive() {
     vector<int> p(n, -1);
     // Asignar primera facilidad/locación al azar
     // Luego elegir la siguiente que minimice el coste parcial
 }`
+        },
+        {
+            language: "python" as const,
+            label: "Greedy (Python)",
+            code: `def greedy_constructive(n, flow, dist):
+    p = [-1] * n
+    # 1. Asignar primera facilidad al azar
+    # 2. Bucle voraz: elegir la siguiente asignación
+    #    que minimice el coste parcial
+    return p`
         }
     ];
 

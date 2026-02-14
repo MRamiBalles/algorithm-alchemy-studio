@@ -8,8 +8,8 @@ import NotFound from "./pages/NotFound";
 import SimulatedAnnealing from "./pages/SimulatedAnnealing";
 import Greedy from "./pages/Greedy";
 import LocalSearch from "./pages/LocalSearch";
+import TabuSearch from "./pages/TabuSearch";
 import {
-  TabuSearchPage,
   GRASPPage,
   ILSPage,
   VNSPage,
@@ -32,7 +32,7 @@ const App = () => (
           <Route path="/greedy" element={<Greedy />} />
           <Route path="/localsearch" element={<LocalSearch />} />
           <Route path="/sa" element={<SimulatedAnnealing />} />
-          <Route path="/tabu" element={<TabuSearchPage />} />
+          <Route path="/tabu" element={<TabuSearch />} />
           <Route path="/grasp" element={<GRASPPage />} />
           <Route path="/ils" element={<ILSPage />} />
           <Route path="/vns" element={<VNSPage />} />

@@ -40,17 +40,32 @@ export default function SimulatedAnnealing() {
   const codeSnippets = [
     {
       language: "cpp" as const,
-      label: "Esquema Cauchy",
+      label: "Esquema Cauchy (C++)",
       code: `// Enfriamiento Lento
 double temp = t0 / (1.0 + k);`
     },
     {
+      language: "python" as const,
+      label: "Esquema Cauchy (Python)",
+      code: `# Enfriamiento Lento (Cauchy)
+temp = t0 / (1.0 + k)`
+    },
+    {
       language: "cpp" as const,
-      label: "Criterio Metropolis",
+      label: "Criterio Metropolis (C++)",
       code: `// Aceptar si mejora (delta < 0) o por probabilidad
 if (delta < 0 || (exp(-delta/temp) > random01())) {
     accept();
 }`
+    },
+    {
+      language: "python" as const,
+      label: "Criterio Metropolis (Python)",
+      code: `import math, random
+
+# Aceptar si mejora o por probabilidad de Boltzmann
+if delta < 0 or math.exp(-delta / temp) > random.random():
+    accept()`
     },
     {
       language: "processing" as const,

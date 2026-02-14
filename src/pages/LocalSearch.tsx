@@ -17,7 +17,7 @@ export default function LocalSearch() {
     const codeSnippets = [
         {
             language: "cpp" as const,
-            label: "Operador 2-Opt (Swap)",
+            label: "Operador 2-Opt (C++)",
             code: `void swap_move(vector<int>& p, int i, int j) {
     int temp = p[i];
     p[i] = p[j];
@@ -25,8 +25,15 @@ export default function LocalSearch() {
 }`
         },
         {
+            language: "python" as const,
+            label: "Operador 2-Opt (Python)",
+            code: `def swap_move(p, i, j):
+    # Intercambio simple en Python
+    p[i], p[j] = p[j], p[i]`
+        },
+        {
             language: "cpp" as const,
-            label: "Búsqueda Local (Hill Climbing)",
+            label: "Búsqueda Local (C++)",
             code: `bool improve = true;
 while (improve) {
     improve = false;
@@ -40,6 +47,20 @@ while (improve) {
         }
     }
 }`
+        },
+        {
+            language: "python" as const,
+            label: "Búsqueda Local (Python)",
+            code: `improve = True
+while improve:
+    improve = False
+    for i in range(n):
+        for j in range(i + 1, n):
+            # Evaluamos el vecino con Delta
+            if delta_cost(i, j) < 0:
+                swap_move(p, i, j)
+                improve = True
+                break # First Improvement`
         }
     ];
 
