@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SimulatedAnnealing from "./pages/SimulatedAnnealing";
+import Greedy from "./pages/Greedy";
+import LocalSearch from "./pages/LocalSearch";
 import {
   TabuSearchPage,
   GRASPPage,
@@ -27,6 +29,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/greedy" element={<Greedy />} />
+          <Route path="/localsearch" element={<LocalSearch />} />
           <Route path="/sa" element={<SimulatedAnnealing />} />
           <Route path="/tabu" element={<TabuSearchPage />} />
           <Route path="/grasp" element={<GRASPPage />} />
