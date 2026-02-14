@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -15,6 +16,19 @@ import { BENCHMARKS } from "@/data/benchmarks";
 import { QAPInstance } from "@/lib/algorithms/qap";
 import { SAParams, DEFAULT_SA_PARAMS } from "@/lib/algorithms/sa";
 import { ChevronLeft, ChevronRight, Upload } from "lucide-react";
+import { toast } from "sonner";
+
+const MAX_MATRIX_SIZE = 100;
+
+const QAPSchema = z.object({
+  distance: z.array(z.array(z.number())).min(1).max(MAX_MATRIX_SIZE),
+  flow: z.array(z.array(z.number())).min(1).max(MAX_MATRIX_SIZE),
+}).refine(
+  data => data.distance.length === data.flow.length &&
+    data.distance.every(row => row.length === data.distance.length) &&
+    data.flow.every(row => row.length === data.flow.length),
+  { message: "Matrices must be square and have matching dimensions" }
+);
 
 interface PropertiesPanelProps {
   instance: QAPInstance;
@@ -39,38 +53,44 @@ export function PropertiesPanel({
     if (found) onInstanceChange(found);
   };
 
-  const handleJsonParse = () => {
+  const parseAndValidateQAP = (raw: string, name: string): QAPInstance | null => {
+    let jsonObj: unknown;
     try {
-      const parsed = JSON.parse(jsonInput);
-      if (parsed.distance && parsed.flow) {
-        onInstanceChange({
-          name: "Custom",
-          size: parsed.distance.length,
-          distance: parsed.distance,
-          flow: parsed.flow,
-        });
-      }
+      jsonObj = JSON.parse(raw);
     } catch {
-      // TODO: show error toast
+      toast.error("Invalid JSON syntax");
+      return null;
     }
+    const result = QAPSchema.safeParse(jsonObj);
+    if (!result.success) {
+      toast.error(result.error.errors[0]?.message ?? "Invalid QAP format");
+      return null;
+    }
+    return {
+      name,
+      size: result.data.distance.length,
+      distance: result.data.distance,
+      flow: result.data.flow,
+    };
+  };
+
+  const handleJsonParse = () => {
+    const instance = parseAndValidateQAP(jsonInput, "Custom");
+    if (instance) onInstanceChange(instance);
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("File too large (max 5MB)");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = (ev) => {
-      try {
-        const parsed = JSON.parse(ev.target?.result as string);
-        if (parsed.distance && parsed.flow) {
-          onInstanceChange({
-            name: file.name.replace(/\.\w+$/, ""),
-            size: parsed.distance.length,
-            distance: parsed.distance,
-            flow: parsed.flow,
-          });
-        }
-      } catch {}
+      const safeName = file.name.replace(/[^\w.-]/g, "_").replace(/\.\w+$/, "");
+      const instance = parseAndValidateQAP(ev.target?.result as string, safeName);
+      if (instance) onInstanceChange(instance);
     };
     reader.readAsText(file);
   };

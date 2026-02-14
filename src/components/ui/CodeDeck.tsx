@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Copy, Check } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export interface CodeSnippet {
-    language: 'cpp' | 'python' | 'typescript';
+    language: 'cpp' | 'python' | 'typescript' | 'processing';
     label: string;
     code: string;
 }
