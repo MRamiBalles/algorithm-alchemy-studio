@@ -3,7 +3,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { NUG12, NUG5, TAI12B } from "@/data/benchmarks";
+import { CHR12A, NUG5, TAI10A } from "@/data/benchmarks";
 import { greedyConstructive, calculateCost } from "@/lib/algorithms/greedy";
 import { localSearchBestImprovement } from "@/lib/algorithms/ls";
 import { tabuSearch } from "@/lib/algorithms/tabu";
@@ -17,8 +17,8 @@ export default function Comparison() {
         setRunning(true);
         setData([]);
 
-        // Use NUG12 for a good comparison (N=12)
-        const instance = NUG12;
+        // Use CHR12A for comparison (N=12)
+        const instance = CHR12A;
         const maxIter = 50; // Limit iterations for chart readability
 
         // 1. Greedy
