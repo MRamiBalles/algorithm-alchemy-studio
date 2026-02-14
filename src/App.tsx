@@ -9,6 +9,7 @@ import SimulatedAnnealing from "./pages/SimulatedAnnealing";
 import Greedy from "./pages/Greedy";
 import LocalSearch from "./pages/LocalSearch";
 import TabuSearch from "./pages/TabuSearch";
+import Comparison from "./pages/Comparison";
 import {
   GRASPPage,
   ILSPage,
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/localsearch" element={<LocalSearch />} />
           <Route path="/sa" element={<SimulatedAnnealing />} />
           <Route path="/tabu" element={<TabuSearch />} />
+          <Route path="/compare" element={<Comparison />} />
           <Route path="/grasp" element={<GRASPPage />} />
           <Route path="/ils" element={<ILSPage />} />
           <Route path="/vns" element={<VNSPage />} />
