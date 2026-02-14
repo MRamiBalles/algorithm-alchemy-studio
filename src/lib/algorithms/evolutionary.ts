@@ -4,6 +4,8 @@ import {
     generateRandomPermutation,
     shuffleSublist
 } from './qap';
+import { localSearchFirstImprovement } from './multiStart';
+import { localSearchFirstImprovement } from './multiStart';
 
 export interface EvoYield {
     population: { permutation: number[]; cost: number }[];
@@ -293,4 +295,213 @@ function hammingDistance(p1: number[], p2: number[]): number {
     }
     return Math.floor(dist / 2); // Hamming for perms usually defined as swaps needed? Or just mismatches? 
     // CHC usually standard Hamming. For perms, mismatch count is fine proxy for diversity.
-}
+    // --- Memetic Algorithm (GA + LS) ---
+    // Reference: Tema 2.6 - Hibridación de Algoritmos Genéticos con Búsqueda Local (Lamarckian/Baldwinian Learning).
+    export function* runMemeticGen(
+        instance: QAPInstance,
+        popSize: number = 40,
+        generations: number = 50,
+        lsDepth: number = 1000 // Engineering Trade-off: Limit LS steps to balance Exploration/Exploitation cost
+    ): Generator<EvoYield, void, void> {
+        const n = instance.size;
+        let population = Array.from({ length: popSize }, () => {
+            const p = generateRandomPermutation(n);
+            // Initial improvement: High-quality initial population
+            const imp = localSearchFirstImprovement(instance, p, lsDepth);
+            return { permutation: imp.permutation, cost: imp.cost };
+        });
+
+        population.sort((a, b) => a.cost - b.cost);
+        let bestSol = population[0];
+        const history: any[] = [];
+
+        yield {
+            population,
+            bestPermutation: bestSol.permutation,
+            bestCost: bestSol.cost,
+            generation: 0,
+            phase: 'init',
+            description: 'Initial Population (LS Optimized)',
+            history
+        };
+
+        for (let gen = 1; gen <= generations; gen++) {
+            const offspring: typeof population = [];
+            // Elitism: Preserve best solutions (Engineering Reliability)
+            offspring.push(population[0]);
+            offspring.push(population[1]);
+
+            while (offspring.length < popSize) {
+                const p1 = tournamentSelect(population);
+                const p2 = tournamentSelect(population);
+
+                // Crossover (OX)
+                const childPerm = oxCrossover(p1.permutation, p2.permutation);
+
+                // Mutation
+                const mutatedPerm = mutation(childPerm, 0.1);
+
+                // MEMETIC STEP: Lamarckian Learning
+                // The individual "learns" during its lifetime (Local Search) and passes this improvement to the next generation.
+                const improved = localSearchFirstImprovement(instance, mutatedPerm, lsDepth);
+
+                offspring.push({
+                    permutation: improved.permutation,
+                    cost: improved.cost
+                });
+            }
+
+            population = offspring.sort((a, b) => a.cost - b.cost);
+            if (population[0].cost < bestSol.cost) {
+                bestSol = population[0];
+            }
+
+            history.push({ gen, best: bestSol.cost });
+
+            yield {
+                population,
+                bestPermutation: bestSol.permutation,
+                bestCost: bestSol.cost,
+                generation: gen,
+                phase: 'memetic',
+                description: `Gen ${gen}: Memetic Improvement (Local Search applied)`,
+                history
+            };
+        }
+    }
+
+    // --- NSGA-II (Multiobjective) ---
+    // Reference: Tema 2.7 - Optimización Multiobjetivo (Frontera de Pareto).
+    // We simulate a second objective "Flow Variance" to create a Bio-objective QAP.
+    export interface MultiObjYield {
+        fronts: { permutation: number[]; cost1: number; cost2: number; rank: number }[][];
+        paretoFront: { cost1: number; cost2: number }[];
+        generation: number;
+        description: string;
+    }
+
+    export function* runNSGA2Gen(
+        instance: QAPInstance,
+        popSize: number = 50,
+        generations: number = 50
+    ): Generator<MultiObjYield, void, void> {
+        const n = instance.size;
+        // Engineering Design: Synthetic 2nd objective (Inverse Flow) to create conflict for Pareto analysis.
+        const flow2 = instance.flow.map(row => row.map(v => Math.max(0, 100 - v)));
+
+        // Evaluate helper
+        const evalMO = (p: number[]) => ({
+            p,
+            c1: calculateQAPCost(p, instance.distance, instance.flow),
+            c2: calculateQAPCost(p, instance.distance, flow2)
+        });
+
+        let population = Array.from({ length: popSize }, () => {
+            const p = generateRandomPermutation(n);
+            return evalMO(p);
+        });
+
+        // Main Loop
+        for (let gen = 0; gen <= generations; gen++) {
+            // Fast Non-Dominated Sorting (Deb et al.)
+            const fronts = fastNonDominatedSort(population);
+
+            // Pareto Front Extraction
+            const paretoFront = fronts[0].map(ind => ({ cost1: ind.c1, cost2: ind.c2 }));
+
+            yield {
+                fronts: fronts.map((f, i) => f.map(ind => ({
+                    permutation: ind.p,
+                    cost1: ind.c1,
+                    cost2: ind.c2,
+                    rank: i
+                }))),
+                paretoFront,
+                generation: gen,
+                description: `Gen ${gen}: ${fronts.length} Pareto Fronts identified`
+            };
+
+            // Offspring Generation
+            const offspring: typeof population = [];
+            while (offspring.length < popSize) {
+                // Simplified Selection (Random for demo, usually Crowding Distance Tournament)
+                const p1 = population[Math.floor(Math.random() * popSize)];
+                const p2 = population[Math.floor(Math.random() * popSize)];
+
+                const cPerm = oxCrossover(p1.p, p2.p);
+                const mPerm = mutation(cPerm, 0.1);
+
+                offspring.push(evalMO(mPerm));
+            }
+
+            // Elitist Survival (Combine Parent + Offspring)
+            const combined = [...population, ...offspring];
+            const combinedFronts = fastNonDominatedSort(combined);
+
+            const newPop: typeof population = [];
+            let i = 0;
+            // Fill population by fronts (Rank 0, then Rank 1...)
+            while (newPop.length + combinedFronts[i].length <= popSize) {
+                newPop.push(...combinedFronts[i]);
+                i++;
+            }
+
+            // Fill remaining slots
+            if (newPop.length < popSize) {
+                const needed = popSize - newPop.length;
+                newPop.push(...combinedFronts[i].slice(0, needed));
+            }
+
+            population = newPop;
+        }
+    }
+
+    function fastNonDominatedSort(pop: { p: number[]; c1: number; c2: number }[]) {
+        // Complexity: O(M N^2) roughly.
+        const fronts: typeof pop[] = [[]];
+        const S = pop.map(() => [] as number[]);
+        const n = pop.map(() => 0);
+        const ranks = pop.map(() => 0);
+
+        for (let p = 0; p < pop.length; p++) {
+            for (let q = 0; q < pop.length; q++) {
+                if (p === q) continue;
+                // Domination Logic: Min C1 AND Min C2
+                const pDomQ = (pop[p].c1 <= pop[q].c1 && pop[p].c2 <= pop[q].c2) &&
+                    (pop[p].c1 < pop[q].c1 || pop[p].c2 < pop[q].c2);
+
+                if (pDomQ) {
+                    S[p].push(q);
+                } else {
+                    const qDomP = (pop[q].c1 <= pop[p].c1 && pop[q].c2 <= pop[p].c2) &&
+                        (pop[q].c1 < pop[p].c1 || pop[q].c2 < pop[p].c2);
+                    if (qDomP) {
+                        n[p]++;
+                    }
+                }
+            }
+            if (n[p] === 0) {
+                ranks[p] = 0;
+                fronts[0].push(pop[p]);
+            }
+        }
+
+        let i = 0;
+        while (fronts[i].length > 0) {
+            const nextFront: typeof pop = [];
+            for (const pInd of fronts[i]) {
+                const p = pop.indexOf(pInd);
+                for (const q of S[p]) {
+                    n[q]--;
+                    if (n[q] === 0) {
+                        ranks[q] = i + 1;
+                        nextFront.push(pop[q]);
+                    }
+                }
+            }
+            i++;
+            if (nextFront.length > 0) fronts.push(nextFront);
+        }
+
+        return fronts;
+    }
