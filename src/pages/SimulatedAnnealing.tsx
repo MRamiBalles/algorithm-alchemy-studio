@@ -36,7 +36,7 @@ export default function SimulatedAnnealing() {
     : 0;
 
   // Hardcoded data for the Hybrid Lab demo
-  const videoSrc = "/content/mbhb/mod1/topic1_3_sa.mp4"; // Placeholder path
+  const videoSrc = "/content/mbhb/mod1/1.3_simulated_annealing_lecture.mp4"; // Correct path
   const codeSnippets = [
     {
       language: "cpp" as const,

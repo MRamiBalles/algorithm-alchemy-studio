@@ -24,6 +24,7 @@ export function VideoPlayer({ src, poster, className }: VideoPlayerProps) {
         <div className={`rounded-lg overflow-hidden border border-slate-800 bg-black ${className}`}>
             <AspectRatio ratio={16 / 9}>
                 <video
+                    key={src}
                     controls
                     className="w-full h-full object-cover"
                     poster={poster}
