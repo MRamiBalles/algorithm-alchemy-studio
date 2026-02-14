@@ -13,6 +13,9 @@ import Comparison from "./pages/Comparison";
 import GRASPPage from "./pages/GRASP";
 import ILSPage from "./pages/ILS";
 import VNSPage from "./pages/VNS";
+import GAPage from "./pages/GA";
+import CHCPage from "./pages/CHC";
+import MultimodalPage from "./pages/Multimodal";
 
 const queryClient = new QueryClient();
 
@@ -31,9 +34,12 @@ const App = () => (
           <Route path="/compare" element={<Comparison />} />
 
           {/* Practice 2a: Multi-Start */}
-          <Route path="/grasp" element={<GRASPPage />} />
-          <Route path="/ils" element={<ILSPage />} />
           <Route path="/vns" element={<VNSPage />} />
+
+          {/* Practice 2b: Evolutionary */}
+          <Route path="/ga" element={<GAPage />} />
+          <Route path="/chc" element={<CHCPage />} />
+          <Route path="/multimodal" element={<MultimodalPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
