@@ -58,6 +58,13 @@ const ChartContainer = React.forwardRef<
 });
 ChartContainer.displayName = "Chart";
 
+const VALID_CSS_COLOR = /^(#[0-9A-Fa-f]{3,8}|rgba?\([^)]*\)|hsla?\([^)]*\)|[a-zA-Z]{1,30})$/;
+
+function sanitizeCssColor(color: string): string | null {
+  const trimmed = color.trim();
+  return VALID_CSS_COLOR.test(trimmed) ? trimmed : null;
+}
+
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(([_, config]) => config.theme || config.color);
 
@@ -65,17 +72,21 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     return null;
   }
 
+  const sanitizedId = id.replace(/[^a-zA-Z0-9-_]/g, "");
+
   return (
     <style
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(
             ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
+${prefix} [data-chart=${sanitizedId}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
-    const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
+    const rawColor = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
+    const color = rawColor ? sanitizeCssColor(rawColor) : null;
+    const safeKey = key.replace(/[^a-zA-Z0-9-_]/g, "");
+    return color ? `  --color-${safeKey}: ${color};` : null;
   })
   .join("\n")}
 }
