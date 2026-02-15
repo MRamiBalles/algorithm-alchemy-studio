@@ -33,25 +33,30 @@ export const graphData = {
         { id: "Z7.3", group: 7, label: "AI & Data", level: 1, role: "shell", description: "Operationalized Epistemology." },
 
         // 3. THE GENEALOGY (Intermediate Concepts - The Ingredients)
-        // Born from Nucleus
+        // Born from Nucleus (Gen 1)
         { id: "G_LOGIC", group: 0, label: "Boolean Logic", level: 1, role: "nucleus", size: 22, description: "True/False. The bridge between Math and Philosophy." },
-        { id: "G_ELEC", group: 0, label: "Electromagnetism", level: 1, role: "nucleus", size: 22, description: "Flow of Electrons. The physical carrier of information." },
-        { id: "G_LANG", group: 0, label: "Semantics", level: 1, role: "nucleus", size: 22, description: "Meaning & Syntax. The structure of communication." },
+        { id: "G_ELEC", group: 0, label: "Electromagnetism", level: 1, role: "nucleus", size: 22, description: "Flow of electrons. The physical carrier." },
+        { id: "G_LANG", group: 0, label: "Semantics", level: 1, role: "nucleus", size: 22, description: "Meaning & Syntax." },
+        { id: "G_MECH", group: 0, label: "Newtonian Mechanics", level: 1, role: "nucleus", size: 22, description: "Forces, Mass, Velocity." },
+
+        // The Stem Cells (Gen 2 - Shared Foundations)
+        { id: "ENG_CORE", group: 2, label: "General Engineering", level: 1, type: "bridge", role: "crust", size: 25, description: "Calculus + Physics. The optimization of the physical world." },
 
         // 4. THE CRUST (The Applications / Reality Domains) - Bonded to the Shell
         // Life
         { id: "Z3", group: 3, label: "LIFE", level: 2, role: "crust", size: 20 },
         { id: "Z3.1", group: 3, label: "Biology", level: 2, role: "crust" },
-        // Replaced UHU_AGRO with the Concept
-        { id: "CON_AGRO", group: 3, label: "Precision Agriculture", level: 2, role: "crust", type: "bridge", description: "Algorithmically optimized growth." },
+        // Agricultural Engineering: Born from Engineering Core + Biology
+        { id: "CON_AGRO", group: 3, label: "Precision Agriculture", level: 2, role: "crust", type: "bridge", description: "Optimization of Biological Systems." },
+
         { id: "BRIDGE_BIO", group: 7, label: "Bio-Computation", level: 2, type: "bridge", role: "crust", size: 18, description: "Decoding the Genome." },
 
         // Matter
         { id: "Z1", group: 1, label: "MATTER", level: 2, role: "crust", size: 20 },
         { id: "Z1.1", group: 1, label: "Chemistry", level: 2, role: "crust" },
 
-        // Engineering
-        { id: "Z2", group: 2, label: "ENGINEERING", level: 2, role: "crust", size: 20 },
+        // Engineering Specifics
+        { id: "Z2", group: 2, label: "CIVILIZATION", level: 2, role: "crust", size: 20 }, // Renamed from Engineering to Civilization (Infrastructure)
 
         // Mind
         { id: "Z4", group: 4, label: "MIND", level: 2, role: "crust", size: 20 },
@@ -74,11 +79,17 @@ export const graphData = {
         { source: "Z0.3", target: "G_LOGIC", type: "derivation" }, // Phil -> Logic
         { source: "Z0.2", target: "G_ELEC", type: "derivation" },  // Phys -> Electricity
         { source: "Z0.3", target: "G_LANG", type: "derivation" },  // Phil -> Semantics
+        { source: "Z0.2", target: "G_MECH", type: "derivation" },  // Phys -> Mechanics
+        { source: "Z0.1", target: "G_MECH", type: "derivation" },  // Math -> Mechanics
 
-        // 2. SYNTHESIS (Ingredients -> Shell/Interface)
-        // Hardware is born from Logic + Electricity
+        // 2. SYNTHESIS (Ingredients -> Stem Cells)
+        // General Engineering is born from Mechanics + Calculus
+        { source: "G_MECH", target: "ENG_CORE", type: "synthesis" },
+        { source: "Z0.1", target: "ENG_CORE", type: "synthesis" },
+
+        // Hardware is born from Engineering Core + Logic
+        { source: "ENG_CORE", target: "Z7.1", type: "branch" },
         { source: "G_LOGIC", target: "Z7.1", type: "synthesis" },
-        { source: "G_ELEC", target: "Z7.1", type: "synthesis" },
 
         // Software is born from Logic + Semantics
         { source: "G_LOGIC", target: "Z7.2", type: "synthesis" },
@@ -93,10 +104,12 @@ export const graphData = {
         { source: "Z7", target: "Z7.2", type: "bus" },
         { source: "Z7", target: "Z7.3", type: "bus" },
 
-        // 4. CRYSTALLIZATION (Shell -> Crust/Applications)
-        // Bio-Computation
-        { source: "Z7.3", target: "BRIDGE_BIO", type: "application" },
-        { source: "Z3.1", target: "BRIDGE_BIO", type: "domain" },
+        // 4. CRYSTALLIZATION (Stem Cells/Shell -> Applications)
+
+        // Agricultural Engineering (The Hybrid)
+        { source: "ENG_CORE", target: "CON_AGRO", type: "branch" },   // Is an Engineering
+        { source: "Z3.1", target: "CON_AGRO", type: "domain" },       // Applied to Biology
+        { source: "Z7.3", target: "CON_AGRO", type: "optimization" }, // Optimized by AI
 
         // Smart Contracts
         { source: "Z7.2", target: "BRIDGE_TRUST", type: "application" },
@@ -104,11 +117,10 @@ export const graphData = {
 
         // Game Physics
         { source: "Z7.1", target: "BRIDGE_SIM", type: "application" },
-        { source: "Z0.2", target: "BRIDGE_SIM", type: "simulation" }, // Physics simulates Physics
+        { source: "G_MECH", target: "BRIDGE_SIM", type: "simulation" }, // Simulating Mechanics directly
 
-        // Agricultural Tech (The new UHU branch as a concept)
-        { source: "Z7.3", target: "CON_AGRO", type: "optimization" }, // AI optimizations
-        { source: "Z3.1", target: "CON_AGRO", type: "bio-systems" },  // Biology base
-        { source: "Z1.1", target: "CON_AGRO", type: "chemistry" },    // Chemistry base
+        // Bio-Computation
+        { source: "Z7.3", target: "BRIDGE_BIO", type: "application" },
+        { source: "Z3.1", target: "BRIDGE_BIO", type: "domain" },
     ] as GraphLink[]
 };
