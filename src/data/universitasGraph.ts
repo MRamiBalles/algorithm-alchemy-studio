@@ -26,101 +26,78 @@ export const graphData = {
         { id: "Z0.1", group: 0, label: "Mathematics", level: 0, role: "nucleus", size: 30, description: "The Abstract How. Logic, Algebra, Calculus." },
         { id: "Z0.2", group: 0, label: "Physics", level: 0, role: "nucleus", size: 30, description: "The Material What. Laws of Thermodynamics, Electromagnetism." },
 
-        // 2. THE SHELL (The Interface / CS) - Orbiting the Nucleus
         { id: "Z7", group: 7, label: "COMPUTER SCIENCE", level: 1, role: "shell", size: 25, description: "The Universal Interface. Translates Truth into Code." },
         { id: "Z7.1", group: 7, label: "Hardware", level: 1, role: "shell", description: "Silicon manifestation of Physics." },
         { id: "Z7.2", group: 7, label: "Software", level: 1, role: "shell", description: "Logical manifestation of Math." },
         { id: "Z7.3", group: 7, label: "AI & Data", level: 1, role: "shell", description: "Operationalized Epistemology." },
 
-        // 3. THE GENEALOGY (Intermediate Concepts - The Ingredients)
-        // Born from Nucleus (Gen 1)
-        { id: "G_LOGIC", group: 0, label: "Boolean Logic", level: 1, role: "nucleus", size: 22, description: "True/False. The bridge between Math and Philosophy." },
-        { id: "G_ELEC", group: 0, label: "Electromagnetism", level: 1, role: "nucleus", size: 22, description: "Flow of electrons. The physical carrier." },
-        { id: "G_LANG", group: 0, label: "Semantics", level: 1, role: "nucleus", size: 22, description: "Meaning & Syntax." },
-        { id: "G_MECH", group: 0, label: "Newtonian Mechanics", level: 1, role: "nucleus", size: 22, description: "Forces, Mass, Velocity." },
+        // 1. LOGOS (The Analytical Mode - Truth) - The Roots
+        { id: "LOGOS_MATH", group: 0, label: "Mathematics", level: 0, role: "nucleus", size: 30, description: "The Search for Pattern (Structure)." },
+        { id: "LOGOS_PHYS", group: 0, label: "Physics", level: 0, role: "nucleus", size: 30, description: "The Search for Law (Nature)." },
+        { id: "LOGOS_PHIL", group: 0, label: "Philosophy", level: 0, role: "nucleus", size: 30, description: "The Search for Meaning (Why?)." },
 
-        // The Stem Cells (Gen 2 - Shared Foundations)
-        { id: "ENG_CORE", group: 2, label: "General Engineering", level: 1, type: "bridge", role: "crust", size: 25, description: "Calculus + Physics. The optimization of the physical world." },
+        // ingredients of Logos
+        { id: "G_LOGIC", group: 0, label: "Logic", level: 1, role: "nucleus", size: 20 },
+        { id: "G_MECH", group: 0, label: "Mechanics", level: 1, role: "nucleus", size: 20 },
 
-        // 4. THE CRUST (The Applications / Reality Domains) - Bonded to the Shell
-        // Life
-        { id: "Z3", group: 3, label: "LIFE", level: 2, role: "crust", size: 20 },
+        // 2. TECHNE (The Synthetic Mode - Utility) - The Trunk
+        // The General Builder (Engineering Core)
+        { id: "ENG_CORE", group: 7, label: "General Engineering", level: 1, role: "shell", size: 35, type: "bridge", description: "The Toolkit of Synthesis. Calculus, Systems, Ethics." },
+
+        // The Tools
+        { id: "Z7.1", group: 7, label: "Hardware", level: 2, role: "shell", description: "Physical Computing." },
+        { id: "Z7.2", group: 7, label: "Software", level: 2, role: "shell", description: "Logical Computing." },
+        { id: "Z7.3", group: 7, label: "AI Oracle", level: 2, role: "shell", description: "Automated Cognition." },
+
+        // 3. ETHOS (The Humanistic Mode - Value) - The Crown
+        { id: "ETHOS_PSYCH", group: 4, label: "Psychology", level: 1, role: "crust", size: 25, description: "The Human Mind." },
+        { id: "ETHOS_EDU", group: 4, label: "Education", level: 1, role: "crust", size: 25, description: "Knowledge Transmission." },
+        { id: "ETHOS_SOC", group: 5, label: "Sociology", level: 1, role: "crust", size: 25, description: "Collective Behavior." },
+
+        // 4. THE ALCHEMY (The Reactions / New Fields)
+
+        // Techne + Logos (Bio) = Agro/BioTech
+        { id: "ALCH_AGRO", group: 3, label: "Precision Agriculture", level: 3, role: "crust", type: "bridge", description: "Optimization of Life Systems." },
         { id: "Z3.1", group: 3, label: "Biology", level: 2, role: "crust" },
-        // Agricultural Engineering: Born from Engineering Core + Biology
-        { id: "CON_AGRO", group: 3, label: "Precision Agriculture", level: 2, role: "crust", type: "bridge", description: "Optimization of Biological Systems." },
 
-        { id: "BRIDGE_BIO", group: 7, label: "Bio-Computation", level: 2, type: "bridge", role: "crust", size: 18, description: "Decoding the Genome." },
+        // Techne + Ethos = HCI / EdTech
+        { id: "ALCH_HCI", group: 4, label: "HCI & UX", level: 3, role: "crust", type: "bridge", description: "Designing for the Human Mind." },
 
-        // Matter
-        { id: "Z1", group: 1, label: "MATTER", level: 2, role: "crust", size: 20 },
-        { id: "Z1.1", group: 1, label: "Chemistry", level: 2, role: "crust" },
-
-        // Engineering Specifics
-        { id: "Z2", group: 2, label: "CIVILIZATION", level: 2, role: "crust", size: 20 }, // Renamed from Engineering to Civilization (Infrastructure)
-
-        // Mind
-        { id: "Z4", group: 4, label: "MIND", level: 2, role: "crust", size: 20 },
-        { id: "Z4.1", group: 4, label: "Psychology", level: 2, role: "crust" },
-
-        // Society
-        { id: "Z5", group: 5, label: "SOCIETY", level: 2, role: "crust", size: 20 },
-        { id: "Z5.3", group: 5, label: "Law", level: 2, role: "crust" },
-        { id: "BRIDGE_TRUST", group: 7, label: "Smart Contracts", level: 2, type: "bridge", role: "crust", size: 18, description: "Immutable Rules." },
-
-        // Culture
-        { id: "Z6", group: 6, label: "CULTURE", level: 2, role: "crust", size: 20 },
-        { id: "Z6.3", group: 6, label: "Arts", level: 2, role: "crust" },
-        { id: "BRIDGE_SIM", group: 7, label: "Game Physics", level: 2, type: "bridge", role: "crust", size: 18, description: "Simulated Reality." }
+        // Techne + Civilization = Architecture
+        { id: "Z2", group: 2, label: "Architecture", level: 2, role: "crust" },
 
     ] as GraphNode[],
     links: [
-        // 1. GENESIS (Roots -> Ingredients)
-        { source: "Z0.1", target: "G_LOGIC", type: "derivation" }, // Math -> Logic
-        { source: "Z0.3", target: "G_LOGIC", type: "derivation" }, // Phil -> Logic
-        { source: "Z0.2", target: "G_ELEC", type: "derivation" },  // Phys -> Electricity
-        { source: "Z0.3", target: "G_LANG", type: "derivation" },  // Phil -> Semantics
-        { source: "Z0.2", target: "G_MECH", type: "derivation" },  // Phys -> Mechanics
-        { source: "Z0.1", target: "G_MECH", type: "derivation" },  // Math -> Mechanics
+        // LOGOS Internal Bonds
+        { source: "LOGOS_MATH", target: "LOGOS_PHYS", type: "axiom" },
+        { source: "LOGOS_PHIL", target: "LOGOS_MATH", type: "axiom" },
+        { source: "LOGOS_PHYS", target: "G_MECH", type: "derivation" },
+        { source: "LOGOS_MATH", target: "G_LOGIC", type: "derivation" },
 
-        // 2. SYNTHESIS (Ingredients -> Stem Cells)
-        // General Engineering is born from Mechanics + Calculus
-        { source: "G_MECH", target: "ENG_CORE", type: "synthesis" },
-        { source: "Z0.1", target: "ENG_CORE", type: "synthesis" },
+        // LOGOS feeds TECHNE (The Foundation of Engineering)
+        { source: "LOGOS_MATH", target: "ENG_CORE", type: "foundation" }, // Calculus
+        { source: "G_MECH", target: "ENG_CORE", type: "foundation" },     // Physics
+        { source: "LOGOS_PHIL", target: "ENG_CORE", type: "foundation" }, // Ethics
 
-        // Hardware is born from Engineering Core + Logic
-        { source: "ENG_CORE", target: "Z7.1", type: "branch" },
-        { source: "G_LOGIC", target: "Z7.1", type: "synthesis" },
+        // TECHNE Branches (The Specializations)
+        { source: "ENG_CORE", target: "Z7.1", type: "specialization" }, // Hardware
+        { source: "ENG_CORE", target: "Z7.2", type: "specialization" }, // Software
 
-        // Software is born from Logic + Semantics
-        { source: "G_LOGIC", target: "Z7.2", type: "synthesis" },
-        { source: "G_LANG", target: "Z7.2", type: "synthesis" },
+        // ETHOS (The Goals)
+        { source: "ETHOS_PSYCH", target: "ETHOS_EDU", type: "collaboration" },
 
-        // AI is born from Math + Software + Epistemology (Phil)
-        { source: "Z0.1", target: "Z7.3", type: "synthesis" },
-        { source: "Z7.2", target: "Z7.3", type: "evolution" },
+        // ALCHEMICAL REACTIONS (The Mix)
 
-        // 3. INTERNAL BONDING (Shell Stability)
-        { source: "Z7", target: "Z7.1", type: "bus" },
-        { source: "Z7", target: "Z7.2", type: "bus" },
-        { source: "Z7", target: "Z7.3", type: "bus" },
+        // Agro = Engineering (Tools) + Biology (Subject)
+        { source: "ENG_CORE", target: "ALCH_AGRO", type: "application" },
+        { source: "Z3.1", target: "ALCH_AGRO", type: "domain" },
 
-        // 4. CRYSTALLIZATION (Stem Cells/Shell -> Applications)
+        // HCI = Software (Tools) + Psychology (Subject)
+        { source: "Z7.2", target: "ALCH_HCI", type: "application" },
+        { source: "ETHOS_PSYCH", target: "ALCH_HCI", type: "domain" },
 
-        // Agricultural Engineering (The Hybrid)
-        { source: "ENG_CORE", target: "CON_AGRO", type: "branch" },   // Is an Engineering
-        { source: "Z3.1", target: "CON_AGRO", type: "domain" },       // Applied to Biology
-        { source: "Z7.3", target: "CON_AGRO", type: "optimization" }, // Optimized by AI
-
-        // Smart Contracts
-        { source: "Z7.2", target: "BRIDGE_TRUST", type: "application" },
-        { source: "Z5.3", target: "BRIDGE_TRUST", type: "domain" },
-
-        // Game Physics
-        { source: "Z7.1", target: "BRIDGE_SIM", type: "application" },
-        { source: "G_MECH", target: "BRIDGE_SIM", type: "simulation" }, // Simulating Mechanics directly
-
-        // Bio-Computation
-        { source: "Z7.3", target: "BRIDGE_BIO", type: "application" },
-        { source: "Z3.1", target: "BRIDGE_BIO", type: "domain" },
+        // AI is the Oracle sitting between Math and Psychology
+        { source: "LOGOS_MATH", target: "Z7.3", type: "synthesis" },
+        { source: "ETHOS_PSYCH", target: "Z7.3", type: "inspiration" }, // Neural Networks
     ] as GraphLink[]
 };
