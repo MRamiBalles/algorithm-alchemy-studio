@@ -18,7 +18,11 @@ export default function Landing() {
             </span>
           </div>
           <nav className="flex gap-4 text-sm font-medium text-muted-foreground">
-            <a href="https://github.com/ramiballes" target="_blank" className="hover:text-foreground transition-colors">
+            <a
+              href="https://github.com/MRamiBalles"
+              target="_blank"
+              className="hover:text-foreground transition-colors"
+            >
               GitHub
             </a>
             <a href="mailto:ramiballes96@gmail.com" className="hover:text-foreground transition-colors">
@@ -60,8 +64,8 @@ export default function Landing() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Domina algoritmos genéticos, recocido simulado, búsqueda tabú y colonias de hormigas con visualizadores
-                en tiempo real.
+                Domina algoritmos genéticos, enfriamiento simulado, búsquedas tabú y colonias de hormigas con
+                visualizadores en tiempo real.
               </p>
               <div className="flex gap-2 flex-wrap">
                 <Badge variant="outline" className="text-xs">
