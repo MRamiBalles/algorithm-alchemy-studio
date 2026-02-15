@@ -5,6 +5,8 @@ export interface GraphNode {
     level: number;
     size?: number;
     type?: 'bridge' | 'standard';
+    role?: 'nucleus' | 'shell' | 'crust' | 'void'; // Atomic Model Roles
+    description?: string; // Content placeholder
     x?: number;
     y?: number;
     vx?: number;
@@ -19,104 +21,69 @@ export interface GraphLink {
 
 export const graphData = {
     nodes: [
-        // ZONE 0: ROOTS (Center/Bottom)
-        { id: "Z0", group: 0, label: "ROOTS (Axioms)", level: 0 },
-        { id: "Z0.1", group: 0, label: "Mathematics", level: 1 },
-        { id: "Z0.2", group: 0, label: "Physics", level: 1 },
-        { id: "Z0.3", group: 0, label: "Philosophy", level: 1 },
+        // 1. THE NUCLEUS (The Truth / Fundamentals) - Center
+        { id: "Z0.3", group: 0, label: "Philosophy", level: 0, role: "nucleus", size: 30, description: "The Why. Ethics, Metaphysics, Epistemology." },
+        { id: "Z0.1", group: 0, label: "Mathematics", level: 0, role: "nucleus", size: 30, description: "The Abstract How. Logic, Algebra, Calculus." },
+        { id: "Z0.2", group: 0, label: "Physics", level: 0, role: "nucleus", size: 30, description: "The Material What. Laws of Thermodynamics, Electromagnetism." },
 
-        // ZONE 7: COMPUTER SCIENCE (Axis Mundi - Center)
-        { id: "Z7", group: 7, label: "COMPUTER SCIENCE", level: 0, size: 25 },
-        { id: "Z7.1", group: 7, label: "Hardware", level: 1 },
-        { id: "Z7.2", group: 7, label: "Software", level: 1 },
-        { id: "Z7.3", group: 7, label: "AI & Data", level: 1 },
-        { id: "Z7.5", group: 7, label: "Simulation", level: 1 },
+        // 2. THE SHELL (The Interface / CS) - Orbiting the Nucleus
+        { id: "Z7", group: 7, label: "COMPUTER SCIENCE", level: 1, role: "shell", size: 25, description: "The Universal Interface. Translates Truth into Code." },
+        { id: "Z7.1", group: 7, label: "Hardware", level: 1, role: "shell", description: "Silicon manifestation of Physics." },
+        { id: "Z7.2", group: 7, label: "Software", level: 1, role: "shell", description: "Logical manifestation of Math." },
+        { id: "Z7.3", group: 7, label: "AI & Data", level: 1, role: "shell", description: "Operationalized Epistemology." },
 
-        // SATELLITES (The Reality)
-        { id: "Z1", group: 1, label: "MATTER", level: 0 },
-        { id: "Z1.1", group: 1, label: "Chemistry", level: 1 },
-        { id: "Z1.2", group: 1, label: "Earth & Space", level: 1 },
+        // 3. THE CRUST (The Applications / Reality Domains) - Bonded to the Shell
+        // Life
+        { id: "Z3", group: 3, label: "LIFE", level: 2, role: "crust", size: 20 },
+        { id: "Z3.1", group: 3, label: "Biology", level: 2, role: "crust" },
+        { id: "BRIDGE_BIO", group: 7, label: "Bio-Computation", level: 2, type: "bridge", role: "crust", size: 18, description: "Decoding the Genome." },
 
-        { id: "Z2", group: 2, label: "ENGINEERING", level: 0 },
-        { id: "Z2.1", group: 2, label: "Physical Eng", level: 1 },
-        { id: "Z2.2", group: 2, label: "Architecture", level: 1 },
+        // Matter
+        { id: "Z1", group: 1, label: "MATTER", level: 2, role: "crust", size: 20 },
+        { id: "Z1.1", group: 1, label: "Chemistry", level: 2, role: "crust" },
 
-        { id: "Z3", group: 3, label: "LIFE", level: 0 },
-        { id: "Z3.1", group: 3, label: "Biology", level: 1 },
-        { id: "Z3.2", group: 3, label: "Medicine", level: 1 },
+        // Engineering
+        { id: "Z2", group: 2, label: "ENGINEERING", level: 2, role: "crust", size: 20 },
 
-        { id: "Z4", group: 4, label: "MIND", level: 0 },
-        { id: "Z4.1", group: 4, label: "Psychology", level: 1 },
-        { id: "Z4.2", group: 4, label: "Education", level: 1 },
+        // Mind
+        { id: "Z4", group: 4, label: "MIND", level: 2, role: "crust", size: 20 },
+        { id: "Z4.1", group: 4, label: "Psychology", level: 2, role: "crust" },
 
-        { id: "Z5", group: 5, label: "SOCIETY", level: 0 },
-        { id: "Z5.1", group: 5, label: "Sociology", level: 1 },
-        { id: "Z5.2", group: 5, label: "Economics", level: 1 },
-        { id: "Z5.3", group: 5, label: "Law", level: 1 },
+        // Society
+        { id: "Z5", group: 5, label: "SOCIETY", level: 2, role: "crust", size: 20 },
+        { id: "Z5.3", group: 5, label: "Law", level: 2, role: "crust" },
+        { id: "BRIDGE_TRUST", group: 7, label: "Smart Contracts", level: 2, type: "bridge", role: "crust", size: 18, description: "Immutable Rules." },
 
-        { id: "Z6", group: 6, label: "CULTURE", level: 0 },
-        { id: "Z6.1", group: 6, label: "History", level: 1 },
-        { id: "Z6.3", group: 6, label: "Arts", level: 1 },
+        // Culture
+        { id: "Z6", group: 6, label: "CULTURE", level: 2, role: "crust", size: 20 },
+        { id: "Z6.3", group: 6, label: "Arts", level: 2, role: "crust" },
+        { id: "BRIDGE_SIM", group: 7, label: "Game Physics", level: 2, type: "bridge", role: "crust", size: 18, description: "Simulated Reality." }
 
-        // BRIDGES (The Content Modules)
-        { id: "BRIDGE_BIO", group: 7, label: "Bio-Computation", type: "bridge", size: 15 },
-        { id: "BRIDGE_TRUST", group: 7, label: "Smart Contracts", type: "bridge", size: 15 },
-        { id: "BRIDGE_SIM", group: 7, label: "Game Physics", type: "bridge", size: 15 }
     ] as GraphNode[],
     links: [
-        // Roots feeding Axis
-        { source: "Z0.1", target: "Z7.2", type: "Foundation" },
-        { source: "Z0.2", target: "Z7.1", "type": "Foundation" },
-        { source: "Z0.3", target: "Z5.3", "type": "Foundation" },
+        // Nucleus Internal Bonds (Strong Force)
+        { source: "Z0.1", target: "Z0.2", type: "axiom" },
+        { source: "Z0.2", target: "Z0.3", type: "axiom" },
+        { source: "Z0.3", target: "Z0.1", type: "axiom" },
 
-        // Axis Simulating Reality
-        { source: "Z7", target: "Z1", type: "Simulates" },
-        { source: "Z7", target: "Z2", type: "Simulates" },
-        { source: "Z7", target: "Z3", type: "Simulates" },
-        { source: "Z7", target: "Z4", type: "Simulates" },
-        { source: "Z7", target: "Z5", type: "Simulates" },
-        { source: "Z7", target: "Z6", type: "Simulates" },
+        // Nucleus -> Shell (The Interface)
+        { source: "Z0.1", target: "Z7.2", type: "foundation" }, // Math -> Software
+        { source: "Z0.2", target: "Z7.1", type: "foundation" }, // Phys -> Hardware
+        { source: "Z0.1", target: "Z7.3", type: "foundation" }, // Math -> AI
 
-        // Internal Group Links (Hierarchies)
-        { source: "Z0", target: "Z0.1", type: "Hierarchy" },
-        { source: "Z0", target: "Z0.2", type: "Hierarchy" },
-        { source: "Z0", target: "Z0.3", type: "Hierarchy" },
+        // Shell -> Shell (The Circuit)
+        { source: "Z7", target: "Z7.1", type: "bus" },
+        { source: "Z7", target: "Z7.2", type: "bus" },
+        { source: "Z7", target: "Z7.3", type: "bus" },
 
-        { source: "Z1", target: "Z1.1", type: "Hierarchy" },
-        { source: "Z1", target: "Z1.2", type: "Hierarchy" },
+        // Shell -> Crust (The Applications / Molecules)
+        { source: "Z7.3", target: "BRIDGE_BIO", type: "app" },       // AI -> BioComp
+        { source: "BRIDGE_BIO", target: "Z3.1", type: "domain" },    // BioComp -> Biology
 
-        { source: "Z2", target: "Z2.1", type: "Hierarchy" },
-        { source: "Z2", target: "Z2.2", type: "Hierarchy" },
+        { source: "Z7.2", target: "BRIDGE_TRUST", type: "app" },     // Software -> SmartContracts
+        { source: "BRIDGE_TRUST", target: "Z5.3", type: "domain" },  // SmartContracts -> Law
 
-        { source: "Z3", target: "Z3.1", type: "Hierarchy" },
-        { source: "Z3", target: "Z3.2", type: "Hierarchy" },
-
-        { source: "Z4", target: "Z4.1", type: "Hierarchy" },
-        { source: "Z4", target: "Z4.2", type: "Hierarchy" },
-
-        { source: "Z5", target: "Z5.1", type: "Hierarchy" },
-        { source: "Z5", target: "Z5.2", type: "Hierarchy" },
-        { source: "Z5", target: "Z5.3", type: "Hierarchy" },
-
-        { source: "Z6", target: "Z6.1", type: "Hierarchy" },
-        { source: "Z6", target: "Z6.3", type: "Hierarchy" },
-
-        { source: "Z7", target: "Z7.1", type: "Hierarchy" },
-        { source: "Z7", target: "Z7.2", type: "Hierarchy" },
-        { source: "Z7", target: "Z7.3", type: "Hierarchy" },
-        { source: "Z7", target: "Z7.5", type: "Hierarchy" },
-
-        // BRIDGE CONNECTIONS (The Interaction Loops)
-        // Bio Loop
-        { source: "Z3.1", target: "BRIDGE_BIO", type: "Inspiration" },
-        { source: "Z7.3", target: "BRIDGE_BIO", type: "Implementation" },
-
-        // Trust Loop
-        { source: "Z5.3", target: "BRIDGE_TRUST", type: "Regulation" },
-        { source: "Z7.2", target: "BRIDGE_TRUST", type: "Automation" },
-
-        // Physics Loop
-        { source: "Z0.2", target: "BRIDGE_SIM", type: "Laws" },
-        { source: "Z7.5", target: "BRIDGE_SIM", type: "Virtualization" }
+        { source: "Z7.1", target: "BRIDGE_SIM", type: "app" },       // Hardware -> GamePhys
+        { source: "BRIDGE_SIM", target: "Z6.3", type: "domain" },    // GamePhys -> Arts
     ] as GraphLink[]
 };
