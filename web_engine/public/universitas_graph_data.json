@@ -1,0 +1,257 @@
+{
+    "meta": {
+        "version": "10.0 (The Atomic Tetrahedron)",
+        "description": "Unified Knowledge Graph: 4 Atoms -> Degrees -> Subjects",
+        "roots": [
+            "LINGUISTICS",
+            "ALGEBRA",
+            "LOGIC",
+            "AISTHESIS"
+        ]
+    },
+    "nodes": [
+        {
+            "id": "ATOM_SEM",
+            "group": "ATOM",
+            "label": "LINGÜÍSTICA (Verbo)",
+            "level": -2,
+            "color": "#FFFFFF",
+            "size": 80
+        },
+        {
+            "id": "ATOM_ALG",
+            "group": "ATOM",
+            "label": "ÁLGEBRA (Número)",
+            "level": -2,
+            "color": "#FFFFFF",
+            "size": 80
+        },
+        {
+            "id": "ATOM_CRI",
+            "group": "ATOM",
+            "label": "LÓGICA (Razón)",
+            "level": -2,
+            "color": "#FFFFFF",
+            "size": 80
+        },
+        {
+            "id": "ATOM_AIS",
+            "group": "ATOM",
+            "label": "AISTHESIS (Sentido)",
+            "level": -2,
+            "color": "#FF00DD",
+            "size": 80
+        },
+        {
+            "id": "DEG_LAW",
+            "group": "DEGREE",
+            "label": "DERECHO",
+            "level": 1,
+            "color": "#FF4400"
+        },
+        {
+            "id": "DEG_HIST",
+            "group": "DEGREE",
+            "label": "HISTORIA",
+            "level": 1,
+            "color": "#FF8800"
+        },
+        {
+            "id": "DEG_CS",
+            "group": "DEGREE",
+            "label": "INFORMÁTICA",
+            "level": 1,
+            "color": "#0088FF"
+        },
+        {
+            "id": "DEG_PHYS",
+            "group": "DEGREE",
+            "label": "FÍSICA",
+            "level": 1,
+            "color": "#00FFCC"
+        },
+        {
+            "id": "DEG_ARTS",
+            "group": "DEGREE",
+            "label": "BELLAS ARTES",
+            "level": 1,
+            "color": "#FF0088"
+        },
+        {
+            "id": "DEG_SPORT",
+            "group": "DEGREE",
+            "label": "CIENCIAS DEPORTE",
+            "level": 1,
+            "color": "#00FF88"
+        },
+        {
+            "id": "DEG_MED",
+            "group": "DEGREE",
+            "label": "MEDICINA",
+            "level": 1,
+            "color": "#00CC00"
+        },
+        {
+            "id": "SUB_DRAW",
+            "group": "SUBJECT",
+            "label": "Dibujo I",
+            "level": 2
+        },
+        {
+            "id": "SUB_DIG",
+            "group": "SUBJECT",
+            "label": "Creación Digital",
+            "level": 2
+        },
+        {
+            "id": "SUB_CIVIL",
+            "group": "SUBJECT",
+            "label": "Derecho Civil",
+            "level": 2
+        },
+        {
+            "id": "SUB_ANC",
+            "group": "SUBJECT",
+            "label": "Historia Antigua",
+            "level": 2
+        },
+        {
+            "id": "SUB_ALG",
+            "group": "SUBJECT",
+            "label": "Algoritmia",
+            "level": 2
+        },
+        {
+            "id": "SUB_ANAT",
+            "group": "SUBJECT",
+            "label": "Anatomía Humana",
+            "level": 2
+        },
+        {
+            "id": "SUB_FISIO",
+            "group": "SUBJECT",
+            "label": "Fisiología",
+            "level": 2
+        },
+        {
+            "id": "APEX_MBHB",
+            "group": "LEGENDARY",
+            "label": "MBHB (Master Body)",
+            "level": 3,
+            "color": "#FF0000",
+            "size": 30
+        }
+    ],
+    "links": [
+        {
+            "source": "ATOM_SEM",
+            "target": "ATOM_CRI",
+            "type": "Ouroboros"
+        },
+        {
+            "source": "ATOM_CRI",
+            "target": "ATOM_ALG",
+            "type": "Ouroboros"
+        },
+        {
+            "source": "ATOM_ALG",
+            "target": "ATOM_SEM",
+            "type": "Ouroboros"
+        },
+        {
+            "source": "ATOM_AIS",
+            "target": "ATOM_ALG",
+            "type": "Proportion"
+        },
+        {
+            "source": "ATOM_SEM",
+            "target": "DEG_LAW",
+            "type": "Normative"
+        },
+        {
+            "source": "ATOM_SEM",
+            "target": "DEG_HIST",
+            "type": "Narrative"
+        },
+        {
+            "source": "ATOM_ALG",
+            "target": "DEG_CS",
+            "type": "Computation"
+        },
+        {
+            "source": "ATOM_ALG",
+            "target": "DEG_PHYS",
+            "type": "Calculus"
+        },
+        {
+            "source": "ATOM_AIS",
+            "target": "DEG_ARTS",
+            "type": "Perception"
+        },
+        {
+            "source": "ATOM_AIS",
+            "target": "DEG_SPORT",
+            "type": "Proprioception"
+        },
+        {
+            "source": "DEG_MED",
+            "target": "DEG_SPORT",
+            "type": "Bio-Link"
+        },
+        {
+            "source": "DEG_MED",
+            "target": "ATOM_AIS",
+            "type": "Somatic"
+        },
+        {
+            "source": "DEG_ARTS",
+            "target": "SUB_DRAW",
+            "type": "Praxis"
+        },
+        {
+            "source": "DEG_ARTS",
+            "target": "SUB_DIG",
+            "type": "Techne"
+        },
+        {
+            "source": "DEG_LAW",
+            "target": "SUB_CIVIL",
+            "type": "Norm"
+        },
+        {
+            "source": "DEG_HIST",
+            "target": "SUB_ANC",
+            "type": "Era"
+        },
+        {
+            "source": "DEG_CS",
+            "target": "SUB_ALG",
+            "type": "Core"
+        },
+        {
+            "source": "DEG_MED",
+            "target": "SUB_ANAT",
+            "type": "Core"
+        },
+        {
+            "source": "DEG_SPORT",
+            "target": "SUB_FISIO",
+            "type": "Core"
+        },
+        {
+            "source": "DEG_SPORT",
+            "target": "APEX_MBHB",
+            "type": "Apex"
+        },
+        {
+            "source": "SUB_FISIO",
+            "target": "APEX_MBHB",
+            "type": "Prerequisite"
+        },
+        {
+            "source": "SUB_ANAT",
+            "target": "APEX_MBHB",
+            "type": "Prerequisite"
+        }
+    ]
+}
