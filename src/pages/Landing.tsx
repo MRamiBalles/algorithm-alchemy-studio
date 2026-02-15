@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { AppFooter } from "@/components/layout/AppFooter";
 
 export default function Landing() {
+  
+
   return (
     <div className="min-h-screen flex flex-col bg-background selection:bg-cyan-500/30">
       {/* Hero Section */}
@@ -47,46 +49,46 @@ export default function Landing() {
         {/* Course Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {/* Active Course: MBHB */}
-          <Card className="group relative overflow-hidden border-cyan-500/30 bg-card/40 hover:bg-card/60 transition-all hover:shadow-2xl hover:shadow-cyan-500/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <CardHeader>
-              <div className="flex justify-between items-start mb-2">
-                <Badge
-                  variant="default"
-                  className="bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 border-cyan-500/50"
-                >
-                  Disponible
-                </Badge>
-                <Brain className="w-8 h-8 text-cyan-400" />
-              </div>
-              <CardTitle className="text-2xl">Modelos Bioinspirados y Heurísticas de Búsqueda</CardTitle>
-              <CardDescription>Optimización Combinatoria Avanzada</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Domina algoritmos genéticos, enfriamiento simulado, búsquedas tabú y colonias de hormigas con
-                visualizadores en tiempo real.
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                <Badge variant="outline" className="text-xs">
-                  NP-Hard
-                </Badge>
-                <Badge variant="outline" className="text-xs">
-                  TSP/QAP
-                </Badge>
-                <Badge variant="outline" className="text-xs">
-                  IA Clásica
-                </Badge>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Link to="/mbhb" className="w-full">
-                <Button className="w-full gap-2 group-hover:bg-cyan-500 group-hover:text-black transition-all">
-                  Entrar al Curso <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </CardFooter>
-          </Card>
+          <Link to="/mbhb" className="block">
+            <Card className="group relative overflow-hidden border-cyan-500/30 bg-card/40 hover:bg-card/60 transition-all hover:shadow-2xl hover:shadow-cyan-500/10 cursor-pointer h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <CardHeader>
+                <div className="flex justify-between items-start mb-2">
+                  <Badge
+                    variant="default"
+                    className="bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 border-cyan-500/50"
+                  >
+                    Disponible
+                  </Badge>
+                  <Brain className="w-8 h-8 text-cyan-400" />
+                </div>
+                <CardTitle className="text-2xl">Modelos Bioinspirados y Heurísticas de Búsqueda</CardTitle>
+                <CardDescription>Optimización Combinatoria Avanzada</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Domina algoritmos genéticos, enfriamiento simulado, búsquedas tabú y colonias de hormigas con
+                  visualizadores en tiempo real.
+                </p>
+                <div className="flex gap-2 flex-wrap">
+                  <Badge variant="outline" className="text-xs">
+                    NP-Hard
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    TSP/QAP
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    IA Clásica
+                  </Badge>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <div className="w-full gap-2 group-hover:bg-cyan-500 group-hover:text-black transition-all inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground h-10 px-4 py-2 text-sm font-medium">
+                  Entrar al Curso <ArrowRight className="w-4 h-4 ml-2" />
+                </div>
+              </CardFooter>
+            </Card>
+          </Link>
 
           {/* Coming Soon: Calculus */}
           <Card className="group border-border/50 bg-card/20 opacity-75 grayscale hover:grayscale-0 transition-all">
