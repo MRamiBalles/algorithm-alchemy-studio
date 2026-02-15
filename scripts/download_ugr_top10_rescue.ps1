@@ -1,6 +1,6 @@
 $baseDir = "D:\AA-1\algorithm-alchemy-studio\public\content\official_docs\ugr"
 $degrees = @(
-    @{ Pattern = "Administra*Direcci*"; Links = @(
+    @{ Pattern = "*Administraci*n*Direcci*n*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2351115.pdf", # Economia Politica
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2351112.pdf", # Fundamentos Direccion
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2351114.pdf", # Intro Operaciones Financieras
@@ -43,7 +43,7 @@ $degrees = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/23511A2.pdf" # Investigacion Mercados
         ) 
     };
-    @{ Pattern = "Antro*Cultural*"; Links = @(
+    @{ Pattern = "*Antrolog*a*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2041112.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/204111A.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2041113.pdf",
@@ -54,7 +54,7 @@ $degrees = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/20411P3.pdf"
         ) 
     };
-    @{ Pattern = "Arqueo*"; Links = @(
+    @{ Pattern = "*Arqueolog*a*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/1151113.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/1151114.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/1151115.pdf",
@@ -65,36 +65,35 @@ $degrees = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/1151141.pdf"
         ) 
     };
-    @{ Pattern = "Bellas*Artes*"; Links = @(
+    @{ Pattern = "*Bellas Artes*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2051111.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2051113.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2051125.pdf",
-            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2051137.pdf",
-            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/20511A5.pdf"
+            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2051137.pdf"
         ) 
     };
-    @{ Pattern = "Biolo*"; Links = @(
+    @{ Pattern = "*Biolog*a*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2011112.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2011125.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2011136.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2011145.pdf"
         ) 
     };
-    @{ Pattern = "Bioqum*"; Links = @(
+    @{ Pattern = "*Bioqu*mica*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2641115.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2641126.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2641135.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2641144.pdf"
         ) 
     };
-    @{ Pattern = "Biotecnolog*"; Links = @(
+    @{ Pattern = "*Biotecnolog*a*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2511111.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2511123.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2511132.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2511142.pdf"
         ) 
     };
-    @{ Pattern = "*Alimentos*"; Links = @(
+    @{ Pattern = "*Ciencia*Tecnolog*a*Alimentos*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2031115.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2031121.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2031133.pdf",
@@ -108,21 +107,23 @@ $degrees = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2061141.pdf"
         ) 
     };
-    @{ Pattern = "*Actividad*Fisica*"; Links = @(
+    @{ Pattern = "*Actividad*F*sica*"; Links = @(
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2881111.pdf",
+            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2881116.pdf",
             "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2881121.pdf",
-            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2881133.pdf",
-            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/28811M9.pdf"
+            "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2881132.pdf"
         ) 
     }
 )
 
+$folders = Get-ChildItem $baseDir -Directory
+
 foreach ($degree in $degrees) {
-    # Exclusive wildcard search
-    $targetFolder = Get-ChildItem $baseDir -Directory | Where-Object { $_.Name -like "*$($degree.Pattern)*" } | Select-Object -First 1
+    # Fuzzy match using pattern
+    $targetFolder = $folders | Where-Object { $_.Name -like $degree.Pattern } | Select-Object -First 1
     
     if ($targetFolder) {
-        Write-Host "Populating existing folder: $($targetFolder.Name)..."
+        Write-Host "Found existing folder match: $($targetFolder.Name)"
         foreach ($link in $degree.Links) {
             $fileName = $link.Split('/')[-1]
             $destPath = Join-Path $targetFolder.FullName $fileName
@@ -133,6 +134,6 @@ foreach ($degree in $degrees) {
         }
     }
     else {
-        Write-Warning "No existing folder matched pattern: $($degree.Pattern). Skipping."
+        Write-Warning "Could not find folder matching pattern: $($degree.Pattern)"
     }
 }
