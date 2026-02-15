@@ -19,7 +19,7 @@ import CHCPage from "./pages/CHC";
 import MultimodalPage from "./pages/Multimodal";
 import MemeticPage from "./pages/Memetic";
 import NSGA2Page from "./pages/NSGA2";
-
+import TrackPlaceholder from "./pages/TrackPlaceholder";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +54,9 @@ const App = () => (
           {/* Practice 2c: Advanced */}
           <Route path="/mbhb/memetic" element={<MemeticPage />} />
           <Route path="/mbhb/nsga2" element={<NSGA2Page />} />
+
+          {/* Track Placeholder Routes */}
+          <Route path="/track/:track/:subject" element={<TrackPlaceholder />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
