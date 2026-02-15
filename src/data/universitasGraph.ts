@@ -32,10 +32,18 @@ export const graphData = {
         { id: "Z7.2", group: 7, label: "Software", level: 1, role: "shell", description: "Logical manifestation of Math." },
         { id: "Z7.3", group: 7, label: "AI & Data", level: 1, role: "shell", description: "Operationalized Epistemology." },
 
-        // 3. THE CRUST (The Applications / Reality Domains) - Bonded to the Shell
+        // 3. THE GENEALOGY (Intermediate Concepts - The Ingredients)
+        // Born from Nucleus
+        { id: "G_LOGIC", group: 0, label: "Boolean Logic", level: 1, role: "nucleus", size: 22, description: "True/False. The bridge between Math and Philosophy." },
+        { id: "G_ELEC", group: 0, label: "Electromagnetism", level: 1, role: "nucleus", size: 22, description: "Flow of Electrons. The physical carrier of information." },
+        { id: "G_LANG", group: 0, label: "Semantics", level: 1, role: "nucleus", size: 22, description: "Meaning & Syntax. The structure of communication." },
+
+        // 4. THE CRUST (The Applications / Reality Domains) - Bonded to the Shell
         // Life
         { id: "Z3", group: 3, label: "LIFE", level: 2, role: "crust", size: 20 },
         { id: "Z3.1", group: 3, label: "Biology", level: 2, role: "crust" },
+        // Replaced UHU_AGRO with the Concept
+        { id: "CON_AGRO", group: 3, label: "Precision Agriculture", level: 2, role: "crust", type: "bridge", description: "Algorithmically optimized growth." },
         { id: "BRIDGE_BIO", group: 7, label: "Bio-Computation", level: 2, type: "bridge", role: "crust", size: 18, description: "Decoding the Genome." },
 
         // Matter
@@ -61,29 +69,46 @@ export const graphData = {
 
     ] as GraphNode[],
     links: [
-        // Nucleus Internal Bonds (Strong Force)
-        { source: "Z0.1", target: "Z0.2", type: "axiom" },
-        { source: "Z0.2", target: "Z0.3", type: "axiom" },
-        { source: "Z0.3", target: "Z0.1", type: "axiom" },
+        // 1. GENESIS (Roots -> Ingredients)
+        { source: "Z0.1", target: "G_LOGIC", type: "derivation" }, // Math -> Logic
+        { source: "Z0.3", target: "G_LOGIC", type: "derivation" }, // Phil -> Logic
+        { source: "Z0.2", target: "G_ELEC", type: "derivation" },  // Phys -> Electricity
+        { source: "Z0.3", target: "G_LANG", type: "derivation" },  // Phil -> Semantics
 
-        // Nucleus -> Shell (The Interface)
-        { source: "Z0.1", target: "Z7.2", type: "foundation" }, // Math -> Software
-        { source: "Z0.2", target: "Z7.1", type: "foundation" }, // Phys -> Hardware
-        { source: "Z0.1", target: "Z7.3", type: "foundation" }, // Math -> AI
+        // 2. SYNTHESIS (Ingredients -> Shell/Interface)
+        // Hardware is born from Logic + Electricity
+        { source: "G_LOGIC", target: "Z7.1", type: "synthesis" },
+        { source: "G_ELEC", target: "Z7.1", type: "synthesis" },
 
-        // Shell -> Shell (The Circuit)
+        // Software is born from Logic + Semantics
+        { source: "G_LOGIC", target: "Z7.2", type: "synthesis" },
+        { source: "G_LANG", target: "Z7.2", type: "synthesis" },
+
+        // AI is born from Math + Software + Epistemology (Phil)
+        { source: "Z0.1", target: "Z7.3", type: "synthesis" },
+        { source: "Z7.2", target: "Z7.3", type: "evolution" },
+
+        // 3. INTERNAL BONDING (Shell Stability)
         { source: "Z7", target: "Z7.1", type: "bus" },
         { source: "Z7", target: "Z7.2", type: "bus" },
         { source: "Z7", target: "Z7.3", type: "bus" },
 
-        // Shell -> Crust (The Applications / Molecules)
-        { source: "Z7.3", target: "BRIDGE_BIO", type: "app" },       // AI -> BioComp
-        { source: "BRIDGE_BIO", target: "Z3.1", type: "domain" },    // BioComp -> Biology
+        // 4. CRYSTALLIZATION (Shell -> Crust/Applications)
+        // Bio-Computation
+        { source: "Z7.3", target: "BRIDGE_BIO", type: "application" },
+        { source: "Z3.1", target: "BRIDGE_BIO", type: "domain" },
 
-        { source: "Z7.2", target: "BRIDGE_TRUST", type: "app" },     // Software -> SmartContracts
-        { source: "BRIDGE_TRUST", target: "Z5.3", type: "domain" },  // SmartContracts -> Law
+        // Smart Contracts
+        { source: "Z7.2", target: "BRIDGE_TRUST", type: "application" },
+        { source: "Z5.3", target: "BRIDGE_TRUST", type: "domain" },
 
-        { source: "Z7.1", target: "BRIDGE_SIM", type: "app" },       // Hardware -> GamePhys
-        { source: "BRIDGE_SIM", target: "Z6.3", type: "domain" },    // GamePhys -> Arts
+        // Game Physics
+        { source: "Z7.1", target: "BRIDGE_SIM", type: "application" },
+        { source: "Z0.2", target: "BRIDGE_SIM", type: "simulation" }, // Physics simulates Physics
+
+        // Agricultural Tech (The new UHU branch as a concept)
+        { source: "Z7.3", target: "CON_AGRO", type: "optimization" }, // AI optimizations
+        { source: "Z3.1", target: "CON_AGRO", type: "bio-systems" },  // Biology base
+        { source: "Z1.1", target: "CON_AGRO", type: "chemistry" },    // Chemistry base
     ] as GraphLink[]
 };
