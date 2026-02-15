@@ -31,73 +31,80 @@ export const graphData = {
         { id: "Z7.2", group: 7, label: "Software", level: 1, role: "shell", description: "Logical manifestation of Math." },
         { id: "Z7.3", group: 7, label: "AI & Data", level: 1, role: "shell", description: "Operationalized Epistemology." },
 
-        // 1. LOGOS (The Analytical Mode - Truth) - The Roots
-        { id: "LOGOS_MATH", group: 0, label: "Mathematics", level: 0, role: "nucleus", size: 30, description: "The Search for Pattern (Structure)." },
-        { id: "LOGOS_PHYS", group: 0, label: "Physics", level: 0, role: "nucleus", size: 30, description: "The Search for Law (Nature)." },
-        { id: "LOGOS_PHIL", group: 0, label: "Philosophy", level: 0, role: "nucleus", size: 30, description: "The Search for Meaning (Why?)." },
+        // 1. THE TOOLS OF KNOWLEDGE (The Methodologies - The "How")
+        // These are the Central Engines of the Graph
+        { id: "TOOL_DEDUCTION", group: 0, label: "DEDUCTION", level: 1, role: "nucleus", size: 35, type: "bridge", description: "The Formal Method. Axioms -> Theorems. (Math, Logic)" },
+        { id: "TOOL_EMPIRICISM", group: 3, label: "EMPIRICISM", level: 1, role: "nucleus", size: 35, type: "bridge", description: "The Scientific Method. Observation -> Hypothesis. (Science)" },
+        { id: "TOOL_HERMENEUTICS", group: 5, label: "HERMENEUTICS", level: 1, role: "nucleus", size: 35, type: "bridge", description: "The Interpretive Method. Text -> Meaning. (Humanities)" },
+        { id: "TOOL_SYNTHESIS", group: 7, label: "SYNTHESIS", level: 1, role: "nucleus", size: 35, type: "bridge", description: "The Design Method. Problem -> Solution. (Engineering/Art)" },
 
-        // ingredients of Logos
-        { id: "G_LOGIC", group: 0, label: "Logic", level: 1, role: "nucleus", size: 20 },
-        { id: "G_MECH", group: 0, label: "Mechanics", level: 1, role: "nucleus", size: 20 },
+        // 2. THE DOMAINS (Grouped by Method)
 
-        // 2. TECHNE (The Synthetic Mode - Utility) - The Trunk
-        // The General Builder (Engineering Core)
-        { id: "ENG_CORE", group: 7, label: "General Engineering", level: 1, role: "shell", size: 35, type: "bridge", description: "The Toolkit of Synthesis. Calculus, Systems, Ethics." },
+        // A. DEDUCTIVE DOMAINS (Logos)
+        { id: "LOGOS_MATH", group: 0, label: "Mathematics", level: 0, role: "nucleus" },
+        { id: "LOGOS_LOGIC", group: 0, label: "Logic", level: 0, role: "nucleus" },
+        { id: "Z7.2", group: 7, label: "Computer Science", level: 2, role: "shell", description: "Applied Deduction (Algorithms)." },
 
-        // The Tools
-        { id: "Z7.1", group: 7, label: "Hardware", level: 2, role: "shell", description: "Physical Computing." },
-        { id: "Z7.2", group: 7, label: "Software", level: 2, role: "shell", description: "Logical Computing." },
-        { id: "Z7.3", group: 7, label: "AI Oracle", level: 2, role: "shell", description: "Automated Cognition." },
+        // B. EMPIRICAL DOMAINS (Nature)
+        { id: "DOM_PHYS", group: 1, label: "Physics", level: 2, role: "crust" },
+        { id: "DOM_BIO", group: 3, label: "Biology", level: 2, role: "crust" },
+        { id: "UGR_MED", group: 3, label: "Medicine (UGR)", level: 2, role: "crust", description: "Applied Empiricism to Body." },
+        { id: "UGR_ENV", group: 3, label: "Env. Science (UGR)", level: 2, role: "crust" },
 
-        // 3. ETHOS (The Humanistic Mode - Value) - The Crown
-        { id: "ETHOS_PSYCH", group: 4, label: "Psychology", level: 1, role: "crust", size: 25, description: "The Human Mind." },
-        { id: "ETHOS_EDU", group: 4, label: "Education", level: 1, role: "crust", size: 25, description: "Knowledge Transmission." },
-        { id: "ETHOS_SOC", group: 5, label: "Sociology", level: 1, role: "crust", size: 25, description: "Collective Behavior." },
+        // C. HERMENEUTIC DOMAINS (Culture)
+        { id: "DOM_PHIL", group: 4, label: "Philosophy", level: 0, role: "nucleus", description: "The Origin of Inquiry." },
+        { id: "UGR_HIST", group: 6, label: "History (UGR)", level: 2, role: "crust" },
+        { id: "UGR_LIT", group: 6, label: "Literature (UGR)", level: 2, role: "crust" },
+        { id: "UGR_LAW", group: 5, label: "Law (UGR)", level: 2, role: "crust", description: "Interpretive Normative Systems." },
 
-        // 4. THE ALCHEMY (The Reactions / New Fields)
+        // D. SYNTHETIC DOMAINS (Creation)
+        { id: "ENG_CORE", group: 2, label: "General Engineering", level: 2, role: "shell" },
+        { id: "UGR_ARCH", group: 2, label: "Architecture (UGR)", level: 2, role: "crust" },
+        { id: "UGR_ART", group: 6, label: "Fine Arts (UGR)", level: 2, role: "crust" },
+        { id: "UHU_AGRO", group: 3, label: "Agro-Engineering", level: 2, role: "crust" },
 
-        // Techne + Logos (Bio) = Agro/BioTech
-        { id: "ALCH_AGRO", group: 3, label: "Precision Agriculture", level: 3, role: "crust", type: "bridge", description: "Optimization of Life Systems." },
-        { id: "Z3.1", group: 3, label: "Biology", level: 2, role: "crust" },
-
-        // Techne + Ethos = HCI / EdTech
-        { id: "ALCH_HCI", group: 4, label: "HCI & UX", level: 3, role: "crust", type: "bridge", description: "Designing for the Human Mind." },
-
-        // Techne + Civilization = Architecture
-        { id: "Z2", group: 2, label: "Architecture", level: 2, role: "crust" },
+        // E. THE HYBRIDS (Inter-Method)
+        { id: "HYBRID_AI", group: 7, label: "Artificial Intelligence", level: 3, role: "shell", type: "bridge", description: "Deduction simulating Empiricism." },
+        { id: "HYBRID_PSYCH", group: 4, label: "Psychology", level: 3, role: "crust", type: "bridge", description: "Empiricism applied to Hermeneutics (Mind)." },
 
     ] as GraphNode[],
     links: [
-        // LOGOS Internal Bonds
-        { source: "LOGOS_MATH", target: "LOGOS_PHYS", type: "axiom" },
-        { source: "LOGOS_PHIL", target: "LOGOS_MATH", type: "axiom" },
-        { source: "LOGOS_PHYS", target: "G_MECH", type: "derivation" },
-        { source: "LOGOS_MATH", target: "G_LOGIC", type: "derivation" },
+        // DEDUCTION CONNECTIONS
+        { source: "TOOL_DEDUCTION", target: "LOGOS_MATH", type: "method" },
+        { source: "TOOL_DEDUCTION", target: "LOGOS_LOGIC", type: "method" },
+        { source: "TOOL_DEDUCTION", target: "Z7.2", type: "foundation" }, // CS uses Deduction
 
-        // LOGOS feeds TECHNE (The Foundation of Engineering)
-        { source: "LOGOS_MATH", target: "ENG_CORE", type: "foundation" }, // Calculus
-        { source: "G_MECH", target: "ENG_CORE", type: "foundation" },     // Physics
-        { source: "LOGOS_PHIL", target: "ENG_CORE", type: "foundation" }, // Ethics
+        // EMPIRICISM CONNECTIONS
+        { source: "TOOL_EMPIRICISM", target: "DOM_PHYS", type: "method" },
+        { source: "TOOL_EMPIRICISM", target: "DOM_BIO", type: "method" },
+        { source: "TOOL_EMPIRICISM", target: "UGR_MED", type: "method" },
+        { source: "TOOL_EMPIRICISM", target: "UGR_ENV", type: "method" },
 
-        // TECHNE Branches (The Specializations)
-        { source: "ENG_CORE", target: "Z7.1", type: "specialization" }, // Hardware
-        { source: "ENG_CORE", target: "Z7.2", type: "specialization" }, // Software
+        // HERMENEUTICS CONNECTIONS
+        { source: "TOOL_HERMENEUTICS", target: "DOM_PHIL", type: "method" },
+        { source: "TOOL_HERMENEUTICS", target: "UGR_HIST", type: "method" },
+        { source: "TOOL_HERMENEUTICS", target: "UGR_LIT", type: "method" },
+        { source: "TOOL_HERMENEUTICS", target: "UGR_LAW", type: "method" },
 
-        // ETHOS (The Goals)
-        { source: "ETHOS_PSYCH", target: "ETHOS_EDU", type: "collaboration" },
+        // SYNTHESIS CONNECTIONS
+        { source: "TOOL_SYNTHESIS", target: "ENG_CORE", type: "method" },
+        { source: "TOOL_SYNTHESIS", target: "UGR_ARCH", type: "method" },
+        { source: "TOOL_SYNTHESIS", target: "UGR_ART", type: "method" },
+        { source: "ENG_CORE", target: "UHU_AGRO", type: "branch" },
 
-        // ALCHEMICAL REACTIONS (The Mix)
+        // CROSS-METHOD FLOWS
+        // Physics (Empirical) feeds Engineering (Synthetic)
+        { source: "DOM_PHYS", target: "TOOL_SYNTHESIS", type: "input" },
 
-        // Agro = Engineering (Tools) + Biology (Subject)
-        { source: "ENG_CORE", target: "ALCH_AGRO", type: "application" },
-        { source: "Z3.1", target: "ALCH_AGRO", type: "domain" },
+        // Math (Deductive) feeds Physics (Empirical)
+        { source: "LOGOS_MATH", target: "TOOL_EMPIRICISM", type: "language" },
 
-        // HCI = Software (Tools) + Psychology (Subject)
-        { source: "Z7.2", target: "ALCH_HCI", type: "application" },
-        { source: "ETHOS_PSYCH", target: "ALCH_HCI", type: "domain" },
+        // AI (Hybrid)
+        { source: "TOOL_DEDUCTION", target: "HYBRID_AI", type: "algorithm" }, // It's code
+        { source: "TOOL_EMPIRICISM", target: "HYBRID_AI", type: "data" }, // It learns from data
 
-        // AI is the Oracle sitting between Math and Psychology
-        { source: "LOGOS_MATH", target: "Z7.3", type: "synthesis" },
-        { source: "ETHOS_PSYCH", target: "Z7.3", type: "inspiration" }, // Neural Networks
+        // Psychology (Hybrid)
+        { source: "TOOL_EMPIRICISM", target: "HYBRID_PSYCH", type: "observation" },
+        { source: "TOOL_HERMENEUTICS", target: "HYBRID_PSYCH", type: "meaning" },
     ] as GraphLink[]
 };
