@@ -1,57 +1,48 @@
 $baseDir = "D:\AA-1\algorithm-alchemy-studio\public\content\official_docs\ugr"
+$degreesToRescue = @(
+    "Antropología Social y Cultural",
+    "Ingeniería Civil",
+    "Enfermería"
+)
 
-$degreeMap = @{
-    "*Bioq*mica*" = @{
-        "Biologia_Celular" = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2611114.pdf"
-        "Enzimologia"      = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2611123.pdf"
-        "Biocomputacion"   = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/26111B1.pdf"
-    }
-    "*ntrol*g*a*" = @{ # Matching 'Antrologa'
-        "Antropologia_Social"    = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2941111.pdf"
-        "Antropologia_Evolucion" = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2941116.pdf"
-        "Creencias_Rituales"     = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2941124.pdf"
-    }
-    "*ptica*"     = @{
-        "Optica_Geometrica" = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2871119.pdf"
-        "Optica_Fisica"     = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2871125.pdf"
-        "Optometria"        = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2871128.pdf"
-    }
-}
+# Reuse the nuclear logic but only for these 3
+foreach ($degree in $degreesToRescue) {
+    Write-Host "`n[Surgical Rescue] $degree"
+    $targetFolder = Join-Path $baseDir $degree
+    if (-not (Test-Path $targetFolder)) { New-Item -ItemType Directory -Path $targetFolder }
 
-# Separate handle for Qumica to ignore Ingeniera Qumica
-$quimDirs = Get-ChildItem -Path $baseDir -Directory -Filter "*Qu*mica*"
-$targetQuim = $quimDirs | Where-Object { $_.Name -notmatch "Ingenier" } | Select-Object -ExpandProperty FullName -First 1
+    # Map to portal URL segment (guess/match logic)
+    $urlSegment = $degree.ToLower().Replace(" ", "-").Replace("í", "i").Replace("ó", "o").Replace("é", "e").Replace("á", "a").Replace("ñ", "n")
+    if ($degree -eq "Antropología Social y Cultural") { $urlSegment = "grado-antropologia-social-cultural" }
+    elseif ($degree -eq "Ingeniería Civil") { $urlSegment = "grado-ingenieria-civil" }
+    elseif ($degree -eq "Enfermería") { $urlSegment = "grado-enfermeria" }
 
-if ($targetQuim) {
-    Write-Host "Processing $targetQuim..."
-    $qLinks = @{
-        "Quimica_General_I"  = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2911113.pdf"
-        "Quimica_General_II" = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2911114.pdf"
-        "Quimica_Organica"   = "https://grados.ugr.es/sites/grados/default/public/guias-firmadas/2024-2025/2911125.pdf"
-    }
-    foreach ($sn in $qLinks.Keys) {
-        $dest = Join-Path $targetQuim ($sn + ".pdf")
-        if (-not (Test-Path $dest)) {
-            Write-Host "  Downloading $sn..."
-            try { Invoke-WebRequest -Uri $qLinks[$sn] -OutFile $dest -ErrorAction Stop } catch { Write-Warning "  Failed $sn" }
-        }
-    }
-}
-
-foreach ($p in $degreeMap.Keys) {
-    $d = Get-ChildItem -Path $baseDir -Directory -Filter $p | Select-Object -ExpandProperty FullName -First 1
-    if ($d) {
-        Write-Host "Processing $d..."
-        $subs = $degreeMap[$p]
-        foreach ($sn in $subs.Keys) {
-            $dest = Join-Path $d ($sn + ".pdf")
-            if (-not (Test-Path $dest)) {
-                Write-Host "  Downloading $sn..."
-                try { Invoke-WebRequest -Uri $subs[$sn] -OutFile $dest -ErrorAction Stop } catch { Write-Warning "  Failed $sn" }
+    $portalUrl = "https://grados.ugr.es/informacion/guias-docentes-firmadas/2024-2025/$urlSegment"
+    Write-Host "  - Fetching: $portalUrl"
+    
+    try {
+        $html = Invoke-WebRequest -Uri $portalUrl -UseBasicParsing
+        $links = [regex]::Matches($html.Content, '<a(?=[^>]*href="([^"]+\.pdf)")[^>]*>(.*?)</a>', 'Singleline')
+        
+        foreach ($link in $links) {
+            $pdfUrl = $link.Groups[1].Value
+            $subjectName = $link.Groups[2].Value -replace '<.*?>', '' -replace '&quot;', '"' -replace '&amp;', '&' -replace '\.pdf$', '' -trim
+            $subjectName = $subjectName -replace '[\\/:*?"<>|]', '_'
+            
+            if ($subjectName -notmatch "pdf" -and $subjectName.Length -gt 3) {
+                if ($pdfUrl -notmatch "^http") { $pdfUrl = "https://grados.ugr.es" + $pdfUrl }
+                $savePath = Join-Path $targetFolder "$subjectName.pdf"
+                
+                if (-not (Test-Path $savePath)) {
+                    Write-Host "    + Downloading: $subjectName.pdf"
+                    Invoke-WebRequest -Uri $pdfUrl -OutFile $savePath -ErrorAction SilentlyContinue
+                }
             }
         }
     }
-    else {
-        Write-Warning "No dir for $p"
+    catch {
+        Write-Warning "  - Failed to fetch or parse $portalUrl"
     }
 }
+
+Write-Host "`nSurgical Rescue Complete."
