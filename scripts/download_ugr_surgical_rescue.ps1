@@ -5,14 +5,12 @@ $degreesToRescue = @(
     "Enfermería"
 )
 
-# Reuse the nuclear logic but only for these 3
 foreach ($degree in $degreesToRescue) {
     Write-Host "`n[Surgical Rescue] $degree"
     $targetFolder = Join-Path $baseDir $degree
     if (-not (Test-Path $targetFolder)) { New-Item -ItemType Directory -Path $targetFolder }
 
-    # Map to portal URL segment (guess/match logic)
-    $urlSegment = $degree.ToLower().Replace(" ", "-").Replace("í", "i").Replace("ó", "o").Replace("é", "e").Replace("á", "a").Replace("ñ", "n")
+    $urlSegment = "grado-" + $degree.ToLower().Replace(" ", "-").Replace("í", "i").Replace("ó", "o").Replace("é", "e").Replace("á", "a").Replace("ñ", "n")
     if ($degree -eq "Antropología Social y Cultural") { $urlSegment = "grado-antropologia-social-cultural" }
     elseif ($degree -eq "Ingeniería Civil") { $urlSegment = "grado-ingenieria-civil" }
     elseif ($degree -eq "Enfermería") { $urlSegment = "grado-enfermeria" }
@@ -26,7 +24,8 @@ foreach ($degree in $degreesToRescue) {
         
         foreach ($link in $links) {
             $pdfUrl = $link.Groups[1].Value
-            $subjectName = $link.Groups[2].Value -replace '<.*?>', '' -replace '&quot;', '"' -replace '&amp;', '&' -replace '\.pdf$', '' -trim
+            $rawName = $link.Groups[2].Value -replace '<.*?>', '' -replace '&quot;', '"' -replace '&amp;', '&' -replace '\.pdf$', ''
+            $subjectName = $rawName.Trim()
             $subjectName = $subjectName -replace '[\\/:*?"<>|]', '_'
             
             if ($subjectName -notmatch "pdf" -and $subjectName.Length -gt 3) {
