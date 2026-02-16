@@ -63,14 +63,26 @@ const tracks = [
   {
     id: "intelligence",
     title: "Intelligence",
-    subtitle: "IA, ML, Bio-Inspired (MBHB)",
-    description: "Inteligencia artificial clásica, machine learning y algoritmos bioinspirados con visualizadores en tiempo real.",
+    subtitle: "Metaheurísticas, Bio-Inspired (MBHB)",
+    description: "Algoritmos bioinspirados y metaheurísticas con visualizadores en tiempo real. El Nodo Legendario.",
     icon: Brain,
     color: "cyan",
     available: true,
     url: "/mbhb",
     zone: "Zone 4",
-    badges: ["NP-Hard", "TSP/QAP", "IA Clásica"],
+    badges: ["NP-Hard", "TSP/QAP", "MBHB"],
+  },
+  {
+    id: "ia-data",
+    title: "IA & Data Science",
+    subtitle: "ML, Deep Learning, NLP",
+    description: "De los fundamentos de IA a Redes Neuronales. El Neural Path completo: Fund. IA → ML I → ML II → Deep Learning → MBHB.",
+    icon: Brain,
+    color: "violet",
+    available: true,
+    url: "/degree/ingenieria-datos-ia",
+    zone: "Neural Path",
+    badges: ["ML", "Deep Learning", "→ MBHB"],
   },
   {
     id: "visual",
@@ -153,11 +165,10 @@ export default function Landing() {
 
             return (
               <Wrapper key={track.id} {...wrapperProps as any}>
-                <Card className={`group relative overflow-hidden ${colors.border} bg-card/40 transition-all h-full ${
-                  track.available 
-                    ? `hover:bg-card/60 hover:shadow-2xl ${colors.glow} cursor-pointer` 
+                <Card className={`group relative overflow-hidden ${colors.border} bg-card/40 transition-all h-full ${track.available
+                    ? `hover:bg-card/60 hover:shadow-2xl ${colors.glow} cursor-pointer`
                     : "opacity-60 grayscale hover:grayscale-0 hover:opacity-80"
-                }`}>
+                  }`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-white/[0.00] opacity-0 group-hover:opacity-100 transition-opacity" />
                   <CardHeader className="pb-3">
                     <div className="flex justify-between items-start mb-2">

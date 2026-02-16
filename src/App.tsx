@@ -20,6 +20,8 @@ import MultimodalPage from "./pages/Multimodal";
 import MemeticPage from "./pages/Memetic";
 import NSGA2Page from "./pages/NSGA2";
 import TrackPlaceholder from "./pages/TrackPlaceholder";
+import DegreeView from "./pages/DegreeView";
+import SubjectDetail from "./pages/SubjectDetail";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +56,10 @@ const App = () => (
           {/* Practice 2c: Advanced */}
           <Route path="/mbhb/memetic" element={<MemeticPage />} />
           <Route path="/mbhb/nsga2" element={<NSGA2Page />} />
+
+          {/* Degree & Subject Routes (Neural Path) */}
+          <Route path="/degree/:degreeId" element={<DegreeView />} />
+          <Route path="/subject/:universityId/:degreeId/:subjectId" element={<SubjectDetail />} />
 
           {/* Track Placeholder Routes */}
           <Route path="/track/:track/:subject" element={<TrackPlaceholder />} />
