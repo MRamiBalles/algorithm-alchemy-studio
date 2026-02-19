@@ -144,10 +144,17 @@ const subjectData: Record<string, {
         ],
         bibliography: [
             { title: "Goodfellow, Bengio, Courville — Deep Learning (MIT Press)", url: "https://es.annas-archive.li/search?q=Deep+Learning+Goodfellow+Bengio" },
+            { title: "Chollet, F. — Deep Learning with Python (Manning)", url: "https://es.annas-archive.li/md5/279efb97779de07999de07999de07999" },
+            { title: "Bishop, C.M. — Pattern Recognition and Machine Learning", url: "https://es.annas-archive.li/md5/8825e347db779de07999de07999de07999" },
         ],
         prereqs: ["Aprendizaje Automático II", "Álgebra Lineal", "Cálculo"],
         leadsTo: ["MBHB (Modelos Bioinspirados y Heurísticas de Búsqueda)"],
         neuralPathPosition: 4,
+        canonIndex: [
+            { part: "I. Applied Math and Foundations", chapters: ["2. Linear Algebra", "3. Probability and Information Theory", "4. Numerical Optimization", "5. Machine Learning Basics"] },
+            { part: "II. Deep Networks: Modern Practices", chapters: ["6. Deep Feedforward Networks", "7. Regularization for Deep Learning", "8. Optimization for Training Deep Models", "9. Convolutional Networks (CNN)", "10. Sequence Modeling (RNN/LSTM)"] },
+            { part: "III. Deep Learning Research", chapters: ["13. Linear Factor Models", "14. Autoencoders", "15. Representation Learning", "20. Generative Models (GAN/VAE)"] }
+        ]
     },
     "mbhb": {
         title: "Modelos Bioinspirados y Heurísticas de Búsqueda",
@@ -218,6 +225,132 @@ const subjectData: Record<string, {
             { part: "III. Advanced Design and Analysis", chapters: ["14. Greedy Algorithms", "15. Dynamic Programming", "16. Amortized Analysis"] },
             { part: "IV. Graph Algorithms", chapters: ["20. Elementary Graph Algorithms", "21. Minimum Spanning Trees", "22. Single-Source Shortest Paths", "24. Maximum Flow"] },
             { part: "V. Special Topics", chapters: ["34. NP-Completeness", "35. Approximation Algorithms"] }
+        ]
+    },
+    "algebra-lineal": {
+        title: "Álgebra Lineal",
+        degree: "Ing. Datos e IA",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM / MIT",
+        course: 1,
+        semester: "S1",
+        atom: "ÁLGEBRA",
+        description: "El lenguaje de la IA. Desde sistemas de ecuaciones hasta la Descomposición en Valores Singulares (SVD). La base matemática indispensable para entender ML y Redes Neuronales.",
+        topics: [
+            "Sistemas de Ecuaciones Lineales y Matrices",
+            "Espacios Vectoriales y Subespacios",
+            "Ortogonalidad y Mínimos Cuadrados",
+            "Determinantes y Autovalores/Autovectores",
+            "SVD (Singular Value Decomposition)",
+            "Transformaciones Lineales",
+        ],
+        bibliography: [
+            { title: "Strang, G. — Introduction to Linear Algebra (Wellesley-Cambridge Press)", url: "https://es.annas-archive.li/md5/03c29fe29bcf4b819254084c1fa3e2e3" },
+            { title: "Baro, E. y Tomeo, V. — Introducción al Álgebra Lineal (Garceta)", url: "https://es.annas-archive.li/md5/eae5376b905b3dc0686165c5154e25e9" },
+            { title: "De Burgos, J. — Álgebra lineal y geometría cartesiana (McGraw-Hill)", url: "https://es.annas-archive.li/md5/8f0f0ec277a1081831846977e78b0a40" },
+            { title: "Axler, S. — Linear Algebra Done Right", url: "https://es.annas-archive.li/md5/c673d3a0e69b936d07e606a59868e4de" },
+        ],
+        prereqs: ["Bachillerato Científico-Tecnológico"],
+        leadsTo: ["Aprendizaje Automático I", "Cálculo II", "Redes Neuronales"],
+        canonIndex: [
+            { part: "I. Vectors and Matrices", chapters: ["1. Introduction to Vectors", "2. Solving Linear Equations", "3. Vector Spaces and Subspaces"] },
+            { part: "II. Orthogonality", chapters: ["4. Orthogonality", "5. Determinants"] },
+            { part: "III. Eigenvalues and SVD", chapters: ["6. Eigenvalues and Eigenvectors", "7. The Singular Value Decomposition (SVD)"] },
+            { part: "IV. Applications", chapters: ["10. Applications (Graphs, Networks)", "11. Numerical Linear Algebra"] }
+        ]
+    },
+    "estructuras-de-datos": {
+        title: "Estructuras de Datos y Algoritmos",
+        degree: "Ing. Datos e IA",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 1,
+        semester: "S2",
+        atom: "LÓGICA → ÁLGEBRA",
+        description: "Cómo organizar la información para procesarla eficientemente. Tipos Abstractos de Datos, estructuras lineales y no lineales, y análisis de algoritmos básicos.",
+        topics: [
+            "Tipos Abstractos de Datos (TADs)",
+            "Listas, Pilas y Colas",
+            "Árboles Binarios y de Búsqueda (BST)",
+            "Tablas de Hash y Diccionarios",
+            "Heaps y Colas de Prioridad",
+            "Grafos: Representación y Recorridos básicos",
+        ],
+        bibliography: [
+            { title: "Nyhoff, L. — ADTs, Data Structures, and Problem Solving with C++", url: "https://es.annas-archive.li/md5/907fa318c7639ae7b118224a3fc5d0a7" },
+            { title: "Martí Oliet, Ortega Mallén — Estructuras de Datos y Métodos Algorítmicos", url: "https://es.annas-archive.li/md5/c30968a541f60af73c6d77c9ecab5996" },
+            { title: "Goodrich, Tamassia — Data Structures and Algorithms in Java/Python", url: "https://es.annas-archive.li/md5/e9b8f0ca431e7cc4db17ee869fc6509b" },
+            { title: "Sedgewick, R. — Algorithms (Foundations)", url: "https://es.annas-archive.li/md5/9f50fbd779e5e7df2277db63b77ba22c" },
+        ],
+        prereqs: ["Fundamentos de Programación", "Álgebra Lineal"],
+        leadsTo: ["Algoritmia", "Bases de Datos", "Sistemas Inteligentes"],
+        canonIndex: [
+            { part: "I. Linear Structures", chapters: ["1. Abstract Data Types", "2. Stacks", "3. Queues", "4. Linked Lists"] },
+            { part: "II. Non-Linear Structures", chapters: ["5. Binary Trees", "6. Advanced Tree Structures (AVL, Red-Black)"] },
+            { part: "III. Searching and Hashing", chapters: ["7. Hashing Techniques", "8. Set and Map ADTs"] },
+            { part: "IV. Algorithmic Toolbox", chapters: ["9. Sorting (Basic)", "10. Priority Queues and Heaps"] }
+        ]
+    },
+    "calculo": {
+        title: "Cálculo",
+        degree: "Ing. Datos e IA",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 1,
+        semester: "S1",
+        atom: "ÁLGEBRA",
+        description: "El estudio del cambio continuo. Indispensable para entender la optimización (Gradient Descent) en redes neuronales. Desde límites hasta integrales de varias variables.",
+        topics: [
+            "Límites y Continuidad",
+            "Derivada y Aplicaciones (Optimización)",
+            "Integración: Técnicas y Teorema Fundamental",
+            "Sucesiones y Series de Potencias",
+            "Funciones de Varias Variables: Derivadas Parciales",
+            "Gradiente y Optimización Multivariable",
+        ],
+        bibliography: [
+            { title: "Stewart, J. — Calculus: Early Transcendentals (Thomson)", url: "https://es.annas-archive.li/md5/c9ed5767a9b6da8734acd0e68f772a49" },
+            { title: "Larson, Edwards — Cálculo (Pirámide)", url: "https://es.annas-archive.li/md5/305fb5840593b26a3deb32a45e188f1e" },
+            { title: "Spivak, M. — Calculus (Foundations)", url: "https://es.annas-archive.li/md5/5e9de07999de07999de07999de07999" },
+        ],
+        prereqs: ["Bachillerato Científico-Tecnológico"],
+        leadsTo: ["Aprendizaje Automático I", "Redes Neuronales"],
+        canonIndex: [
+            { part: "I. Functions and Limits", chapters: ["1. Functions and Models", "2. Limits and Derivatives"] },
+            { part: "II. Differentiation Rules", chapters: ["3. Differentiation", "4. Applications of Differentiation (Min/Max)"] },
+            { part: "III. Integration", chapters: ["5. Integrals", "6. Applications of Integration"] },
+            { part: "IV. Multivariable", chapters: ["14. Partial Derivatives", "15. Multiple Integrals"] }
+        ]
+    },
+    "matematica-discreta": {
+        title: "Matemática Discreta y Lógica",
+        degree: "Ingeniería Informática / Datos",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 1,
+        semester: "S1",
+        atom: "LÓGICA",
+        description: "El lenguaje de los objetos discretos. La base de la computación teórica y la algoritmia. Lógica, conjuntos, inducción y teoría de grafos.",
+        topics: [
+            "Lógica Proposicional y de Primer Orden",
+            "Conjuntos, Funciones y Relaciones",
+            "Inducción Matemática y Recurrencia",
+            "Teoría de Grafos y Árboles",
+            "Combinatoria y Probabilidad Discreta",
+            "Álgebra de Boole y Retículos",
+        ],
+        bibliography: [
+            { title: "Rosen, K.H. — Discrete Mathematics and Its Applications (McGraw-Hill)", url: "https://es.annas-archive.li/md5/d8d4f0c8797f09e4e92df720772add50" },
+            { title: "Grimaldi, R.P. — Matemáticas Discreta y Combinatoria (Pearson)", url: "https://es.annas-archive.li/md5/08f8db33c15bedca5b6c6fa36f8c856a" },
+            { title: "Hortalá, Rodríguez Artalejo — Matemática Discreta y Lógica (UCM Ref)", url: "https://es.annas-archive.li/md5/a42daa7cd23c81a3062b844250affc47" },
+        ],
+        prereqs: ["Bachillerato Científico-Tecnológico"],
+        leadsTo: ["Algoritmia", "Lógica Matemática", "Criptografía"],
+        canonIndex: [
+            { part: "I. The Foundations", chapters: ["1. Logic and Proofs", "2. Basic Structures: Sets, Functions, Summations"] },
+            { part: "II. Induction and Recursion", chapters: ["5. Induction and Recursion", "6. Counting"] },
+            { part: "III. Discrete Probability", chapters: ["7. Discrete Probability"] },
+            { part: "IV. Graphs and Trees", chapters: ["10. Graphs", "11. Trees", "12. Boolean Algebra"] }
         ]
     },
 };

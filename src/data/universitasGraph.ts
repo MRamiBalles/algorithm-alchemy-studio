@@ -50,6 +50,10 @@ export const graphData = {
         { id: "SUB_CIVIL", group: "SUBJECT", label: "Derecho Civil", level: 2, role: "subject" },
         { id: "SUB_ANC", group: "SUBJECT", label: "Historia Antigua", level: 2, role: "subject" },
         { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein)" },
+        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/algebra-lineal", canonicalText: "Introduction to Linear Algebra (Gilbert Strang)" },
+        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/calculo", canonicalText: "Calculus (James Stewart)" },
+        { id: "SUB_DIS", group: "SUBJECT", label: "Matemática Discreta", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/matematica-discreta", canonicalText: "Discrete Mathematics and Its Applications (Kenneth Rosen)" },
+        { id: "SUB_EDS", group: "SUBJECT", label: "Estructuras de Datos", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/estructuras-de-datos", canonicalText: "ADTs, Data Structures, and Problem Solving with C++ (Larry Nyhoff)" },
         { id: "SUB_ANAT", group: "SUBJECT", label: "Anatomía Humana", level: 2, role: "subject" },
         { id: "SUB_FISIO", group: "SUBJECT", label: "Fisiología", level: 2, role: "subject" },
 
@@ -92,6 +96,15 @@ export const graphData = {
 
         // ─── THE NEURAL PATH (IA → ML → DL → MBHB) ───
         { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
+        { source: "DEG_IDIA", target: "SUB_LA", type: "Foundation" },
+        { source: "DEG_IDIA", target: "SUB_CALC", type: "Foundation" },
+        { source: "DEG_IDIA", target: "SUB_EDS", type: "Foundation" },
+        { source: "DEG_IDIA", target: "SUB_DIS", type: "Foundation" },
+        { source: "SUB_LA", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "SUB_CALC", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "SUB_CALC", target: "SUB_DL", type: "Prerequisite" },
+        { source: "SUB_EDS", target: "SUB_ALG", type: "Prerequisite" },
+        { source: "SUB_DIS", target: "SUB_ALG", type: "Prerequisite" },
         { source: "SUB_FIA", target: "SUB_ML1", type: "Prerequisite" },
         { source: "SUB_ML1", target: "SUB_ML2", type: "Prerequisite" },
         { source: "SUB_ML2", target: "SUB_DL", type: "Specialization" },
