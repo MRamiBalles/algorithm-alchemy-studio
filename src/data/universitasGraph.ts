@@ -49,7 +49,7 @@ export const graphData = {
         { id: "SUB_DIG", group: "SUBJECT", label: "Creación Digital", level: 2, role: "subject" },
         { id: "SUB_CIVIL", group: "SUBJECT", label: "Derecho Civil", level: 2, role: "subject" },
         { id: "SUB_ANC", group: "SUBJECT", label: "Historia Antigua", level: 2, role: "subject" },
-        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/mbhb", canonicalText: "Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein)" },
+        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein)" },
         { id: "SUB_ANAT", group: "SUBJECT", label: "Anatomía Humana", level: 2, role: "subject" },
         { id: "SUB_FISIO", group: "SUBJECT", label: "Fisiología", level: 2, role: "subject" },
 

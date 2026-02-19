@@ -185,6 +185,41 @@ const subjectData: Record<string, {
             { part: "IV. Integration & Hybridization", chapters: ["13. Hybrid Metaheuristics", "14. Parameter Tuning (CALS)", "15. Frameworks: Metco, Paradiseo"] }
         ]
     },
+    "algoritmia": {
+        title: "Algoritmia",
+        degree: "Ingeniería Informática",
+        degreeRoute: "/track/intelligence/intro",
+        university: "UCM / UGR",
+        course: 2,
+        semester: "S1",
+        atom: "LÓGICA",
+        description: "El estudio de la eficiencia y corrección. Desde la complejidad asintótica hasta grafos y programación dinámica. Basado en el CLRS (Cormen), el estándar de oro de la computación.",
+        topics: [
+            "Análisis de Complejidad Asintótica",
+            "Divide y Vencerás (D&C)",
+            "Algoritmos Voraces (Greedy)",
+            "Programación Dinámica",
+            "Algoritmos sobre Grafos (BFS, DFS, Dijkstra)",
+            "Flujo Máximo y Emparejamiento",
+            "NP-Completitud y Aproximación",
+        ],
+        bibliography: [
+            { title: "Cormen, Leiserson, Rivest, Stein — Introduction to Algorithms (MIT Press)", url: "https://es.annas-archive.li/md5/af6be65d586ed2ec5636579fcddbba78" },
+            { title: "Martí Oliet, Ortega Mallén, Verdejo López — Estructuras de Datos y Métodos Algorítmicos (UCM Ref)", url: "https://es.annas-archive.li/md5/c30968a541f60af73c6d77c9ecab5996" },
+            { title: "Ricardo Peña — Diseño de programas: Formalismo y abstracción (Pearson)", url: "https://es.annas-archive.li/md5/49dd7af2dc22ff7621760357b0b8e01c" },
+            { title: "Brassard, Bradley — Fundamentos de Algoritmia (Prentice Hall)", url: "https://es.annas-archive.li/md5/6e16f75f280c3b2a0d2afba5abcc2783" },
+            { title: "Neapolitan, R. — Foundations of Algorithms", url: "https://es.annas-archive.li/md5/56b4a7b013b6294cda05a57419d4a18b" },
+        ],
+        prereqs: ["Estructuras de Datos", "Matemática Discreta", "Fundamentos de Programación"],
+        leadsTo: ["Aprendizaje Automático I", "MBHB", "Optimización"],
+        canonIndex: [
+            { part: "I. Foundations", chapters: ["1. The Role of Algorithms", "2. Getting Started", "3. Characterizing Running Times", "4. Divide-and-Conquer", "5. Probabilistic Analysis"] },
+            { part: "II. Sorting and Order Statistics", chapters: ["6. Heapsort", "7. Quicksort", "8. Sorting in Linear Time", "9. Medians and Order Statistics"] },
+            { part: "III. Advanced Design and Analysis", chapters: ["14. Greedy Algorithms", "15. Dynamic Programming", "16. Amortized Analysis"] },
+            { part: "IV. Graph Algorithms", chapters: ["20. Elementary Graph Algorithms", "21. Minimum Spanning Trees", "22. Single-Source Shortest Paths", "24. Maximum Flow"] },
+            { part: "V. Special Topics", chapters: ["34. NP-Completeness", "35. Approximation Algorithms"] }
+        ]
+    },
 };
 
 const neuralPathSteps = ["Fund. IA", "ML I", "ML II", "Deep Learning", "MBHB"];
