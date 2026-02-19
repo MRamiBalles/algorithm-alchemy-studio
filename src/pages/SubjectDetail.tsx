@@ -146,8 +146,44 @@ const subjectData: Record<string, {
             { title: "Goodfellow, Bengio, Courville — Deep Learning (MIT Press)", url: "https://es.annas-archive.li/search?q=Deep+Learning+Goodfellow+Bengio" },
         ],
         prereqs: ["Aprendizaje Automático II", "Álgebra Lineal", "Cálculo"],
-        leadsTo: ["MBHB (Master Biological Human Body)"],
+        leadsTo: ["MBHB (Modelos Bioinspirados y Heurísticas de Búsqueda)"],
         neuralPathPosition: 4,
+    },
+    "mbhb": {
+        title: "Modelos Bioinspirados y Heurísticas de Búsqueda",
+        degree: "Máster Ing. Informática",
+        degreeRoute: "/track/intelligence/intro",
+        university: "UHU / UGR / UCM",
+        course: 1,
+        semester: "S1",
+        atom: "AISTHESIS → LÓGICA",
+        description: "El Nodo Legendario. La síntesis final entre la optimización matemática (UCM), las metaheurísticas tácticas (UGR) y la inspiración biológica (UHU). El fin del Neural Path.",
+        topics: [
+            "Optimización Combinatoria y Complejidad",
+            "Búsqueda Local y Trayectorias (SA, Tabu)",
+            "Metaheurísticas Multi-arranque (GRASP, ILS, VNS)",
+            "Algoritmos Evolutivos (GA, CHC, Meméticos)",
+            "Inteligencia Colectiva (PSO, Colonias de Hormigas)",
+            "Optimización Multiobjetivo (NSGA-II)",
+            "Hibridación y Meta-optimización",
+        ],
+        bibliography: [
+            { title: "Talbi, E-G. — Metaheuristics: From Design to Implementation (Wiley)", url: "https://es.annas-archive.li/md5/796cf33cc3c505f55b183b1b47e4c8ae" },
+            { title: "Luke, S. — Essentials of Metaheuristics", url: "https://es.annas-archive.li/md5/8b13abc6c38703fdfeaca80a7d2a668e" },
+            { title: "Kochendefer, M.J. — Algorithms for Optimization (MIT Press)", url: "https://es.annas-archive.li/md5/f76053253fb490e7d1758a18e92218da" },
+            { title: "Bazaraa, M.S. — Programación lineal y flujo en redes (UCM Ref)", url: "https://es.annas-archive.li/md5/756477a506e6676e4be15707e906d355" },
+            { title: "Hillier, F.S. — Introduction to Operations Research (UCM Ref)", url: "https://es.annas-archive.li/md5/a0c5a5e34492ffd46c6ca7684c450f97" },
+            { title: "Nocedal, J. — Numerical Optimization (Springer)", url: "https://es.annas-archive.li/md5/e43b0bf6c031c016e223ef66255a298e" },
+            { title: "Taha, H.A. — Investigación de Operaciones (Pearson)", url: "https://es.annas-archive.li/md5/22c22e454dd10d4d12d9b39519a6b082" },
+        ],
+        prereqs: ["Redes Neuronales", "Algoritmia", "Optimización"],
+        leadsTo: ["Doctorado en IA / Sistemas Inteligentes"],
+        canonIndex: [
+            { part: "I. Single-Solution Metaheuristics", chapters: ["1. Common Concepts", "2. Local Search", "3. Simulated Annealing", "4. Tabu Search", "5. Variable Neighborhood Search (VNS)"] },
+            { part: "II. Population-Based Metaheuristics", chapters: ["6. Evolutionary Algorithms (GA, CHC)", "7. Ant Colony Optimization", "8. Particle Swarm Optimization", "9. Artificial Immune Systems"] },
+            { part: "III. Advanced & Multiobjective", chapters: ["10. Multiobjective Optimization (NSGA-II)", "11. Multimodal Optimization", "12. Parallel & Distributed Metaheuristics"] },
+            { part: "IV. Integration & Hybridization", chapters: ["13. Hybrid Metaheuristics", "14. Parameter Tuning (CALS)", "15. Frameworks: Metco, Paradiseo"] }
+        ]
     },
 };
 
