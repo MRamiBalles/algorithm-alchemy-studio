@@ -59,7 +59,7 @@ export const graphData = {
         { id: "SUB_DL", group: "SUBJECT", label: "Redes Neuronales", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/deep-learning", color: "#8B5CF6", description: "Deep Learning. El puente neural hacia MBHB." },
 
         // ─── LEVEL 3: LEGENDARY ───
-        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 3, color: "#FF0000", size: 20, role: "legendary", route: "/mbhb", description: "Master Biological Human Body. El Nodo Legendario." },
+        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 3, color: "#FF0000", size: 20, role: "legendary", route: "/mbhb", description: "Modelos Bioinspirados y Heurísticas de Búsqueda. La cúspide de la IA y la Computación." },
     ] as GraphNode[],
 
     links: [
