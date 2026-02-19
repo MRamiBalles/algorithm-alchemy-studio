@@ -87,6 +87,13 @@ const subjectData: Record<string, {
         prereqs: ["Fundamentos de Inteligencia Artificial", "Probabilidad y Estadística", "Álgebra Lineal"],
         leadsTo: ["Aprendizaje Automático II"],
         neuralPathPosition: 2,
+        canonIndex: [
+            { part: "I. Fundamentals", chapters: ["1. Introduction", "2. Statistical Learning"] },
+            { part: "II. Regression & Classification", chapters: ["3. Linear Regression", "4. Classification"] },
+            { part: "III. Model Selection", chapters: ["5. Resampling Methods", "6. Linear Model Selection and Regularization"] },
+            { part: "IV. Beyond Linearity", chapters: ["7. Moving Beyond Linearity", "8. Tree-Based Methods", "9. Support Vector Machines"] },
+            { part: "V. Unsupervised", chapters: ["10. Deep Learning (Intro)", "12. Unsupervised Learning"] }
+        ]
     },
     "aprendizaje-automatico-2": {
         title: "Aprendizaje Automático II",
@@ -284,7 +291,9 @@ export default function SubjectDetail() {
                                 <CardHeader>
                                     <CardTitle className="text-lg flex items-center gap-2">
                                         <FileText className="w-4 h-4 text-cyan-400" />
-                                        {subject.canonIndex ? "Índice Canónico (Russell & Norvig)" : "Temario"}
+                                        {subject.canonIndex
+                                            ? `Índice Canónico (${subject.title.includes('IA') ? 'Russell & Norvig' : 'ISLR / Hastie'})`
+                                            : "Temario"}
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent>
