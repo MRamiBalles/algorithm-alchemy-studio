@@ -347,10 +347,99 @@ const subjectData: Record<string, {
         prereqs: ["Bachillerato Científico-Tecnológico"],
         leadsTo: ["Algoritmia", "Lógica Matemática", "Criptografía"],
         canonIndex: [
-            { part: "I. The Foundations", chapters: ["1. Logic and Proofs", "2. Basic Structures: Sets, Functions, Summations"] },
-            { part: "II. Induction and Recursion", chapters: ["5. Induction and Recursion", "6. Counting"] },
-            { part: "III. Discrete Probability", chapters: ["7. Discrete Probability"] },
             { part: "IV. Graphs and Trees", chapters: ["10. Graphs", "11. Trees", "12. Boolean Algebra"] }
+        ]
+    },
+    "fundamentos-programacion": {
+        title: "Fundamentos de la Programación",
+        degree: "Ingeniería Informática / Datos",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 1,
+        semester: "S1",
+        atom: "LÓGICA",
+        description: "El arte de dar instrucciones precisas a una máquina. Desde tipos de datos básicos hasta el uso de la Standard Template Library (STL). Fundamentado en la filosofía de Bjarne Stroustrup.",
+        topics: [
+            "Tipos de Datos y Variables",
+            "Estructuras de Control (If, Switch, Loops)",
+            "Funciones y Recursividad",
+            "Gestión Dinámica de Memoria y Punteros",
+            "Entrada/Salida y Procesamiento de Ficheros",
+            "Introducción a la Programación Genérica (STL)",
+        ],
+        bibliography: [
+            { title: "Stroustrup, B. — Programming: Principles and Practice using C++ (Pearson)", url: "https://es.annas-archive.li/md5/fa813359a6211010884d29b7fd95dbbb" },
+            { title: "Adams, Leestma, Nyhoff — C++: An Introduction to Computing", url: "https://es.annas-archive.li/md5/88055ba857076fe3cc653ae6ec9a71ac" },
+            { title: "Stroustrup, B. — The C++ Programming Language (Special Edition)", url: "https://es.annas-archive.li/md5/5896960317268d392f4e11bfddbbcabd" },
+        ],
+        prereqs: ["Ninguno (Nivel de Entrada)"],
+        leadsTo: ["Estructuras de Datos", "Tecnología de la Programación", "Algoritmia"],
+        canonIndex: [
+            { part: "I. The Basics", chapters: ["1. Hello, World!", "2. Objects, Types, and Values", "3. Computation", "4. Errors"] },
+            { part: "II. Input and Output", chapters: ["5. Input and Output Streams", "6. Customizing I/O", "7. Display Model"] },
+            { part: "III. Data and Algorithms", chapters: ["8. Vectors and Free Store", "10. Templates and Exceptions", "11. Containers and Iterators"] },
+            { part: "IV. Broadening the View", chapters: ["14. Ideals and History", "15. Text Processing", "16. Numerics"] }
+        ]
+    },
+    "logica-matematica": {
+        title: "Lógica Matemática",
+        degree: "Ingeniería Informática / Datos",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 1,
+        semester: "S2",
+        atom: "LÓGICA",
+        description: "El estudio formal del razonamiento. Sintaxis, semántica y sistemas de deducción automática. La base para la verificación de software y la IA simbólica.",
+        topics: [
+            "Cálculo Proposicional: Sintaxis y Semántica",
+            "Sistemas de Deducción: Resolución y Tableros Semánticos",
+            "Lógica de Primer Orden (LPO)",
+            "Teoremas de Completitud y Compacidad",
+            "Introducción a la Programación Lógica",
+            "Aplicaciones en IA y Bases de Datos",
+        ],
+        bibliography: [
+            { title: "Ben-Ari, M. — Mathematical Logic for Computer Science (Springer)", url: "https://es.annas-archive.li/md5/b51d0dab3914bd9f5cfabe0ee5d24db0" },
+            { title: "Hortalá, Martí, Rodríguez — Lógica Matemática para Informáticos", url: "https://es.annas-archive.li/md5/050f097d662abf38f6e983491d63e6d8" },
+            { title: "Fitting, M. — First-Order Logic and Automated Theorem Proving", url: "https://es.annas-archive.li/md5/6e079de07999de07999de07999de07999" },
+        ],
+        prereqs: ["Matemática Discreta"],
+        leadsTo: ["Fundamentos de IA", "Bases de Datos", "Verificación de Programas"],
+        canonIndex: [
+            { part: "I. Propositional Logic", chapters: ["1. Syntax and Semantics", "2. Semantic Tableaux", "3. Resolution", "4. Axiomatic Systems"] },
+            { part: "II. First-Order Logic", chapters: ["5. Syntax and Semantics", "6. Tableaux and Resolution in FOL", "7. Herbrand's Theorem"] },
+            { part: "III. Logic Programming", chapters: ["8. Prolog", "9. Unification and SLD-Resolution"] }
+        ]
+    },
+    "probabilidad-estadistica": {
+        title: "Probabilidad y Estadística",
+        degree: "Ingeniería Informática / Datos",
+        degreeRoute: "/degree/ingenieria-datos-ia",
+        university: "UCM",
+        course: 2,
+        semester: "S1",
+        atom: "ÁLGEBRA",
+        description: "El manejo de la incertidumbre. Desde la probabilidad clásica hasta la inferencia estadística y la regresión. Fundamental para Data Science y Probabilistic Graphical Models.",
+        topics: [
+            "Probabilidad: Espacios, Axiomas y Teorema de Bayes",
+            "Variables Aleatorias Discretas y Continuas",
+            "Distribuciones Notables (Normal, Binomial, Poisson)",
+            "Muestreo e Inferencia Estadística",
+            "Contrastes de Hipótesis",
+            "Regresión Lineal y Correlación",
+        ],
+        bibliography: [
+            { title: "Devore, J.L. — Probabilidad y Estadística para Ingeniería (Thompson)", url: "https://es.annas-archive.li/md5/495e767c8feecdf673f661d179c9b766" },
+            { title: "Tomeo, V. y Rodríguez, L. — Métodos Estadísticos para Ingeniería (Garceta)", url: "https://es.annas-archive.li/md5/bf167f76bf92e5a884ac1779f47efe82" },
+            { title: "Spiegel, M.R. — Probabilidad y Estadística (Schaum)", url: "https://es.annas-archive.li/md5/e4738768c9d212cb541edf362353de39" },
+        ],
+        prereqs: ["Cálculo"],
+        leadsTo: ["Aprendizaje Automático I", "Simulación", "Minería de Datos"],
+        canonIndex: [
+            { part: "I. Descriptive Statistics", chapters: ["1. Overview and Descriptive Statistics"] },
+            { part: "II. Probability", chapters: ["2. Probability", "3. Discrete Random Variables", "4. Continuous Random Variables"] },
+            { part: "III. Statistical Inference", chapters: ["6. Point Estimation", "7. Statistical Intervals", "8. Tests of Hypotheses"] },
+            { part: "IV. Regression", chapters: ["12. Simple Linear Regression", "13. Multiple Regression"] }
         ]
     },
 };
