@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { useParams, Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -156,6 +157,34 @@ export default function SubjectDetail() {
     const graphNode = graphData.nodes.find(n => n.route?.endsWith(subjectId || "xyz"));
     const canonicalText = graphNode?.canonicalText;
 
+    const [fetchedBiblio, setFetchedBiblio] = useState<Array<{ title: string; url: string }>>([]);
+
+    useEffect(() => {
+        if (!subject) return;
+
+        // Fetch global bibliography data
+        fetch('/data/bibliographyData.json')
+            .then(res => res.json())
+            .then(data => {
+                // Normalize subject title to match keys in JSON
+                // The script normalizes as: NFD decompose, remove accents, lowercase, remove non-alphanumeric
+                const normalize = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+
+                const key = normalize(subject.title);
+                console.log(`Looking for bibliography key: ${key}`);
+
+                if (data[key]) {
+                    setFetchedBiblio(data[key]);
+                } else {
+                    // Fallback: try to match partials or logs if needed
+                    console.log(`Key ${key} not found in bibliography database.`);
+                }
+            })
+            .catch(err => console.error("Failed to load bibliography data", err));
+    }, [subject]);
+
+    const allBibliography = [...subject.bibliography, ...fetchedBiblio];
+
     if (!subject) {
         return (
             <AppLayout>
@@ -293,14 +322,19 @@ export default function SubjectDetail() {
                             {/* Bibliografía */}
                             <Card className="border-border/40 bg-card/30">
                                 <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-2">
-                                        <BookOpen className="w-4 h-4 text-violet-400" />
-                                        Bibliografía
-                                    </CardTitle>
+                                    <div className="flex items-center justify-between">
+                                        <CardTitle className="text-lg flex items-center gap-2">
+                                            <BookOpen className="w-4 h-4 text-violet-400" />
+                                            Bibliografía ({allBibliography.length})
+                                        </CardTitle>
+                                        <Badge variant="outline" className="text-[10px] bg-violet-500/10 text-violet-300 border-violet-500/20">
+                                            {fetchedBiblio.length > 0 ? "Fuente: Anna's Archive + Manual" : "Fuente: Manual"}
+                                        </Badge>
+                                    </div>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="space-y-3">
-                                        {subject.bibliography.map((book, i) => (
+                                    <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                        {allBibliography.map((book, i) => (
                                             <a
                                                 key={i}
                                                 href={book.url}
