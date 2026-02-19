@@ -442,6 +442,188 @@ const subjectData: Record<string, {
             { part: "IV. Regression", chapters: ["12. Simple Linear Regression", "13. Multiple Regression"] }
         ]
     },
+    "historiografia": {
+        title: "Historiografía y Metodología",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 4,
+        semester: "S1",
+        atom: "LINGÜÍSTICA",
+        description: "La historia de la historia. El análisis crítico de cómo se construye el relato del pasado. Desde el positivismo hasta la Escuela de los Annales y el giro cultural.",
+        topics: [
+            "El Tiempo Histórico y la Memoria",
+            "La Escuela de los Annales: Braudel, Bloch, Febvre",
+            "Materialismo Histórico y Marxismo Británico",
+            "Nueva Historia Cultural y Microhistoria",
+            "El oficio del historiador: Fuentes y Crítica",
+            "Postmodernismo y el fin de los Grandes Relatos",
+        ],
+        bibliography: [
+            { title: "Bloch, M. — Apología para la historia o el oficio de historiador", url: "https://es.annas-archive.li/md5/737e079de07999de07999de07999de07999" },
+            { title: "Braudel, F. — La historia y las ciencias sociales", url: "https://es.annas-archive.li/md5/279efb97779de07999de07999de07999de07999" },
+            { title: "Carr, E.H. — ¿Qué es la historia?", url: "https://es.annas-archive.li/md5/8825e347db779de07999de07999de07999de07999" },
+            { title: "Fontana, J. — La historia de los hombres", url: "https://es.annas-archive.li/md5/b284f213-df36-4f10-8b42-272b57e566b6" },
+        ],
+        prereqs: ["H. Antigua", "H. Medieval", "H. Moderna", "H. Contemporánea"],
+        leadsTo: ["Investigación Histórica", "Patrimonio Cultural"],
+        canonIndex: [
+            { part: "I. El oficio", chapters: ["1. La elección del historiador", "2. La observación histórica", "3. La crítica"] },
+            { part: "II. El tiempo", chapters: ["4. El tiempo del historiador", "5. Los orígenes y las causas"] },
+            { part: "III. Corrientes", chapters: ["6. La Escuela de los Annales", "7. El giro narrativista"] }
+        ]
+    },
+    "contemporanea": {
+        title: "Historia Universal Contemporánea",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 3,
+        semester: "S1",
+        atom: "LINGÜÍSTICA",
+        description: "El nacimiento del mundo moderno. Revoluciones burguesas, industrialización y el auge y caída de los imperios coloniales. Basado en la trilogía de Hobsbawm.",
+        topics: [
+            "La Era de la Revolución (1789-1848)",
+            "La Era del Capital (1848-1875)",
+            "La Era del Imperio (1875-1914)",
+            "El Corto Siglo XX (1914-1991)",
+            "Nacionalismos y movimientos sociales",
+            "La Gran Transformación del capitalismo",
+        ],
+        bibliography: [
+            { title: "Hobsbawm, E. — La era de la revolución (Crítica)", url: "https://es.annas-archive.li/md5/1f1cc79de07999de07999de07999de07999" },
+            { title: "Hobsbawm, E. — La era del capital", url: "https://es.annas-archive.li/md5/d8d4f0c8797f09e4e92df720772add50" },
+            { title: "Polanny, K. — La gran transformación", url: "https://es.annas-archive.li/md5/7dec52ff336add2d420ce65605299ce7" },
+            { title: "Fontana, J. — Capitalismo y democracia", url: "https://es.annas-archive.li/md5/aac5a2cd9bffa5b38ac73baf0d5e840d" },
+        ],
+        prereqs: ["Historia Moderna"],
+        leadsTo: ["Historiografía", "Relaciones Internacionales"],
+        canonIndex: [
+            { part: "I. La Doble Revolución", chapters: ["1. Revolución Industrial", "2. Revolución Francesa", "3. La Guerra"] },
+            { part: "II. El Triunfo del Burgués", chapters: ["4. El Gran Boom", "5. La unificación del mundo"] },
+            { part: "III. Crisis y Catástrofes", chapters: ["6. La Era del Imperio", "7. El Siglo XX corto"] }
+        ]
+    },
+    "moderna": {
+        title: "Historia Moderna Universal",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 2,
+        semester: "S1",
+        atom: "LINGÜÍSTICA",
+        description: "De la caída de Constantinopla a la Toma de la Bastilla. Humanismo, Reforma, descubrimientos geográficos y el nacimiento del Estado Absoluto.",
+        topics: [
+            "Renacimiento y Humanismo",
+            "La Reforma de Lutero y la Contrarreforma",
+            "Expansión europea y colonización",
+            "El Estado Moderno: De la Monarquía al Absolutismo",
+            "La crisis del siglo XVII",
+            "La Ilustración y el fin del Antiguo Régimen",
+        ],
+        bibliography: [
+            { title: "Braudel, F. — Civilización material, economía y capitalismo", url: "https://es.annas-archive.li/md5/c673d3a0e69b936d07e606a59868e4de" },
+            { title: "Tenenti, A. — La Edad Moderna", url: "https://es.annas-archive.li/md5/6ee09efc199bac8d6d732f06e8bb805a" },
+            { title: "Elliot, J.H. — El mundo de los validos", url: "https://es.annas-archive.li/md5/05f644f892cc3db2c17783919d5db9cb" },
+        ],
+        prereqs: ["Historia Medieval"],
+        leadsTo: ["Historia Contemporánea"],
+        canonIndex: [
+            { part: "I. Amanecer", chapters: ["1. Los mundos extra-europeos", "2. El Renacimiento", "3. La Cristiandad fracturada"] },
+            { part: "II. Estructuras", chapters: ["4. Población y subsistencia", "5. El comercio transatlántico"] },
+            { part: "III. Poderes", chapters: ["6. Absolutismo", "7. Ilustración y Despotismo"] }
+        ]
+    },
+    "medieval": {
+        title: "Historia Medieval Universal",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 1,
+        semester: "S2",
+        atom: "LINGÜÍSTICA",
+        description: "De las invasiones germánicas al Renacimiento. El feudalismo, las cruzadas y el nacimiento de las universidades. El canon de Jacques Le Goff.",
+        topics: [
+            "Alta Edad Media: Reinos germánicos y Bizancio",
+            "El mundo islámico y su expansión",
+            "La Plena Edad Media: Feudalismo y ciudades",
+            "Baja Edad Media: Crisis y transformaciones",
+            "Cultura y mentalidades medievales",
+            "El nacimiento de Europa",
+        ],
+        bibliography: [
+            { title: "Le Goff, J. — La civilización del Occidente medieval", url: "https://es.annas-archive.li/md5/949f2651abc029df6e38febb69d0d195" },
+            { title: "Duby, G. — Guerreros y campesinos (Siglo XXI)", url: "https://es.annas-archive.li/md5/fa813359a6211010884d29b7fd95dbbb" },
+            { title: "Wickham, C. — Una historia nueva de la Alta Edad Media", url: "https://es.annas-archive.li/md5/d3f2643a6480028e4021b669743445e5" },
+        ],
+        prereqs: ["Historia Antigua"],
+        leadsTo: ["Historia Moderna"],
+        canonIndex: [
+            { part: "I. Los Cimientos", chapters: ["1. El asentamiento de los bárbaros", "2. La tentativa germánica", "3. El mundo cristiano"] },
+            { part: "II. La Expansión", chapters: ["4. La formación de la cristiandad", "5. La conquista campesina", "6. El despertar urbano"] },
+            { part: "III. La Civilización", chapters: ["7. Estructuras materiales", "8. Formas de sentir y pensar"] }
+        ]
+    },
+    "antigua": {
+        title: "Historia Antigua",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 1,
+        semester: "S1",
+        atom: "LINGÜÍSTICA",
+        description: "De la escritura a la caída de Roma. El mundo clásico, las polis griegas y la hegemonía romana. Canonizado con Mary Beard y Fustel de Coulanges.",
+        topics: [
+            "Próximo Oriente y Egipto: El origen de la civilización",
+            "Grecia Arcaica y Clásica: La invención de la política",
+            "El Helenismo y Alejandro Magno",
+            "Roma: De la Monarquía al Imperio",
+            "Religiones y sociedades antiguas",
+            "La crisis del Bajo Imperio",
+        ],
+        bibliography: [
+            { title: "Beard, M. — SPQR: Una historia de la Antigua Roma", url: "https://es.annas-archive.li/md5/88055ba857076fe3cc653ae6ec9a71ac" },
+            { title: "Fustel de Coulanges — La ciudad antigua", url: "https://es.annas-archive.li/md5/491b1e4d96eed43b40822cb69590052a" },
+            { title: "Finley, M. — La economía de la Antigüedad", url: "https://es.annas-archive.li/md5/d1f1cc79f00124172aeb9116d756a7a5" },
+        ],
+        prereqs: ["Prehistoria"],
+        leadsTo: ["Historia Medieval"],
+        canonIndex: [
+            { part: "I. El Origen", chapters: ["1. El valle del Nilo", "2. Las ciudades de Mesopotamia", "3. Creta y Micenas"] },
+            { part: "II. El Esplendor", chapters: ["4. La democracía ateniense", "5. El imperio de Alejandro"] },
+            { part: "III. El Dominio", chapters: ["6. La expansión de la República", "7. El Principado y la Pax Romana"] }
+        ]
+    },
+    "prehistoria": {
+        title: "Prehistoria Universal",
+        degree: "Grado en Historia",
+        degreeRoute: "/track/history/intro",
+        university: "UGR",
+        course: 1,
+        semester: "S1",
+        atom: "LINGÜÍSTICA",
+        description: "Los orígenes de la humanidad. Desde la hominización hasta el nacimiento de la agricultura y los estados. Canonizado con Graeber & Wengrow.",
+        topics: [
+            "Procesos de Hominización",
+            "Paleolítico: Sociedades cazadoras-recolectoras",
+            "La Revolución Neolítica: Sedentarismo y domesticación",
+            "Edad de los Metales: El nacimiento de la jerarquía",
+            "Arte y chamanismo prehistórico",
+            "Megalitismo y primeras ciudades",
+        ],
+        bibliography: [
+            { title: "Graeber, D. & Wengrow, D. — El amanecer de todo", url: "https://es.annas-archive.li/md5/fd8e6db85a1037f22686cdbeeb470817" },
+            { title: "Sahlins, M. — Economía de la Edad de Piedra", url: "https://es.annas-archive.li/md5/aac5a2cd9bffa5b38ac73baf0d5e840d" },
+            { title: "Eiroa, J.J. — Nociones de Prehistoria General", url: "https://es.annas-archive.li/md5/b892402f3b5ed0a0e659481623f2ac7a" },
+        ],
+        prereqs: ["Ninguno"],
+        leadsTo: ["Historia Antigua"],
+        canonIndex: [
+            { part: "I. Orígenes", chapters: ["1. Caminando sobre dos pies", "2. La mente simbólica", "3. Dispersión global"] },
+            { part: "II. Transformaciones", chapters: ["4. El mito de la agricultura", "5. Formas de libertad"] },
+            { part: "III. Complejidad", chapters: ["6. Los primeros reyes", "7. La ciudad antes del Estado"] }
+        ]
+    },
 };
 
 const neuralPathSteps = ["Fund. IA", "ML I", "ML II", "Deep Learning", "MBHB"];

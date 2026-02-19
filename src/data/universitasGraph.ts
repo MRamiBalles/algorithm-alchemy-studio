@@ -68,6 +68,7 @@ export const graphData = {
 
         // ─── LEVEL 3: LEGENDARY ───
         { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 3, color: "#FF0000", size: 20, role: "legendary", route: "/subject/uhu/m-ing-inf/mbhb", description: "Metaheurísticas y Modelos Bioinspirados. La síntesis de optimización, computación evolutiva y heurísticas de búsqueda.", canonicalText: "Metaheuristics: From Design to Implementation (El-Ghazali Talbi)" },
+        { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 3, color: "#FF8800", size: 20, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos. La comprensión del pasado como estructura viviente.", canonicalText: "The Mediterranean (Fernand Braudel)" },
     ] as GraphNode[],
 
     links: [
@@ -92,7 +93,18 @@ export const graphData = {
         { source: "DEG_ARTS", target: "SUB_DRAW", type: "Praxis" },
         { source: "DEG_ARTS", target: "SUB_DIG", type: "Techne" },
         { source: "DEG_LAW", target: "SUB_CIVIL", type: "Norm" },
+        { source: "DEG_HIST", target: "SUB_PRE", type: "Era" },
         { source: "DEG_HIST", target: "SUB_ANC", type: "Era" },
+        { source: "DEG_HIST", target: "SUB_MED", type: "Era" },
+        { source: "DEG_HIST", target: "SUB_MOD", type: "Era" },
+        { source: "DEG_HIST", target: "SUB_CONT", type: "Era" },
+        { source: "DEG_HIST", target: "SUB_HISTG", type: "Meta" },
+        { source: "SUB_PRE", target: "SUB_ANC", type: "Timeline" },
+        { source: "SUB_ANC", target: "SUB_MED", type: "Timeline" },
+        { source: "SUB_MED", target: "SUB_MOD", type: "Timeline" },
+        { source: "SUB_MOD", target: "SUB_CONT", type: "Timeline" },
+        { source: "SUB_CONT", target: "SUB_HISTG", type: "Reflection" },
+        { source: "SUB_HISTG", target: "APEX_HIST", type: "Synthesis" },
         { source: "DEG_CS", target: "SUB_ALG", type: "Core" },
         { source: "DEG_MED", target: "SUB_ANAT", type: "Core" },
         { source: "DEG_SPORT", target: "SUB_FISIO", type: "Core" },
