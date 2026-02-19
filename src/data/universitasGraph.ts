@@ -13,6 +13,7 @@ export interface GraphNode {
     y?: number;
     vx?: number;
     vy?: number;
+    canonicalText?: string; // The single source of truth for this node
 }
 
 export interface GraphLink {
@@ -48,15 +49,15 @@ export const graphData = {
         { id: "SUB_DIG", group: "SUBJECT", label: "Creación Digital", level: 2, role: "subject" },
         { id: "SUB_CIVIL", group: "SUBJECT", label: "Derecho Civil", level: 2, role: "subject" },
         { id: "SUB_ANC", group: "SUBJECT", label: "Historia Antigua", level: 2, role: "subject" },
-        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/mbhb" },
+        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/mbhb", canonicalText: "Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein)" },
         { id: "SUB_ANAT", group: "SUBJECT", label: "Anatomía Humana", level: 2, role: "subject" },
         { id: "SUB_FISIO", group: "SUBJECT", label: "Fisiología", level: 2, role: "subject" },
 
         // ─── IA/ML CHAIN (The Neural Path) ───
-        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-ia", description: "Russell & Norvig. La puerta de entrada a IA." },
-        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-1", color: "#8B5CF6", description: "Hastie/Tibshirani. Statistical Learning." },
-        { id: "SUB_ML2", group: "SUBJECT", label: "Aprendizaje Automático II", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-2", color: "#8B5CF6", description: "Advanced ML: Feature Engineering, Ensemble Methods." },
-        { id: "SUB_DL", group: "SUBJECT", label: "Redes Neuronales", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/deep-learning", color: "#8B5CF6", description: "Deep Learning. El puente neural hacia MBHB." },
+        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-ia", description: "Russell & Norvig. La puerta de entrada a IA.", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)" },
+        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-1", color: "#8B5CF6", description: "Hastie/Tibshirani. Statistical Learning.", canonicalText: "The Elements of Statistical Learning (Hastie, Tibshirani, Friedman)" },
+        { id: "SUB_ML2", group: "SUBJECT", label: "Aprendizaje Automático II", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-2", color: "#8B5CF6", description: "Advanced ML: Feature Engineering, Ensemble Methods.", canonicalText: "Pattern Recognition and Machine Learning (Bishop)" },
+        { id: "SUB_DL", group: "SUBJECT", label: "Redes Neuronales", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/deep-learning", color: "#8B5CF6", description: "Deep Learning. El puente neural hacia MBHB.", canonicalText: "Deep Learning (Goodfellow, Bengio, Courville)" },
 
         // ─── LEVEL 3: LEGENDARY ───
         { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 3, color: "#FF0000", size: 20, role: "legendary", route: "/mbhb", description: "Modelos Bioinspirados y Heurísticas de Búsqueda. La cúspide de la IA y la Computación." },

@@ -2,7 +2,8 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { useParams, Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Brain, ChevronLeft, ExternalLink, FileText, Sparkles, Video } from "lucide-react";
+import { ArrowRight, BookOpen, Brain, ChevronLeft, ExternalLink, FileText, Sparkles, Video, Library } from "lucide-react";
+import { graphData } from "@/data/universitasGraph";
 
 // Subject data — keyed by route slug
 const subjectData: Record<string, {
@@ -19,6 +20,7 @@ const subjectData: Record<string, {
     prereqs: string[];
     leadsTo: string[];
     neuralPathPosition?: number; // 1-4 if part of the neural path
+    canonIndex?: Array<{ part: string; chapters: string[] }>; // The "Skeleton" from the Canon Method
 }> = {
     "fundamentos-ia": {
         title: "Fundamentos de Inteligencia Artificial",
@@ -49,6 +51,12 @@ const subjectData: Record<string, {
         prereqs: ["Lógica Matemática", "Fundamentos de la Programación II", "Estructuras de Datos y Algoritmos"],
         leadsTo: ["Aprendizaje Automático I", "Sistemas Basados en Conocimiento"],
         neuralPathPosition: 1,
+        canonIndex: [
+            { part: "I. Artificial Intelligence", chapters: ["1. Introduction", "2. Intelligent Agents"] },
+            { part: "II. Problem Solving", chapters: ["3. Solving Problems by Searching", "4. Search in Complex Environments", "5. Adversarial Search and Games", "6. Constraint Satisfaction Problems"] },
+            { part: "III. Knowledge and Reasoning", chapters: ["7. Logical Agents", "8. First-Order Logic", "9. Inference in First-Order Logic", "10. Knowledge Representation", "11. Automated Planning", "12. Quantifying Uncertainty"] },
+            { part: "IV. Learning", chapters: ["19. Learning from Examples", "20. Learning Probabilistic Models", "21. Deep Learning"] }
+        ]
     },
     "aprendizaje-automatico-1": {
         title: "Aprendizaje Automático I",
@@ -141,6 +149,13 @@ export default function SubjectDetail() {
     const { subjectId } = useParams();
     const subject = subjectData[subjectId || ""];
 
+    // Find the corresponding node in the graph to get the canonical text if available
+    // We try to match by route or ID strategies if needed, but for now we look up by route
+    // Since subjectData keys aren't directly in the graph, we might need a mapping or just look for the node that links here.
+    // Actually, looking at graphData, routes are like "/subject/ucm/ingenieria-datos-ia/fundamentos-ia"
+    const graphNode = graphData.nodes.find(n => n.route?.endsWith(subjectId || "xyz"));
+    const canonicalText = graphNode?.canonicalText;
+
     if (!subject) {
         return (
             <AppLayout>
@@ -180,6 +195,27 @@ export default function SubjectDetail() {
                         <p className="text-muted-foreground">{subject.description}</p>
                     </div>
 
+                    {/* Canon Method: The Single Source of Truth */}
+                    {canonicalText && (
+                        <div className="mb-8 p-6 rounded-xl border border-amber-500/30 bg-amber-500/10 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Library className="w-32 h-32" />
+                            </div>
+                            <div className="relative z-10">
+                                <div className="flex items-center gap-2 mb-2 text-amber-400 font-mono text-xs uppercase tracking-widest">
+                                    <Sparkles className="w-3 h-3" />
+                                    <span>Texto Canónico (Fuente Única)</span>
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-serif font-bold text-amber-100 mb-2">
+                                    {canonicalText}
+                                </h3>
+                                <p className="text-sm text-amber-200/60 max-w-2xl">
+                                    Siguiendo el principio de Pareto (80/20), este es el único texto que necesitas dominar para comprender la esencia de esta materia. Todo el contenido generado se basa en su estructura.
+                                </p>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Neural Path Progress */}
                     {subject.neuralPathPosition && (
                         <div className="mb-8 p-4 rounded-lg border border-violet-500/20 bg-violet-500/5">
@@ -194,12 +230,12 @@ export default function SubjectDetail() {
                                     <span key={step} className="flex items-center gap-1">
                                         {i > 0 && <ArrowRight className="w-3 h-3 text-violet-500/50" />}
                                         <span className={`px-2 py-0.5 rounded text-xs ${i + 1 === subject.neuralPathPosition
-                                                ? 'bg-violet-500/30 border border-violet-400 text-white font-bold'
-                                                : i + 1 < subject.neuralPathPosition!
-                                                    ? 'bg-violet-500/10 border border-violet-500/20 text-violet-400'
-                                                    : step === 'MBHB'
-                                                        ? 'bg-red-500/10 border border-red-500/20 text-red-400'
-                                                        : 'bg-gray-800 border border-gray-700 text-gray-500'
+                                            ? 'bg-violet-500/30 border border-violet-400 text-white font-bold'
+                                            : i + 1 < subject.neuralPathPosition!
+                                                ? 'bg-violet-500/10 border border-violet-500/20 text-violet-400'
+                                                : step === 'MBHB'
+                                                    ? 'bg-red-500/10 border border-red-500/20 text-red-400'
+                                                    : 'bg-gray-800 border border-gray-700 text-gray-500'
                                             }`}>
                                             {step === 'MBHB' && <Sparkles className="w-3 h-3 inline mr-1" />}
                                             {step}
@@ -214,23 +250,43 @@ export default function SubjectDetail() {
                         {/* Main Content (2 cols) */}
                         <div className="md:col-span-2 space-y-6">
 
-                            {/* Temario */}
+                            {/* Temario (Canon Index if available, otherwise flat topics) */}
                             <Card className="border-border/40 bg-card/30">
                                 <CardHeader>
                                     <CardTitle className="text-lg flex items-center gap-2">
                                         <FileText className="w-4 h-4 text-cyan-400" />
-                                        Temario
+                                        {subject.canonIndex ? "Índice Canónico (Russell & Norvig)" : "Temario"}
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <ol className="space-y-2">
-                                        {subject.topics.map((topic, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm">
-                                                <span className="text-xs font-mono text-muted-foreground/60 mt-0.5 w-5 shrink-0">{i + 1}.</span>
-                                                <span className="text-foreground/80">{topic}</span>
-                                            </li>
-                                        ))}
-                                    </ol>
+                                    {subject.canonIndex ? (
+                                        <div className="space-y-4">
+                                            {subject.canonIndex.map((part, i) => (
+                                                <div key={i}>
+                                                    <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 border-b border-border/30 pb-1">
+                                                        {part.part}
+                                                    </h4>
+                                                    <ul className="space-y-1.5 pl-2">
+                                                        {part.chapters.map((chap, j) => (
+                                                            <li key={j} className="text-sm text-foreground/80 flex items-center gap-2">
+                                                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/30"></span>
+                                                                {chap}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <ol className="space-y-2">
+                                            {subject.topics.map((topic, i) => (
+                                                <li key={i} className="flex items-start gap-3 text-sm">
+                                                    <span className="text-xs font-mono text-muted-foreground/60 mt-0.5 w-5 shrink-0">{i + 1}.</span>
+                                                    <span className="text-foreground/80">{topic}</span>
+                                                </li>
+                                            ))}
+                                        </ol>
+                                    )}
                                 </CardContent>
                             </Card>
 
