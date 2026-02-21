@@ -14,6 +14,7 @@ export interface GraphNode {
     vx?: number;
     vy?: number;
     canonicalText?: string; // The single source of truth for this node
+    bibliographyPath?: string; // Path to the bibliografia_annas_archive.md file
 }
 
 export interface GraphLink {
@@ -24,51 +25,50 @@ export interface GraphLink {
 
 export const graphData = {
     meta: {
-        version: "11.0 (The Neural Path)",
-        description: "Unified Knowledge Graph: 4 Atoms -> Degrees -> Subjects -> MBHB"
+        version: "12.0 (The Neural Taxonomy)",
+        description: "Unified Knowledge Graph: -3 (Atoms) to 4 (Apexes)"
     },
     nodes: [
-        // ─── LEVEL -2: ATOMIC TETRAHEDRON ───
-        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -2, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. La capacidad simbólica que permite expresar conocimiento." },
-        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -2, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. La precisión cuantitativa que estructura el universo." },
-        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -2, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. El mecanismo de deducción y validación." },
-        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -2, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa." },
+        // ─── LEVEL -3: ATOMIC CONSTANTS ───
+        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. La capacidad simbólica que permite expresar conocimiento." },
+        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. La precisión cuantitativa que estructura el universo." },
+        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. El mecanismo de deducción y validación." },
+        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa." },
 
-        // ─── LEVEL 1: DEGREES ───
-        { id: "DEG_LAW", group: "DEGREE", label: "DERECHO", level: 1, color: "#FF4400", role: "degree", route: "/track/law/intro" },
-        { id: "DEG_HIST", group: "DEGREE", label: "HISTORIA", level: 1, color: "#FF8800", role: "degree", route: "/track/history/intro" },
-        { id: "DEG_CS", group: "DEGREE", label: "INFORMÁTICA", level: 1, color: "#0088FF", role: "degree", route: "/track/intelligence/intro" },
-        { id: "DEG_PHYS", group: "DEGREE", label: "FÍSICA", level: 1, color: "#00FFCC", role: "degree", route: "/track/physics/intro" },
-        { id: "DEG_ARTS", group: "DEGREE", label: "BELLAS ARTES", level: 1, color: "#FF0088", role: "degree", route: "/track/visual/intro" },
-        { id: "DEG_SPORT", group: "DEGREE", label: "CC. DEPORTE", level: 1, color: "#00FF88", role: "degree", route: "/track/sport/intro" },
-        { id: "DEG_MED", group: "DEGREE", label: "MEDICINA", level: 1, color: "#00CC00", role: "degree", route: "/track/medicine/intro" },
-        { id: "DEG_IDIA", group: "DEGREE", label: "ING. DATOS e IA", level: 1, color: "#8B5CF6", role: "degree", route: "/degree/ingenieria-datos-ia" },
+        // ─── LEVEL -2: EPISTEMOLOGICAL SUBSTRATE (ZONE 0) ───
+        { id: "Z0_MATH", group: "FOUNDATION", label: "MATEMÁTICAS", level: -2, color: "#4444FF", size: 25, role: "degree" },
+        { id: "Z0_PHYS", group: "FOUNDATION", label: "FÍSICA", level: -2, color: "#44FFFF", size: 25, role: "degree" },
+        { id: "Z0_PHIL", group: "FOUNDATION", label: "FILOSOFÍA", level: -2, color: "#FF44FF", size: 25, role: "degree" },
 
-        // ─── LEVEL 2: SUBJECTS (Samples) ───
-        { id: "SUB_DRAW", group: "SUBJECT", label: "Dibujo I", level: 2, role: "subject" },
-        { id: "SUB_DIG", group: "SUBJECT", label: "Creación Digital", level: 2, role: "subject" },
-        { id: "SUB_CIVIL", group: "SUBJECT", label: "Derecho Civil", level: 2, role: "subject" },
-        { id: "SUB_ANC", group: "SUBJECT", label: "Historia Antigua", level: 2, role: "subject" },
-        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 2, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein)" },
-        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/algebra-lineal", canonicalText: "Introduction to Linear Algebra (Gilbert Strang)" },
-        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/calculo", canonicalText: "Calculus (James Stewart)" },
-        { id: "SUB_DIS", group: "SUBJECT", label: "Matemática Discreta", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/matematica-discreta", canonicalText: "Discrete Mathematics and Its Applications (Kenneth Rosen)" },
-        { id: "SUB_EDS", group: "SUBJECT", label: "Estructuras de Datos", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/estructuras-de-datos", canonicalText: "ADTs, Data Structures, and Problem Solving with C++ (Larry Nyhoff)" },
-        { id: "SUB_PROG", group: "SUBJECT", label: "Fund. Programación", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-programacion", canonicalText: "Programming: Principles and Practice using C++ (Bjarne Stroustrup)" },
-        { id: "SUB_LOG", group: "SUBJECT", label: "Lógica Matemática", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/logica-matematica", canonicalText: "Mathematical Logic for Computer Science (Mordechai Ben-Ari)" },
-        { id: "SUB_EST", group: "SUBJECT", label: "Prob. y Estadística", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/probabilidad-estadistica", canonicalText: "Probability and Statistics for Engineering and the Sciences (Jay L. Devore)" },
-        { id: "SUB_ANAT", group: "SUBJECT", label: "Anatomía Humana", level: 2, role: "subject" },
-        { id: "SUB_FISIO", group: "SUBJECT", label: "Fisiología", level: 2, role: "subject" },
+        // ─── LEVEL 1: ONTOLOGICAL PILLARS (ZONES 1-6) ───
+        { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
+        { id: "Z2_ENG", group: "PILLAR", label: "INGENIERÍA", level: 1, color: "#00FFCC" },
+        { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00" },
+        { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD" },
+        { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400" },
+        { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800" },
 
-        // ─── IA/ML CHAIN (The Neural Path) ───
-        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-ia", description: "Russell & Norvig. La puerta de entrada a IA.", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)" },
-        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-1", color: "#8B5CF6", description: "Hastie/Tibshirani. Statistical Learning.", canonicalText: "The Elements of Statistical Learning (Hastie, Tibshirani, Friedman)" },
-        { id: "SUB_ML2", group: "SUBJECT", label: "Aprendizaje Automático II", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-2", color: "#8B5CF6", description: "Advanced ML: Feature Engineering, Ensemble Methods.", canonicalText: "Pattern Recognition and Machine Learning (Bishop)" },
-        { id: "SUB_DL", group: "SUBJECT", label: "Redes Neuronales", level: 2, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/deep-learning", color: "#8B5CF6", description: "Deep Learning. El puente neural hacia MBHB.", canonicalText: "Deep Learning (Goodfellow, Bengio, Courville)" },
+        // ─── LEVEL 1.5: CYBERNETIC NEXUS (ZONE 7) ───
+        { id: "DEG_CS", group: "NEXUS", label: "INFORMÁTICA", level: 1.5, color: "#0088FF", role: "degree", route: "/track/intelligence/intro" },
+        { id: "DEG_IDIA", group: "NEXUS", label: "ING. DATOS e IA", level: 1.5, color: "#8B5CF6", role: "degree", route: "/degree/ingenieria-datos-ia" },
 
-        // ─── LEVEL 3: LEGENDARY ───
-        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 3, color: "#FF0000", size: 20, role: "legendary", route: "/subject/uhu/m-ing-inf/mbhb", description: "Metaheurísticas y Modelos Bioinspirados. La síntesis de optimización, computación evolutiva y heurísticas de búsqueda.", canonicalText: "Metaheuristics: From Design to Implementation (El-Ghazali Talbi)" },
-        { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 3, color: "#FF8800", size: 20, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos. La comprensión del pasado como estructura viviente.", canonicalText: "The Mediterranean (Fernand Braudel)" },
+        // ─── LEVEL 2: DEGREES (Samples) ───
+        { id: "DEG_LAW", group: "DEGREE", label: "DERECHO", level: 2, color: "#FF4400", role: "degree", route: "/track/law/intro" },
+        { id: "DEG_HIST", group: "DEGREE", label: "HISTORIA", level: 2, color: "#FF8800", role: "degree", route: "/track/history/intro" },
+        { id: "DEG_ARTS", group: "DEGREE", label: "BELLAS ARTES", level: 2, color: "#FF0088", role: "degree", route: "/track/visual/intro" },
+        { id: "DEG_SPORT", group: "DEGREE", label: "CC. DEPORTE", level: 2, color: "#00FF88", role: "degree", route: "/track/sport/intro" },
+        { id: "DEG_MED", group: "DEGREE", label: "MEDICINA", level: 2, color: "#00CC00", role: "degree", route: "/track/medicine/intro" },
+
+        // ─── LEVEL 3: SUBJECTS (With Bibliographies) ───
+        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md" },
+        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/algebra-lineal", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md" },
+        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/calculo", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md" },
+        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-ia", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md" },
+        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-1", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md" },
+
+        // ─── LEVEL 4: APEXES ───
+        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/subject/uhu/m-ing-inf/mbhb", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Metaheuristics (Talbi)" },
+        { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 4, color: "#FF8800", size: 25, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos.", canonicalText: "The Mediterranean (Braudel)" },
     ] as GraphNode[],
 
     links: [
@@ -78,65 +78,36 @@ export const graphData = {
         { source: "ATOM_ALG", target: "ATOM_SEM", type: "Ouroboros" },
         { source: "ATOM_AIS", target: "ATOM_ALG", type: "Proportion" },
 
-        // ─── ATOM → DEGREE ───
-        { source: "ATOM_SEM", target: "DEG_LAW", type: "Normative" },
-        { source: "ATOM_SEM", target: "DEG_HIST", type: "Narrative" },
-        { source: "ATOM_ALG", target: "DEG_CS", type: "Computation" },
-        { source: "ATOM_ALG", target: "DEG_PHYS", type: "Calculus" },
-        { source: "ATOM_ALG", target: "DEG_IDIA", type: "DataScience" },
-        { source: "ATOM_AIS", target: "DEG_ARTS", type: "Perception" },
-        { source: "ATOM_AIS", target: "DEG_SPORT", type: "Proprioception" },
-        { source: "DEG_MED", target: "ATOM_AIS", type: "Somatic" },
-        { source: "DEG_MED", target: "DEG_SPORT", type: "Bio-Link" },
+        // ─── ATOM → FOUNDATION ───
+        { source: "ATOM_ALG", target: "Z0_MATH", type: "Foundation" },
+        { source: "ATOM_CRI", target: "Z0_PHIL", type: "Episteme" },
+        { source: "ATOM_AIS", target: "Z0_PHYS", type: "Reality" },
+
+        // ─── FOUNDATION → PILLAR ───
+        { source: "Z0_MATH", target: "Z2_ENG", type: "Prerequisite" },
+        { source: "Z0_PHYS", target: "Z1_MATTER", type: "Prerequisite" },
+        { source: "Z0_PHIL", target: "Z5_SOCIETY", type: "Prerequisite" },
+        { source: "Z0_PHIL", target: "Z6_CULTURE", type: "Prerequisite" },
+        { source: "Z0_MATH", target: "Z4_MIND", type: "Abstract" },
+
+        // ─── PILLAR → NEXUS (CS) ───
+        { source: "Z2_ENG", target: "DEG_CS", type: "Integration" },
+        { source: "Z4_MIND", target: "DEG_IDIA", type: "NeuralIntegration" },
+
+        // ─── NEXUS → DEGREE ───
+        { source: "DEG_CS", target: "DEG_LAW", type: "Bridge" },
+        { source: "DEG_CS", target: "DEG_HIST", type: "Bridge" },
 
         // ─── DEGREE → SUBJECT ───
-        { source: "DEG_ARTS", target: "SUB_DRAW", type: "Praxis" },
-        { source: "DEG_ARTS", target: "SUB_DIG", type: "Techne" },
-        { source: "DEG_LAW", target: "SUB_CIVIL", type: "Norm" },
-        { source: "DEG_HIST", target: "SUB_PRE", type: "Era" },
-        { source: "DEG_HIST", target: "SUB_ANC", type: "Era" },
-        { source: "DEG_HIST", target: "SUB_MED", type: "Era" },
-        { source: "DEG_HIST", target: "SUB_MOD", type: "Era" },
-        { source: "DEG_HIST", target: "SUB_CONT", type: "Era" },
-        { source: "DEG_HIST", target: "SUB_HISTG", type: "Meta" },
-        { source: "SUB_PRE", target: "SUB_ANC", type: "Timeline" },
-        { source: "SUB_ANC", target: "SUB_MED", type: "Timeline" },
-        { source: "SUB_MED", target: "SUB_MOD", type: "Timeline" },
-        { source: "SUB_MOD", target: "SUB_CONT", type: "Timeline" },
-        { source: "SUB_CONT", target: "SUB_HISTG", type: "Reflection" },
-        { source: "SUB_HISTG", target: "APEX_HIST", type: "Synthesis" },
         { source: "DEG_CS", target: "SUB_ALG", type: "Core" },
-        { source: "DEG_MED", target: "SUB_ANAT", type: "Core" },
-        { source: "DEG_SPORT", target: "SUB_FISIO", type: "Core" },
-
-        // ─── THE NEURAL PATH (IA → ML → DL → MBHB) ───
-        { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
         { source: "DEG_IDIA", target: "SUB_LA", type: "Foundation" },
         { source: "DEG_IDIA", target: "SUB_CALC", type: "Foundation" },
-        { source: "DEG_IDIA", target: "SUB_EDS", type: "Foundation" },
-        { source: "DEG_IDIA", target: "SUB_DIS", type: "Foundation" },
-        { source: "DEG_IDIA", target: "SUB_PROG", type: "Foundation" },
-        { source: "DEG_IDIA", target: "SUB_LOG", type: "Foundation" },
-        { source: "DEG_IDIA", target: "SUB_EST", type: "Foundation" },
-        { source: "SUB_PROG", target: "SUB_EDS", type: "Prerequisite" },
-        { source: "SUB_DIS", target: "SUB_LOG", type: "Prerequisite" },
-        { source: "SUB_EST", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
         { source: "SUB_LA", target: "SUB_ML1", type: "Prerequisite" },
-        { source: "SUB_CALC", target: "SUB_ML1", type: "Prerequisite" },
-        { source: "SUB_CALC", target: "SUB_DL", type: "Prerequisite" },
-        { source: "SUB_EDS", target: "SUB_ALG", type: "Prerequisite" },
-        { source: "SUB_DIS", target: "SUB_ALG", type: "Prerequisite" },
         { source: "SUB_FIA", target: "SUB_ML1", type: "Prerequisite" },
-        { source: "SUB_ML1", target: "SUB_ML2", type: "Prerequisite" },
-        { source: "SUB_ML2", target: "SUB_DL", type: "Specialization" },
-        { source: "SUB_DL", target: "APEX_MBHB", type: "NeuralPath" },
 
-        // ─── SIBLING (CS ↔ Data Science) ───
-        { source: "DEG_CS", target: "DEG_IDIA", type: "Sibling" },
-
-        // ─── SOMATIC PATH → MBHB ───
-        { source: "DEG_SPORT", target: "APEX_MBHB", type: "Apex" },
-        { source: "SUB_FISIO", target: "APEX_MBHB", type: "Prerequisite" },
-        { source: "SUB_ANAT", target: "APEX_MBHB", type: "Prerequisite" },
+        // ─── SUBJECT → APEX ───
+        { source: "SUB_ML1", target: "APEX_MBHB", type: "NeuralPath" },
+        { source: "DEG_HIST", target: "APEX_HIST", type: "Synthesis" },
     ] as GraphLink[]
 };

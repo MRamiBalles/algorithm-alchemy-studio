@@ -6,6 +6,9 @@ import { ArrowRight, Lock, Sparkles, Brain, BookOpen } from 'lucide-react';
 
 const roleColors: Record<string, string> = {
     atom: '#FFFFFF',
+    foundation: '#4444FF',
+    pillar: '#00FFCC',
+    nexus: '#8B5CF6',
     degree: '#0088FF',
     subject: '#64748b',
     legendary: '#FF0000',
@@ -65,8 +68,11 @@ const UniversitasGraph = () => {
                         const dx = target.x! - source.x!;
                         const dy = target.y! - source.y!;
                         const d = Math.sqrt(dx * dx + dy * dy) || 1;
-                        const targetDist = link.type === 'Ouroboros' ? 80 : 110;
-                        const force = (d - targetDist) * 0.04;
+                        const targetDist =
+                            link.type === 'Ouroboros' ? 60 :
+                                link.type === 'Foundation' ? 80 :
+                                    link.type === 'Pillar' ? 100 : 120;
+                        const force = (d - targetDist) * 0.05;
 
                         const fx = (dx / d) * force;
                         const fy = (dy / d) * force;
@@ -120,9 +126,12 @@ const UniversitasGraph = () => {
 
     const getNodeRadius = (node: GraphNode): number => {
         if (node.role === 'atom') return node.size || 18;
-        if (node.role === 'legendary') return 14;
+        if (node.role === 'legendary') return 16;
+        if (node.level < 0) return 14; // Foundations
+        if (node.level === 1) return 12; // Pillars
+        if (node.level === 1.5) return 11; // Nexus
         if (node.role === 'degree') return 10;
-        return 6;
+        return 7;
     };
 
     const getNodeColor = (node: GraphNode): string => {
@@ -151,7 +160,7 @@ const UniversitasGraph = () => {
             {/* HUD Overlay: Version */}
             <div className="absolute top-3 left-3 z-10 pointer-events-none">
                 <p className="text-[10px] font-mono text-cyan-500/60 tracking-widest uppercase">
-                    Universitas v11.0 · The Neural Path
+                    Universitas v12.0 · The Neural Taxonomy
                 </p>
             </div>
 
@@ -250,9 +259,9 @@ const UniversitasGraph = () => {
                                 y={node.y! + r + 14}
                                 textAnchor="middle"
                                 className={`pointer-events-none select-none font-mono ${node.role === 'atom' ? 'text-[11px] fill-white font-bold' :
-                                        node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
-                                            node.role === 'degree' ? 'text-[9px] fill-gray-300' :
-                                                'text-[8px] fill-gray-500'
+                                    node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
+                                        node.role === 'degree' ? 'text-[9px] fill-gray-300' :
+                                            'text-[8px] fill-gray-500'
                                     }`}
                             >
                                 {node.label}
@@ -308,15 +317,25 @@ const UniversitasGraph = () => {
                         {selectedNode.route && (
                             <button
                                 onClick={() => handleNavigate(selectedNode)}
-                                className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedNode.role === 'legendary'
-                                        ? 'bg-red-600/20 border border-red-500/40 text-red-300 hover:bg-red-600/40'
-                                        : selectedNode.color === '#8B5CF6'
-                                            ? 'bg-violet-600/20 border border-violet-500/40 text-violet-300 hover:bg-violet-600/40'
-                                            : 'bg-cyan-600/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-600/40'
+                                className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium mb-2 transition-all ${selectedNode.role === 'legendary'
+                                    ? 'bg-red-600/20 border border-red-500/40 text-red-300 hover:bg-red-600/40'
+                                    : selectedNode.color === '#8B5CF6'
+                                        ? 'bg-violet-600/20 border border-violet-500/40 text-violet-300 hover:bg-violet-600/40'
+                                        : 'bg-cyan-600/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-600/40'
                                     }`}
                             >
                                 {selectedNode.role === 'legendary' ? <Sparkles className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
                                 {selectedNode.role === 'legendary' ? 'Acceder al Nodo Legendario' : 'Explorar'}
+                            </button>
+                        )}
+
+                        {selectedNode.bibliographyPath && (
+                            <button
+                                onClick={() => navigate(`/subject/ucm/cs/interfaces-usuario`)} // Placeholder navigation for bib, ideally it should point to a bib viewer or specific page
+                                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 rounded-md text-sm font-medium hover:bg-emerald-600/40 transition-all"
+                            >
+                                <BookOpen className="w-4 h-4" />
+                                Ver Bibliografía
                             </button>
                         )}
 
