@@ -88,6 +88,7 @@ export const graphData = {
 
         // Intelligence & Data
         { id: "SUB_BD", group: "SUBJECT", label: "Bases de Datos", level: 3, color: "#0088FF", role: "subject", route: "/course/z7_nexus/bases_datos_master.md", canonicalText: "Database System Concepts (Silberschatz)", historicalContext: "Edgar Codd, matemático británico en IBM San José, publicó en 1970 el modelo relacional que su propia empresa intentó enterrar para proteger su producto IMS. Berkeley (Stonebraker) y Oracle (Ellison) lo adoptaron antes que IBM. El movimiento NoSQL del 2000s nació cuando Google y Amazon rompieron los límites del modelo para la escala planetaria." },
+        { id: "SUB_IS", group: "SUBJECT", label: "Ing. Software", level: 3, color: "#0088FF", role: "subject", route: "/course/z7_nexus/ingenieria_software_master.md", canonicalText: "The Mythical Man-Month (Brooks, 1975)", historicalContext: "La OTAN acuñó el término 'Software Engineering' en Garmisch (1968) para atajar la 'Crisis del Software'. Brooks demostró en IBM que añadir gente retrasa un proyecto. En 2001, 17 rebeldes firmaron el Manifiesto Ágil en una estación de esquí de Utah, derrocando 30 años de burocracia Waterfall." },
         { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
         { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md", historicalContext: "El colapso de la IA lógica y el triunfo del Empirismo Estadístico a finales del s.XX; impulsado geopolíticamente por el diluvio de datos masivos (Internet) comercial y la necesidad de vigilancia predictiva." },
 
@@ -169,8 +170,11 @@ export const graphData = {
         { source: "SUB_LA", target: "SUB_ML1", type: "Prerequisite" },
         { source: "SUB_FIA", target: "SUB_ML1", type: "Prerequisite" },
         { source: "DEG_CS", target: "SUB_BD", type: "Core" },
+        { source: "DEG_CS", target: "SUB_IS", type: "Core" },
         { source: "DEG_IDIA", target: "SUB_BD", type: "Core" },
         { source: "SUB_BD", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "SUB_ALG", target: "SUB_IS", type: "Prerequisite" },
+        { source: "SUB_BD", target: "SUB_IS", type: "Sibling" },
         { source: "SUB_AC", target: "SUB_ALG", type: "Sibling" },
 
         // ─── SUBJECT → APEX ───
