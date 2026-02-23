@@ -85,7 +85,7 @@ export const graphData = {
         { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md" },
 
         // ─── LEVEL 4: APEXES ───
-        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/subject/uhu/m-ing-inf/mbhb", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Metaheuristics (Talbi)" },
+        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/course/apex/mbhb_master.md", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Adaptation in Natural Systems (Holland, 1975)" },
         { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 4, color: "#FF8800", size: 25, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos.", canonicalText: "The Mediterranean (Braudel)" },
     ] as GraphNode[],
 
