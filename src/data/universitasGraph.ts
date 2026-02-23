@@ -67,14 +67,14 @@ export const graphData = {
         // ─── LEVEL 3: SUBJECTS (With Bibliographies) ───
         // Mathematical Foundations
         { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md" },
-        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/algebra-lineal", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md" },
-        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/calculo", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md" },
+        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/course/z0_math/algebra_lineal_master.md", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md" },
+        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/course/z0_math/calculus_master.md", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md" },
         { id: "SUB_DIS", group: "SUBJECT", label: "Matemática Discreta", level: 3, role: "subject", canonicalText: "Discrete Mathematics (Rosen)" },
         { id: "SUB_EST", group: "SUBJECT", label: "Estadística", level: 3, role: "subject", canonicalText: "Probability and Statistics (Devore)" },
 
         // Physics Foundations
-        { id: "SUB_FIS1", group: "SUBJECT", label: "Fundamentos Físicos", level: 3, role: "subject", canonicalText: "Physics for Scientists & Engineers (Tipler)" },
-        { id: "SUB_ELEC", group: "SUBJECT", label: "Electrónica y Electricidad", level: 3, color: "#44FFFF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Electrónica/bibliografia_annas_archive.md" },
+        { id: "SUB_FIS1", group: "SUBJECT", label: "Fundamentos Físicos", level: 3, role: "subject", route: "/course/z0_math/fisica_master.md", canonicalText: "Physics for Scientists & Engineers (Tipler)" },
+        { id: "SUB_ELEC", group: "SUBJECT", label: "Electrónica y Electricidad", level: 3, color: "#44FFFF", role: "subject", route: "/course/z0_math/fisica_master.md", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Electrónica/bibliografia_annas_archive.md" },
 
         // Philosophical / Social Foundations
         { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
