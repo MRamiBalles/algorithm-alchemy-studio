@@ -81,6 +81,10 @@ export const graphData = {
         { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
         { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
 
+        // Engineering / Hardware
+        { id: "SUB_AC", group: "SUBJECT", label: "Arq. Computadores", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/arquitectura_computadores_master.md", canonicalText: "Computer Organization and Design (Patterson & Hennessy)", historicalContext: "Nacida de la urgencia bélica de descifrar Enigma (Turing, 1936) y del informe EDVAC de Von Neumann (1945); su evolución fue dictada por la profecía industrial de Moore (1965) y la actual guerra geopolítica por el nanómetro entre TSMC, EEUU y China." },
+        { id: "SUB_SO", group: "SUBJECT", label: "Sistemas Operativos", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/sistemas_operativos_master.md", canonicalText: "Operating System Concepts (Silberschatz)", historicalContext: "Forjado por Dijkstra (1968) para domar el caos de la concurrencia, cristalizado por Thompson y Ritchie en UNIX (Bell Labs, 1969-74) y democratizado para siempre por un estudiante finlandés de 21 años: Linus Torvalds (1991)." },
+
         // Intelligence
         { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
         { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md", historicalContext: "El colapso de la IA lógica y el triunfo del Empirismo Estadístico a finales del s.XX; impulsado geopolíticamente por el diluvio de datos masivos (Internet) comercial y la necesidad de vigilancia predictiva." },
@@ -130,6 +134,7 @@ export const graphData = {
         { source: "SUB_EST", target: "DEG_IDIA", type: "Prerequisite" },
         { source: "SUB_FIS1", target: "DEG_CS", type: "Prerequisite" },
         { source: "SUB_ELEC", target: "DEG_CS", type: "Prerequisite" },
+        { source: "SUB_ELEC", target: "SUB_AC", type: "Prerequisite" },
         { source: "SUB_ETH", target: "DEG_LAW", type: "Prerequisite" },
         { source: "SUB_ETH", target: "DEG_CS", type: "Integration" },
         { source: "SUB_EPI", target: "DEG_PSY", type: "Prerequisite" },
@@ -151,11 +156,15 @@ export const graphData = {
 
         // ─── DEGREE → SUBJECT ───
         { source: "DEG_CS", target: "SUB_ALG", type: "Core" },
+        { source: "DEG_CS", target: "SUB_AC", type: "Core" },
+        { source: "DEG_CS", target: "SUB_SO", type: "Core" },
+        { source: "SUB_AC", target: "SUB_SO", type: "Prerequisite" },
         { source: "DEG_IDIA", target: "SUB_LA", type: "Foundation" },
         { source: "DEG_IDIA", target: "SUB_CALC", type: "Foundation" },
         { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
         { source: "SUB_LA", target: "SUB_ML1", type: "Prerequisite" },
         { source: "SUB_FIA", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "SUB_AC", target: "SUB_ALG", type: "Sibling" },
 
         // ─── SUBJECT → APEX ───
         { source: "SUB_ML1", target: "APEX_MBHB", type: "NeuralPath" },
