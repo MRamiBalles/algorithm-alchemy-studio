@@ -84,6 +84,7 @@ export const graphData = {
         // Engineering / Hardware
         { id: "SUB_AC", group: "SUBJECT", label: "Arq. Computadores", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/arquitectura_computadores_master.md", canonicalText: "Computer Organization and Design (Patterson & Hennessy)", historicalContext: "Nacida de la urgencia bélica de descifrar Enigma (Turing, 1936) y del informe EDVAC de Von Neumann (1945); su evolución fue dictada por la profecía industrial de Moore (1965) y la actual guerra geopolítica por el nanómetro entre TSMC, EEUU y China." },
         { id: "SUB_SO", group: "SUBJECT", label: "Sistemas Operativos", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/sistemas_operativos_master.md", canonicalText: "Operating System Concepts (Silberschatz)", historicalContext: "Forjado por Dijkstra (1968) para domar el caos de la concurrencia, cristalizado por Thompson y Ritchie en UNIX (Bell Labs, 1969-74) y democratizado para siempre por un estudiante finlandés de 21 años: Linus Torvalds (1991)." },
+        { id: "SUB_RED", group: "SUBJECT", label: "Redes", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/redes_computadores_master.md", canonicalText: "Computer Networking (Kurose & Ross)", historicalContext: "Nacida del pánico nuclear de DARPA (ARPANET, 1969): el primer mensaje de Internet fue 'LO' (UCLA→SRI). Unificada por Cerf y Kahn con TCP/IP (1974) y democratizada por Tim Berners-Lee al regalar la World Wide Web al mundo desde el CERN (1989-93)." },
 
         // Intelligence
         { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
@@ -159,6 +160,8 @@ export const graphData = {
         { source: "DEG_CS", target: "SUB_AC", type: "Core" },
         { source: "DEG_CS", target: "SUB_SO", type: "Core" },
         { source: "SUB_AC", target: "SUB_SO", type: "Prerequisite" },
+        { source: "DEG_CS", target: "SUB_RED", type: "Core" },
+        { source: "SUB_SO", target: "SUB_RED", type: "Prerequisite" },
         { source: "DEG_IDIA", target: "SUB_LA", type: "Foundation" },
         { source: "DEG_IDIA", target: "SUB_CALC", type: "Foundation" },
         { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
