@@ -36,9 +36,9 @@ export const graphData = {
         { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa." },
 
         // ─── LEVEL -2: EPISTEMOLOGICAL SUBSTRATE (ZONE 0) ───
-        { id: "Z0_MATH", group: "FOUNDATION", label: "MATEMÁTICAS", level: -2, color: "#4444FF", size: 25, role: "degree", description: "El lenguaje de las proporciones universales." },
-        { id: "Z0_PHYS", group: "FOUNDATION", label: "FÍSICA", level: -2, color: "#44FFFF", size: 25, role: "degree", description: "Las leyes del sustrato material." },
-        { id: "Z0_PHIL", group: "FOUNDATION", label: "FILOSOFÍA", level: -2, color: "#FF44FF", size: 25, role: "degree", description: "La episteme fenomenológica." },
+        { id: "Z0_MATH", group: "FOUNDATION", label: "MATEMÁTICAS", level: -2, color: "#4444FF", size: 25, role: "degree", description: "El lenguaje de las proporciones universales.", route: "/course/foundations/math_core.md" },
+        { id: "Z0_PHYS", group: "FOUNDATION", label: "FÍSICA", level: -2, color: "#44FFFF", size: 25, role: "degree", description: "Las leyes del sustrato material.", route: "/course/foundations/physics_core.md" },
+        { id: "Z0_PHIL", group: "FOUNDATION", label: "FILOSOFÍA", level: -2, color: "#FF44FF", size: 25, role: "degree", description: "La episteme fenomenológica.", route: "/course/foundations/philosophy_core.md" },
 
         // ─── LEVEL 1: ONTOLOGICAL PILLARS (ZONES 1-6) ───
         { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
