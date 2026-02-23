@@ -41,12 +41,12 @@ export const graphData = {
         { id: "Z0_PHIL", group: "FOUNDATION", label: "FILOSOFÍA", level: -2, color: "#FF44FF", size: 25, role: "degree", description: "La episteme fenomenológica.", route: "/course/foundations/philosophy_core.md" },
 
         // ─── LEVEL 1: ONTOLOGICAL PILLARS (ZONES 1-6) ───
-        { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
-        { id: "Z2_ENG", group: "PILLAR", label: "INGENIERÍA", level: 1, color: "#00FFCC" },
-        { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00" },
-        { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD" },
-        { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400" },
-        { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800" },
+        { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA", route: "/course/pillars/physical_bio_pillars.md" },
+        { id: "Z2_ENG", group: "PILLAR", label: "INGENIERÍA", level: 1, color: "#00FFCC", route: "/course/pillars/physical_bio_pillars.md" },
+        { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00", route: "/course/pillars/physical_bio_pillars.md" },
+        { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD", route: "/course/pillars/mind_society_culture.md" },
+        { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400", route: "/course/pillars/mind_society_culture.md" },
+        { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800", route: "/course/pillars/mind_society_culture.md" },
 
         // ─── LEVEL 1.5: CYBERNETIC NEXUS (ZONE 7) ───
         { id: "DEG_CS", group: "NEXUS", label: "INFORMÁTICA", level: 1.5, color: "#0088FF", role: "degree", route: "/track/intelligence/intro" },
