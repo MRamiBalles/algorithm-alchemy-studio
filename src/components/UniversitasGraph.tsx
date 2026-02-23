@@ -294,6 +294,17 @@ const UniversitasGraph = () => {
                             <p className="text-xs text-gray-400 mb-3 leading-relaxed">{selectedNode.description}</p>
                         )}
 
+                        {selectedNode.historicalContext && (
+                            <div className="mb-3 p-2 bg-[#ff8800]/10 border border-[#ff8800]/20 rounded-md">
+                                <p className="text-[10px] font-mono text-[#ff8800]/70 uppercase mb-1 flex items-center gap-1">
+                                    <span>🕰️</span> Contexto Histórico
+                                </p>
+                                <p className="text-[11px] text-[#ff8800]/80 leading-relaxed italic">
+                                    {selectedNode.historicalContext}
+                                </p>
+                            </div>
+                        )}
+
                         {/* Connected nodes */}
                         <div className="space-y-1 mb-3">
                             <p className="text-[10px] font-mono text-gray-500 uppercase">Conexiones:</p>

@@ -15,6 +15,7 @@ export interface GraphNode {
     vy?: number;
     canonicalText?: string; // The single source of truth for this node
     bibliographyPath?: string; // Path to the bibliografia_annas_archive.md file
+    historicalContext?: string; // Geopolitical or evolutionary genesis of the discipline
 }
 
 export interface GraphLink {
@@ -66,27 +67,27 @@ export const graphData = {
 
         // ─── LEVEL 3: SUBJECTS (With Bibliographies) ───
         // Mathematical Foundations
-        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/course/z7_nexus/algoritmia_master.md", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md" },
-        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/course/z0_math/algebra_lineal_master.md", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md" },
-        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/course/z0_math/calculus_master.md", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md" },
+        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/course/z7_nexus/algoritmia_master.md", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md", historicalContext: "Originada por la necesidad de descifrar trayectorias balísticas y criptografía de Enigma en la 2GM, formalizada en la posguerra para dominar la explosión combinatoria del naciente silicio." },
+        { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/course/z0_math/algebra_lineal_master.md", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md", historicalContext: "Concebida en el rincón más abstracto de la mente de Grassmann (1844), ignorada por casi un siglo hasta ser resucitada por la Física Cuántica (Heisenberg/Dirac) en 1925 como el único lenguaje capaz de sostener el caos subatómico." },
+        { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/course/z0_math/calculus_master.md", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md", historicalContext: "Hijo de la Revolución Científica del siglo XVII; nació del tenso conflicto geopolítico e intelectual entre Newton (el control de la gravedad y las mareas británicas) y Leibniz (el formalismo lógico continental)." },
         { id: "SUB_DIS", group: "SUBJECT", label: "Matemática Discreta", level: 3, role: "subject", canonicalText: "Discrete Mathematics (Rosen)" },
         { id: "SUB_EST", group: "SUBJECT", label: "Estadística", level: 3, role: "subject", canonicalText: "Probability and Statistics (Devore)" },
 
         // Physics Foundations
-        { id: "SUB_FIS1", group: "SUBJECT", label: "Fundamentos Físicos", level: 3, role: "subject", route: "/course/z0_math/fisica_master.md", canonicalText: "Physics for Scientists & Engineers (Tipler)" },
-        { id: "SUB_ELEC", group: "SUBJECT", label: "Electrónica y Electricidad", level: 3, color: "#44FFFF", role: "subject", route: "/course/z0_math/fisica_master.md", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Electrónica/bibliografia_annas_archive.md" },
+        { id: "SUB_FIS1", group: "SUBJECT", label: "Fundamentos Físicos", level: 3, role: "subject", route: "/course/z0_math/fisica_master.md", canonicalText: "Physics for Scientists & Engineers (Tipler)", historicalContext: "La Termodinámica surge como respuesta directa al caos de la Revolución Industrial británica para optimizar las calderas de carbón imperial; el Electromagnetismo unificó el mundo a través del telégrafo victoriano." },
+        { id: "SUB_ELEC", group: "SUBJECT", label: "Electrónica y Electricidad", level: 3, color: "#44FFFF", role: "subject", route: "/course/z0_math/fisica_master.md", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Electrónica/bibliografia_annas_archive.md", historicalContext: "El nacimiento del Silicio (Bell Labs, 1959) fue impulsado por la histeria de la Guerra Fría para miniaturizar sistemas de misiles, originando el transistor y la era de la información masiva." },
 
         // Philosophical / Social Foundations
         { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
         { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
 
         // Intelligence
-        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md" },
-        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md" },
+        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
+        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md", historicalContext: "El colapso de la IA lógica y el triunfo del Empirismo Estadístico a finales del s.XX; impulsado geopolíticamente por el diluvio de datos masivos (Internet) comercial y la necesidad de vigilancia predictiva." },
 
         // ─── LEVEL 4: APEXES ───
-        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/course/apex/mbhb_master.md", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Adaptation in Natural Systems (Holland, 1975)" },
-        { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 4, color: "#FF8800", size: 25, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos.", canonicalText: "The Mediterranean (Braudel)" },
+        { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/course/apex/mbhb_master.md", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Adaptation in Natural Systems (Holland, 1975)", historicalContext: "Nacido de la frustración ante el límite físico del silicio (Fin de Moore) y la intraductibilidad matemática de problemas NP-Hard, forzando a la computación a imitar la implacable selección natural darwiniana (Genética 1970s)." },
+        { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 4, color: "#FF8800", size: 25, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos.", canonicalText: "The Mediterranean (Braudel)", historicalContext: "No es una disciplina, sino el eje que atraviesa y ancla todas las creaciones científicas, literarias y políticas al fluir ineludible del Tiempo Geopolítico del Hombre." },
     ] as GraphNode[],
 
     links: [
