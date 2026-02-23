@@ -81,6 +81,9 @@ export const graphData = {
         { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
         { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
 
+        // Biology / Life Sciences
+        { id: "SUB_BIO", group: "SUBJECT", label: "Biología", level: 3, color: "#00CC00", role: "subject", route: "/course/z3_life/biologia_fundamental_master.md", canonicalText: "Campbell Biology (Campbell et al.)", historicalContext: "Darwin destruyó el excepcionalismo humano con la Selección Natural (1859); Watson y Crick robaron la Foto 51 de Rosalind Franklin para descifrar la Doble Hélice del ADN (1953); Doudna y Charpentier entregaron a la humanidad las tijeras CRISPR para editar el código fuente de la vida (2012, Nobel 2020)." },
+
         // Engineering / Hardware
         { id: "SUB_AC", group: "SUBJECT", label: "Arq. Computadores", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/arquitectura_computadores_master.md", canonicalText: "Computer Organization and Design (Patterson & Hennessy)", historicalContext: "Nacida de la urgencia bélica de descifrar Enigma (Turing, 1936) y del informe EDVAC de Von Neumann (1945); su evolución fue dictada por la profecía industrial de Moore (1965) y la actual guerra geopolítica por el nanómetro entre TSMC, EEUU y China." },
         { id: "SUB_SO", group: "SUBJECT", label: "Sistemas Operativos", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/sistemas_operativos_master.md", canonicalText: "Operating System Concepts (Silberschatz)", historicalContext: "Forjado por Dijkstra (1968) para domar el caos de la concurrencia, cristalizado por Thompson y Ritchie en UNIX (Bell Labs, 1969-74) y democratizado para siempre por un estudiante finlandés de 21 años: Linus Torvalds (1991)." },
@@ -147,6 +150,9 @@ export const graphData = {
         { source: "Z2_ENG", target: "DEG_ARCH", type: "Derivation" },
         { source: "Z3_LIFE", target: "DEG_BIO", type: "Derivation" },
         { source: "Z3_LIFE", target: "DEG_MED", type: "Derivation" },
+        { source: "Z3_LIFE", target: "SUB_BIO", type: "Core" },
+        { source: "SUB_BIO", target: "DEG_BIO", type: "Prerequisite" },
+        { source: "SUB_BIO", target: "DEG_MED", type: "Prerequisite" },
         { source: "Z4_MIND", target: "DEG_PSY", type: "Derivation" },
         { source: "Z5_SOCIETY", target: "DEG_SOC", type: "Derivation" },
         { source: "Z5_SOCIETY", target: "DEG_LAW", type: "Derivation" },
