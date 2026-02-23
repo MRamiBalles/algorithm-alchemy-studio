@@ -86,7 +86,8 @@ export const graphData = {
         { id: "SUB_SO", group: "SUBJECT", label: "Sistemas Operativos", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/sistemas_operativos_master.md", canonicalText: "Operating System Concepts (Silberschatz)", historicalContext: "Forjado por Dijkstra (1968) para domar el caos de la concurrencia, cristalizado por Thompson y Ritchie en UNIX (Bell Labs, 1969-74) y democratizado para siempre por un estudiante finlandés de 21 años: Linus Torvalds (1991)." },
         { id: "SUB_RED", group: "SUBJECT", label: "Redes", level: 3, color: "#00FFCC", role: "subject", route: "/course/z2_eng/redes_computadores_master.md", canonicalText: "Computer Networking (Kurose & Ross)", historicalContext: "Nacida del pánico nuclear de DARPA (ARPANET, 1969): el primer mensaje de Internet fue 'LO' (UCLA→SRI). Unificada por Cerf y Kahn con TCP/IP (1974) y democratizada por Tim Berners-Lee al regalar la World Wide Web al mundo desde el CERN (1989-93)." },
 
-        // Intelligence
+        // Intelligence & Data
+        { id: "SUB_BD", group: "SUBJECT", label: "Bases de Datos", level: 3, color: "#0088FF", role: "subject", route: "/course/z7_nexus/bases_datos_master.md", canonicalText: "Database System Concepts (Silberschatz)", historicalContext: "Edgar Codd, matemático británico en IBM San José, publicó en 1970 el modelo relacional que su propia empresa intentó enterrar para proteger su producto IMS. Berkeley (Stonebraker) y Oracle (Ellison) lo adoptaron antes que IBM. El movimiento NoSQL del 2000s nació cuando Google y Amazon rompieron los límites del modelo para la escala planetaria." },
         { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
         { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md", historicalContext: "El colapso de la IA lógica y el triunfo del Empirismo Estadístico a finales del s.XX; impulsado geopolíticamente por el diluvio de datos masivos (Internet) comercial y la necesidad de vigilancia predictiva." },
 
@@ -167,6 +168,9 @@ export const graphData = {
         { source: "DEG_IDIA", target: "SUB_FIA", type: "Core" },
         { source: "SUB_LA", target: "SUB_ML1", type: "Prerequisite" },
         { source: "SUB_FIA", target: "SUB_ML1", type: "Prerequisite" },
+        { source: "DEG_CS", target: "SUB_BD", type: "Core" },
+        { source: "DEG_IDIA", target: "SUB_BD", type: "Core" },
+        { source: "SUB_BD", target: "SUB_ML1", type: "Prerequisite" },
         { source: "SUB_AC", target: "SUB_ALG", type: "Sibling" },
 
         // ─── SUBJECT → APEX ───
