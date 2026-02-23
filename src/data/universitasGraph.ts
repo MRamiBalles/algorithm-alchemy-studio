@@ -66,7 +66,7 @@ export const graphData = {
 
         // ─── LEVEL 3: SUBJECTS (With Bibliographies) ───
         // Mathematical Foundations
-        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/subject/ucm/cs/algoritmia", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md" },
+        { id: "SUB_ALG", group: "SUBJECT", label: "Algoritmia", level: 3, role: "subject", route: "/course/z7_nexus/algoritmia_master.md", canonicalText: "Introduction to Algorithms (Cormen)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Diseño de Algoritmos/bibliografia_annas_archive.md" },
         { id: "SUB_LA", group: "SUBJECT", label: "Álgebra Lineal", level: 3, role: "subject", route: "/course/z0_math/algebra_lineal_master.md", canonicalText: "Introduction to Linear Algebra (Strang)", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Álgebra Lineal/bibliografia_annas_archive.md" },
         { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", route: "/course/z0_math/calculus_master.md", canonicalText: "Calculus (Stewart)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Cálculo/bibliografia_annas_archive.md" },
         { id: "SUB_DIS", group: "SUBJECT", label: "Matemática Discreta", level: 3, role: "subject", canonicalText: "Discrete Mathematics (Rosen)" },
@@ -81,8 +81,8 @@ export const graphData = {
         { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
 
         // Intelligence
-        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/fundamentos-ia", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md" },
-        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/subject/ucm/ingenieria-datos-ia/aprendizaje-automatico-1", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md" },
+        { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md" },
+        { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md" },
 
         // ─── LEVEL 4: APEXES ───
         { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/subject/uhu/m-ing-inf/mbhb", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Metaheuristics (Talbi)" },
