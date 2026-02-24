@@ -78,9 +78,10 @@ export const graphData = {
         { id: "SUB_ELEC", group: "SUBJECT", label: "Electrónica y Electricidad", level: 3, color: "#44FFFF", role: "subject", route: "/course/z0_math/fisica_master.md", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Electrónica/bibliografia_annas_archive.md", historicalContext: "El nacimiento del Silicio (Bell Labs, 1959) fue impulsado por la histeria de la Guerra Fría para miniaturizar sistemas de misiles, originando el transistor y la era de la información masiva." },
 
         // Philosophical / Social Foundations
-        { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
-        { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
+        { id: "SUB_ETH", group: "SUBJECT", label: "Ética Teconológica", level: 3, color: "#FF44FF", role: "subject", route: "/course/z0_phil/etica_tecnologica_master.md", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
+        { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject", route: "/course/z0_phil/epistemologia_master.md", historicalContext: "El nacimiento del Método Científico Formal con Francis Bacon (1620) y la aniquilación de la inducción ingenua por Karl Popper (1934, Falsacionismo)." },
         { id: "SUB_PSY", group: "SUBJECT", label: "Psicología", level: 3, color: "#FF00FF", role: "subject", route: "/course/z4_mind/fundamentos_psicologia_master.md", canonicalText: "Psychology (Gray & Bjorklund)", historicalContext: "El Conductismo de Skinner creyó que el humano era una máquina programable (1938), hasta que Miller descubrió los límites de hardware de la memoria (1956) y Kahneman (Nobel 2002) demostró la irracionalidad sistémica con Prospect Theory." },
+        { id: "SUB_LAW_ECON", group: "SUBJECT", label: "Macroeconomía y Derecho", level: 3, color: "#FFFF00", role: "subject", route: "/course/z5_society/macroeconomia_derecho_master.md", canonicalText: "Macroeconomics (Mankiw)", historicalContext: "Adam Smith decapitó el mercantilismo en 1776; Von Neumann y Nash (1944-50) revelaron matemáticamente que la paz es solo un equilibrio termodinámico de terror evocado por la Destrucción Mutua Asegurada." },
         { id: "SUB_HIST", group: "SUBJECT", label: "Historia Geopolítica", level: 3, color: "#FF8800", role: "subject", route: "/course/z6_culture/historia_politica_master.md", canonicalText: "The Age of Revolution (Hobsbawm)", historicalContext: "Braudel (1949) enseñó que los montes y los océanos dictan el destino de las naciones (Longue Durée); todo desarrollo tecnológico es balística disfrazada motivada por la doble revolución de Hobsbawm (1789-1848)." },
 
         // Biology / Life Sciences
@@ -148,6 +149,9 @@ export const graphData = {
         { source: "SUB_EPI", target: "DEG_PSY", type: "Prerequisite" },
         { source: "Z4_MIND", target: "SUB_PSY", type: "Core" },
         { source: "SUB_PSY", target: "DEG_PSY", type: "Prerequisite" },
+        { source: "Z5_SOCIETY", target: "SUB_LAW_ECON", type: "Core" },
+        { source: "SUB_LAW_ECON", target: "DEG_LAW", type: "Prerequisite" },
+        { source: "SUB_LAW_ECON", target: "DEG_SOC", type: "Prerequisite" },
         { source: "Z6_CULTURE", target: "SUB_HIST", type: "Core" },
         { source: "SUB_HIST", target: "DEG_HIST", type: "Prerequisite" },
 
