@@ -80,6 +80,8 @@ export const graphData = {
         // Philosophical / Social Foundations
         { id: "SUB_ETH", group: "SUBJECT", label: "Ética y Legislación", level: 3, color: "#FF44FF", role: "subject", bibliographyPath: "/content/official_docs/ucm/ingenieria_computadores/Ética, legislación y profesión/bibliografia_annas_archive.md" },
         { id: "SUB_EPI", group: "SUBJECT", label: "Epistemología", level: 3, color: "#FF44FF", role: "subject" },
+        { id: "SUB_PSY", group: "SUBJECT", label: "Psicología", level: 3, color: "#FF00FF", role: "subject", route: "/course/z4_mind/fundamentos_psicologia_master.md", canonicalText: "Psychology (Gray & Bjorklund)", historicalContext: "El Conductismo de Skinner creyó que el humano era una máquina programable (1938), hasta que Miller descubrió los límites de hardware de la memoria (1956) y Kahneman (Nobel 2002) demostró la irracionalidad sistémica con Prospect Theory." },
+        { id: "SUB_HIST", group: "SUBJECT", label: "Historia Geopolítica", level: 3, color: "#FF8800", role: "subject", route: "/course/z6_culture/historia_politica_master.md", canonicalText: "The Age of Revolution (Hobsbawm)", historicalContext: "Braudel (1949) enseñó que los montes y los océanos dictan el destino de las naciones (Longue Durée); todo desarrollo tecnológico es balística disfrazada motivada por la doble revolución de Hobsbawm (1789-1848)." },
 
         // Biology / Life Sciences
         { id: "SUB_BIO", group: "SUBJECT", label: "Biología", level: 3, color: "#00CC00", role: "subject", route: "/course/z3_life/biologia_fundamental_master.md", canonicalText: "Campbell Biology (Campbell et al.)", historicalContext: "Darwin destruyó el excepcionalismo humano con la Selección Natural (1859); Watson y Crick robaron la Foto 51 de Rosalind Franklin para descifrar la Doble Hélice del ADN (1953); Doudna y Charpentier entregaron a la humanidad las tijeras CRISPR para editar el código fuente de la vida (2012, Nobel 2020)." },
@@ -144,6 +146,10 @@ export const graphData = {
         { source: "SUB_ETH", target: "DEG_LAW", type: "Prerequisite" },
         { source: "SUB_ETH", target: "DEG_CS", type: "Integration" },
         { source: "SUB_EPI", target: "DEG_PSY", type: "Prerequisite" },
+        { source: "Z4_MIND", target: "SUB_PSY", type: "Core" },
+        { source: "SUB_PSY", target: "DEG_PSY", type: "Prerequisite" },
+        { source: "Z6_CULTURE", target: "SUB_HIST", type: "Core" },
+        { source: "SUB_HIST", target: "DEG_HIST", type: "Prerequisite" },
 
         // ─── PILLAR → DEGREE ───
         { source: "Z1_MATTER", target: "DEG_CHEM", type: "Derivation" },
