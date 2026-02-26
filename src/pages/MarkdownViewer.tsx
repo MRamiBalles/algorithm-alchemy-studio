@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { ArrowLeft } from "lucide-react";
+import { GeneticVisualizer } from "@/components/visualizers/GeneticVisualizer";
 
 export default function MarkdownViewer() {
     const location = useLocation();
@@ -71,7 +72,27 @@ export default function MarkdownViewer() {
                                 prose-strong:text-amber-100 prose-em:text-slate-300
                                 prose-blockquote:border-l-4 prose-blockquote:border-cyan-500/50 prose-blockquote:bg-cyan-500/5 prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:not-italic prose-blockquote:text-slate-300
                                 prose-li:marker:text-cyan-500">
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkGfm]}
+                                    components={{
+                                        code({ node, inline, className, children, ...props }: any) {
+                                            const match = /language-(\w+)/.exec(className || '');
+                                            if (!inline && match && match[1] === 'react-component') {
+                                                const codeContent = String(children).replace(/\n$/, '');
+                                                // Check for "type="Genetic""
+                                                if (codeContent.includes('type="Genetic"')) {
+                                                    return <GeneticVisualizer />;
+                                                }
+                                                return <div className="p-4 bg-red-900/50 text-red-200 rounded border border-red-700">Visualizer unknown: {codeContent}</div>;
+                                            }
+                                            return (
+                                                <code className={className} {...props}>
+                                                    {children}
+                                                </code>
+                                            );
+                                        }
+                                    }}
+                                >
                                     {content}
                                 </ReactMarkdown>
                             </div>
