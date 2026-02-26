@@ -31,10 +31,10 @@ export const graphData = {
     },
     nodes: [
         // ─── LÍMITES TEÓRICOS (-3) ───
-        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Capacidad simbólica de expresar conocimiento." },
-        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Precisión cuantitativa estructurante." },
-        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Mecanismo de deducción y validación." },
-        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa." },
+        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Capacidad simbólica de expresar conocimiento.", route: "/content/courses/atoms/linguistica_master.md" },
+        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Precisión cuantitativa estructurante.", route: "/content/courses/atoms/algebra_master.md" },
+        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Mecanismo de deducción y validación.", route: "/content/courses/atoms/logica_master.md" },
+        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa.", route: "/content/courses/atoms/aisthesis_master.md" },
 
         // ─── PILARES ONTOLÓGICOS (ZONAS 1-6) ───
         { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
@@ -45,8 +45,8 @@ export const graphData = {
         { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800" },
 
         // ─── NEXUS DEGREE ALCHEMY CYBERNETICS ───
-        { id: "DEG_CS", group: "NEXUS", label: "INFORMÁTICA", level: 1.5, color: "#0088FF", role: "degree" },
-        { id: "DEG_IDIA", group: "NEXUS", label: "ING. DATOS e IA", level: 1.5, color: "#8B5CF6", role: "degree" },
+        { id: "DEG_CS", group: "NEXUS", label: "INFORMÁTICA", level: 1.5, color: "#0088FF", role: "degree", route: "/content/courses/degrees/informatica_master.md" },
+        { id: "DEG_IDIA", group: "NEXUS", label: "ING. DATOS e IA", level: 1.5, color: "#8B5CF6", role: "degree", route: "/content/courses/degrees/datos_ia_master.md" },
 
         // ─── ZONA 0: FUNDAMENTOS / THE SUBSTRATE ───
         { id: "SUB_CALC", group: "SUBJECT", label: "Cálculo", level: 3, role: "subject", color: "#4444FF", route: "/content/courses/z0_math/calculus_master.md", canonicalText: "Calculus (Stewart)", historicalContext: "Originado por el tenso conflicto entre Newton y Leibniz en el siglo XVII para dominar el movimiento y la geometría continua." },
