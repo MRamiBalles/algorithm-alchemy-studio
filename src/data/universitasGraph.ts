@@ -98,6 +98,12 @@ export const graphData = {
         { id: "SUB_FIA", group: "SUBJECT", label: "Fund. Inteligencia Artificial", level: 3, role: "subject", route: "/course/z7_nexus/fundamentos_ia_master.md", canonicalText: "Artificial Intelligence: A Modern Approach (Russell & Norvig)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Fundamentos de Inteligencia Artificial/bibliografia_annas_archive.md", historicalContext: "Acuñada en la mítica Conferencia de Dartmouth (1956) bajo la utopía de la posguerra de que una Máquina podría simular la racionalidad humana pura; oscilando entre el financiamiento bélico masivo (DARPA) y crudos 'Inviernos de la IA'." },
         { id: "SUB_ML1", group: "SUBJECT", label: "Aprendizaje Automático I", level: 3, role: "subject", route: "/course/z7_nexus/ml1_master.md", color: "#8B5CF6", canonicalText: "The Elements of Statistical Learning (Hastie)", bibliographyPath: "/content/official_docs/ucm/ingenieria_datos_ia/Aprendizaje Automático I/bibliografia_annas_archive.md", historicalContext: "El colapso de la IA lógica y el triunfo del Empirismo Estadístico a finales del s.XX; impulsado geopolíticamente por el diluvio de datos masivos (Internet) comercial y la necesidad de vigilancia predictiva." },
 
+        // ─── EXPANSION GRÁFICOS Y MODELOS (UHU) ───
+        { id: "SUB_MAC", group: "SUBJECT", label: "Modelos Avz. de Computación", level: 3, color: "#0088FF", role: "subject", route: "/course/z7_nexus/modelos_avanzados_computacion_master.md", canonicalText: "Introduction to the Theory of Computation (Sipser)", historicalContext: "De las cintas infinitas de la Máquina de Turing a la indecidibilidad irreducible, definiendo los límites físicos y lógicos del universo computable." },
+        { id: "SUB_AO", group: "SUBJECT", label: "Animación por Ordenador", level: 3, color: "#FF0088", role: "subject", route: "/course/z7_nexus/animacion_ordenador_master.md", historicalContext: "El cruce de la geometría de transformaciones y la física simulada para recrear la aisthesis material en el frío silicio (Vulkan, Rigging)." },
+        { id: "SUB_RV", group: "SUBJECT", label: "Realidad Virtual", level: 3, color: "#FF0088", role: "subject", route: "/course/z7_nexus/realidad_virtual_master.md", historicalContext: "La forja de universos sensoriales inmersivos alterando los fotones simulados mediante shaders, álgebra lineal y rasterización profunda (OpenGL, GLSL)." },
+        { id: "SUB_PJ", group: "SUBJECT", label: "Programación de Juegos", level: 3.5, color: "#FF0000", role: "subject", route: "/course/z7_nexus/programacion_juegos_master.md", historicalContext: "El meta-dominio de síntesis interactiva. Se erigen motores físicos, inteligencia artificial (NPCs) y poiesis visual dentro de arquitecturas masivas (Unity)." },
+
         // ─── LEVEL 4: APEXES ───
         { id: "APEX_MBHB", group: "LEGENDARY", label: "MBHB", level: 4, color: "#FF0000", size: 25, role: "legendary", route: "/course/apex/mbhb_master.md", description: "Metaheurísticas y Modelos Bioinspirados.", canonicalText: "Adaptation in Natural Systems (Holland, 1975)", historicalContext: "Nacido de la frustración ante el límite físico del silicio (Fin de Moore) y la intraductibilidad matemática de problemas NP-Hard, forzando a la computación a imitar la implacable selección natural darwiniana (Genética 1970s)." },
         { id: "APEX_HIST", group: "LEGENDARY", label: "HISTORIA TOTAL", level: 4, color: "#FF8800", size: 25, role: "legendary", route: "/subject/ugr/historia/historia-total", description: "La síntesis de los tiempos.", canonicalText: "The Mediterranean (Braudel)", historicalContext: "No es una disciplina, sino el eje que atraviesa y ancla todas las creaciones científicas, literarias y políticas al fluir ineludible del Tiempo Geopolítico del Hombre." },
@@ -192,6 +198,26 @@ export const graphData = {
         { source: "SUB_ALG", target: "SUB_IS", type: "Prerequisite" },
         { source: "SUB_BD", target: "SUB_IS", type: "Sibling" },
         { source: "SUB_AC", target: "SUB_ALG", type: "Sibling" },
+
+        // ─── EXPANSION GRÁFICOS Y MODELOS (UHU) ───
+        { source: "SUB_DIS", target: "SUB_MAC", type: "Prerequisite" },
+        { source: "SUB_ALG", target: "SUB_MAC", type: "Core" },
+        { source: "SUB_MAC", target: "SUB_EPI", type: "Bridge" },
+        { source: "DEG_CS", target: "SUB_MAC", type: "Core" },
+
+        { source: "SUB_LA", target: "SUB_AO", type: "Prerequisite" },
+        { source: "SUB_AC", target: "SUB_AO", type: "Foundation" },
+        { source: "DEG_CS", target: "SUB_AO", type: "Core" },
+
+        { source: "SUB_LA", target: "SUB_RV", type: "Prerequisite" },
+        { source: "SUB_FIS1", target: "SUB_RV", type: "Foundation" },
+        { source: "DEG_CS", target: "SUB_RV", type: "Core" },
+
+        { source: "SUB_AO", target: "SUB_PJ", type: "Prerequisite" },
+        { source: "SUB_RV", target: "SUB_PJ", type: "Prerequisite" },
+        { source: "SUB_IS", target: "SUB_PJ", type: "Prerequisite" },
+        { source: "SUB_FIA", target: "SUB_PJ", type: "Integration" },
+        { source: "SUB_PJ", target: "DEG_ARTS", type: "Synthesis" },
 
         // ─── SUBJECT → APEX ───
         { source: "SUB_ML1", target: "APEX_MBHB", type: "NeuralPath" },
