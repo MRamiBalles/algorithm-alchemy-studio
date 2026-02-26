@@ -22,6 +22,7 @@ import NSGA2Page from "./pages/NSGA2";
 import TrackPlaceholder from "./pages/TrackPlaceholder";
 import DegreeView from "./pages/DegreeView";
 import SubjectDetail from "./pages/SubjectDetail";
+import MarkdownViewer from "./pages/MarkdownViewer";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,9 @@ const App = () => (
 
           {/* Track Placeholder Routes */}
           <Route path="/track/:track/:subject" element={<TrackPlaceholder />} />
+
+          {/* Markdown Content Route */}
+          <Route path="/content/courses/*" element={<MarkdownViewer />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

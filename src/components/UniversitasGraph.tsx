@@ -342,7 +342,7 @@ const UniversitasGraph = () => {
 
                         {selectedNode.bibliographyPath && (
                             <button
-                                onClick={() => navigate(`/subject/ucm/cs/interfaces-usuario`)} // Placeholder navigation for bib, ideally it should point to a bib viewer or specific page
+                                onClick={() => navigate(selectedNode.bibliographyPath!)}
                                 className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 rounded-md text-sm font-medium hover:bg-emerald-600/40 transition-all"
                             >
                                 <BookOpen className="w-4 h-4" />
