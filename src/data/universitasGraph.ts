@@ -39,10 +39,10 @@ export const graphData = {
         // ─── PILARES ONTOLÓGICOS (ZONAS 1-6) ───
         { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
         { id: "Z2_ENG", group: "PILLAR", label: "INGENIERÍA", level: 1, color: "#00FFCC" },
-        { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00" },
-        { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD" },
-        { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400" },
-        { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800" },
+        { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00", route: "/content/courses/z3_life/biologia_fundamental_master.md" },
+        { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD", route: "/content/courses/z4_mind/fundamentos_psicologia_master.md" },
+        { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400", route: "/content/courses/z5_society/macroeconomia_derecho_master.md" },
+        { id: "Z6_CULTURE", group: "PILLAR", label: "CULTURA", level: 1, color: "#FF8800", route: "/content/courses/z6_culture/historia_politica_master.md" },
 
         // ─── NEXUS DEGREE ALCHEMY CYBERNETICS ───
         { id: "DEG_CS", group: "NEXUS", label: "INFORMÁTICA", level: 1.5, color: "#0088FF", role: "degree", route: "/content/courses/degrees/informatica_master.md" },
