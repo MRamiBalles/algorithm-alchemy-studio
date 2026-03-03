@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { graphData, GraphNode, GraphLink } from '@/data/universitasGraph';
+import { graphData, GraphNode, GraphLink, learningPaths, LearningPath } from '@/data/universitasGraph';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Lock, Sparkles, Brain, BookOpen } from 'lucide-react';
+import { ArrowRight, Lock, Sparkles, Brain, BookOpen, Route } from 'lucide-react';
 
 const roleColors: Record<string, string> = {
     atom: '#FFFFFF',
@@ -19,7 +19,25 @@ const UniversitasGraph = () => {
     const [nodes, setNodes] = useState<GraphNode[]>([]);
     const [links, setLinks] = useState<GraphLink[]>([]);
     const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
+    const [activePath, setActivePath] = useState<LearningPath | null>(null);
     const navigate = useNavigate();
+
+    const isNodeInPath = (nodeId: string): boolean => {
+        if (!activePath) return false;
+        return activePath.nodes.includes(nodeId);
+    };
+
+    const isLinkInPath = (link: GraphLink): boolean => {
+        if (!activePath) return false;
+        const pathNodes = activePath.nodes;
+        for (let i = 0; i < pathNodes.length - 1; i++) {
+            if ((link.source === pathNodes[i] && link.target === pathNodes[i + 1]) ||
+                (link.target === pathNodes[i] && link.source === pathNodes[i + 1])) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     useEffect(() => {
         const width = 800;
@@ -199,15 +217,17 @@ const UniversitasGraph = () => {
 
                     const isHighlighted = isRelatedToSelected(link);
                     const isNeuralPath = link.type === 'NeuralPath' || link.type === 'Prerequisite' || link.type === 'Specialization';
+                    const inPath = isLinkInPath(link);
+                    const dimmed = activePath && !inPath;
 
                     return (
                         <motion.line
                             key={`link-${i}`}
                             x1={source.x} y1={source.y}
                             x2={target.x} y2={target.y}
-                            stroke={isHighlighted ? '#00ffff' : getLinkColor(link)}
-                            strokeWidth={isHighlighted ? 2.5 : (isNeuralPath ? 1.5 : 1)}
-                            strokeOpacity={isHighlighted ? 1 : (isNeuralPath ? 0.7 : 0.35)}
+                            stroke={inPath ? activePath!.color : (isHighlighted ? '#00ffff' : getLinkColor(link))}
+                            strokeWidth={inPath ? 3 : (isHighlighted ? 2.5 : (isNeuralPath ? 1.5 : 1))}
+                            strokeOpacity={dimmed ? 0.08 : (inPath ? 1 : (isHighlighted ? 1 : (isNeuralPath ? 0.7 : 0.35)))}
                             strokeDasharray={link.type === 'Sibling' ? '4 4' : undefined}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -218,8 +238,10 @@ const UniversitasGraph = () => {
                 {/* Nodes */}
                 {nodes.map((node) => {
                     const isSelected = selectedNode?.id === node.id;
-                    const r = getNodeRadius(node);
-                    const color = getNodeColor(node);
+                    const inPath = isNodeInPath(node.id);
+                    const dimmed = activePath && !inPath;
+                    const r = inPath ? getNodeRadius(node) + 3 : getNodeRadius(node);
+                    const color = inPath ? activePath!.color : getNodeColor(node);
                     const glowFilter = node.role === 'atom' && node.color === '#FF00DD'
                         ? 'url(#glow-magenta)'
                         : node.role === 'atom'
@@ -230,12 +252,24 @@ const UniversitasGraph = () => {
                                     ? 'url(#glow-violet)'
                                     : undefined;
 
+                    // Path step number
+                    const pathIndex = activePath ? activePath.nodes.indexOf(node.id) : -1;
+
                     return (
                         <motion.g
                             key={node.id}
                             onClick={() => handleNodeClick(node)}
                             className="cursor-pointer"
+                            style={{ opacity: dimmed ? 0.15 : 1 }}
                         >
+                            {/* Path Pulse Ring */}
+                            {inPath && (
+                                <circle cx={node.x} cy={node.y} r={r + 6} fill="none" stroke={activePath!.color} strokeWidth={1.5} strokeDasharray="4 3" opacity={0.7}>
+                                    <animate attributeName="r" from={r + 4} to={r + 10} dur="1.5s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" from="0.7" to="0" dur="1.5s" repeatCount="indefinite" />
+                                </circle>
+                            )}
+
                             {/* Outer Ring (selected) */}
                             {isSelected && (
                                 <circle cx={node.x} cy={node.y} r={r + 5} fill="none" stroke="#00ffff" strokeWidth={1.5} strokeDasharray="3 3" opacity={0.8} />
@@ -247,22 +281,37 @@ const UniversitasGraph = () => {
                                 cy={node.y}
                                 r={r}
                                 fill={color}
-                                fillOpacity={node.role === 'atom' ? 0.9 : 0.8}
+                                fillOpacity={inPath ? 1 : (node.role === 'atom' ? 0.9 : 0.8)}
                                 filter={glowFilter}
                                 stroke={isSelected ? '#fff' : 'none'}
                                 strokeWidth={1.5}
                             />
+
+                            {/* Path Step Number */}
+                            {inPath && pathIndex >= 0 && (
+                                <text
+                                    x={node.x}
+                                    y={node.y! + 4}
+                                    textAnchor="middle"
+                                    className="pointer-events-none select-none font-bold text-[11px]"
+                                    fill="#000"
+                                >
+                                    {pathIndex + 1}
+                                </text>
+                            )}
 
                             {/* Label */}
                             <text
                                 x={node.x}
                                 y={node.y! + r + 14}
                                 textAnchor="middle"
-                                className={`pointer-events-none select-none font-mono ${node.role === 'atom' ? 'text-[11px] fill-white font-bold' :
-                                    node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
-                                        node.role === 'degree' ? 'text-[9px] fill-gray-300' :
-                                            'text-[8px] fill-gray-500'
+                                className={`pointer-events-none select-none font-mono ${inPath ? 'text-[10px] font-bold' :
+                                    node.role === 'atom' ? 'text-[11px] fill-white font-bold' :
+                                        node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
+                                            node.role === 'degree' ? 'text-[9px] fill-gray-300' :
+                                                'text-[8px] fill-gray-500'
                                     }`}
+                                fill={inPath ? activePath!.color : undefined}
                             >
                                 {node.label}
                             </text>
@@ -359,6 +408,34 @@ const UniversitasGraph = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Learning Path Selector Bar */}
+            <div className="absolute bottom-3 left-3 right-3 z-10">
+                <div className="flex items-center gap-2 bg-slate-950/90 backdrop-blur-md border border-slate-700/50 rounded-lg px-3 py-2">
+                    <Route className="w-4 h-4 text-slate-500 shrink-0" />
+                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider shrink-0">Rutas:</span>
+                    <div className="flex gap-2 overflow-x-auto">
+                        {learningPaths.map((path) => (
+                            <button
+                                key={path.id}
+                                onClick={() => setActivePath(activePath?.id === path.id ? null : path)}
+                                className={`whitespace-nowrap px-3 py-1 rounded-full text-[11px] font-medium transition-all border ${activePath?.id === path.id
+                                        ? 'text-white shadow-lg scale-105'
+                                        : 'text-slate-400 hover:text-white border-slate-700 hover:border-slate-500 bg-slate-900/50'
+                                    }`}
+                                style={activePath?.id === path.id ? {
+                                    backgroundColor: path.color + '30',
+                                    borderColor: path.color,
+                                    color: path.color,
+                                    boxShadow: `0 0 12px ${path.color}40`
+                                } : undefined}
+                            >
+                                {path.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
