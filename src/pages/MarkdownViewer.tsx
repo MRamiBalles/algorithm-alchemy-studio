@@ -8,6 +8,7 @@ import { GeneticVisualizer } from "@/components/visualizers/GeneticVisualizer";
 import { AStarVisualizer } from "@/components/visualizers/AStarVisualizer";
 import { NeuralNetVisualizer } from "@/components/visualizers/NeuralNetVisualizer";
 import { SortingVisualizer } from "@/components/visualizers/SortingVisualizer";
+import { AutomatonVisualizer } from "@/components/visualizers/AutomatonVisualizer";
 
 export default function MarkdownViewer() {
     const location = useLocation();
@@ -94,6 +95,9 @@ export default function MarkdownViewer() {
                                                 }
                                                 if (codeContent.includes('type="Sorting"')) {
                                                     return <SortingVisualizer />;
+                                                }
+                                                if (codeContent.includes('type="Automaton"')) {
+                                                    return <AutomatonVisualizer />;
                                                 }
                                                 return <div className="p-4 bg-red-900/50 text-red-200 rounded border border-red-700">Visualizer unknown: {codeContent}</div>;
                                             }
