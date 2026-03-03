@@ -26,15 +26,28 @@ export interface GraphLink {
 
 export const graphData = {
     meta: {
-        version: "12.1 (The Purified Taxonomy)",
-        description: "Unified Knowledge Graph: -3 (Atoms) to 4 (Apexes)"
+        version: "14.0 (The Root Refactoring)",
+        description: "Unified Knowledge Graph: -4 (Epistemology) to 4 (Apexes)"
     },
     nodes: [
-        // ─── LÍMITES TEÓRICOS (-3) ───
+        // ─── CAPA Z-4: EPISTEMOLOGÍA PURA (Marco A) ───
+        { id: "EP_TRUTH", group: "EPISTEM", label: "VERDAD", level: -4, color: "#FFD700", size: 22, description: "Teorías de la Verdad: Correspondencia, Coherencia, Pragmática.", route: "/content/courses/epistem/verdad_master.md" },
+        { id: "EP_LOGIC", group: "EPISTEM", label: "LÓGICA FORMAL", level: -4, color: "#FFD700", size: 22, description: "Sistemas axiomáticos, deducción y paradojas del lenguaje formal.", route: "/content/courses/epistem/logica_formal_master.md" },
+        { id: "EP_METHOD", group: "EPISTEM", label: "MÉTODO", level: -4, color: "#FFD700", size: 22, description: "Filosofía de la Ciencia: Observación, Falsacionismo, Verosimilitud.", route: "/content/courses/epistem/filosofia_ciencia_master.md" },
+        { id: "EP_PRAXIS", group: "EPISTEM", label: "PRAXIS", level: -4, color: "#FFD700", size: 22, description: "Pragmática y Ética del Discurso: Consenso, Falacias, Acción.", route: "/content/courses/epistem/pragmatica_etica_master.md" },
+
+        // ─── CAPA Z-3: ÁTOMOS (propiedades irreducibles) ───
         { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Capacidad simbólica de expresar conocimiento.", route: "/content/courses/atoms/linguistica_master.md" },
         { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Precisión cuantitativa estructurante.", route: "/content/courses/atoms/algebra_master.md" },
         { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Mecanismo de deducción y validación.", route: "/content/courses/atoms/logica_master.md" },
         { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa.", route: "/content/courses/atoms/aisthesis_master.md" },
+
+        // ─── CAPA Z-2: EJES ONTOLÓGICOS (Marco B) ───
+        { id: "AX_RADIAL", group: "AXIS", label: "C. RADIALES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto desaparece del resultado: Física, Química, Matemáticas puras.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
+        { id: "AX_CIRCULAR", group: "AXIS", label: "C. CIRCULARES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto es ineliminable: Historia, Psicología, Economía.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
+        { id: "AX_TECH", group: "AXIS", label: "TECNOLOGÍAS", level: -2, color: "#C0C0C0", size: 18, description: "Fabricar herramientas operativas, no descubrir verdades: Ingeniería, IA, Software.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
+        { id: "AX_PHIL", group: "AXIS", label: "FILOSOFÍA", level: -2, color: "#C0C0C0", size: 18, description: "Saber de segundo grado: interpreta las Ideas que desbordan a las ciencias.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
+        { id: "AX_LIT", group: "AXIS", label: "LITERATURA", level: -2, color: "#C0C0C0", size: 18, description: "Laboratorio racional de ficción: simulación de la experiencia humana.", route: "/content/courses/axes/literatura_ficcion_master.md" },
 
         // ─── PILARES ONTOLÓGICOS (ZONAS 1-6) ───
         { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
@@ -87,6 +100,31 @@ export const graphData = {
     ] as GraphNode[],
 
     links: [
+        // Cadena Epistemológica Z-4
+        { source: "EP_TRUTH", target: "EP_LOGIC", type: "Epistem" },
+        { source: "EP_LOGIC", target: "EP_METHOD", type: "Epistem" },
+        { source: "EP_METHOD", target: "EP_PRAXIS", type: "Epistem" },
+
+        // Z-4 → Z-3 (Epistemología alimenta Átomos)
+        { source: "EP_TRUTH", target: "ATOM_CRI", type: "Foundation" },
+        { source: "EP_LOGIC", target: "ATOM_ALG", type: "Foundation" },
+        { source: "EP_METHOD", target: "ATOM_AIS", type: "Foundation" },
+        { source: "EP_PRAXIS", target: "ATOM_SEM", type: "Foundation" },
+
+        // Z-2 ← Cursos (Ejes clasifican nodos existentes)
+        { source: "AX_RADIAL", target: "SUB_CALC", type: "Classify" },
+        { source: "AX_RADIAL", target: "SUB_FIS1", type: "Classify" },
+        { source: "AX_RADIAL", target: "SUB_EST", type: "Classify" },
+        { source: "AX_CIRCULAR", target: "SUB_BIO", type: "Classify" },
+        { source: "AX_CIRCULAR", target: "SUB_PSY", type: "Classify" },
+        { source: "AX_CIRCULAR", target: "SUB_LAW_ECON", type: "Classify" },
+        { source: "AX_CIRCULAR", target: "SUB_HIST", type: "Classify" },
+        { source: "AX_TECH", target: "SUB_AC", type: "Classify" },
+        { source: "AX_TECH", target: "SUB_ALG", type: "Classify" },
+        { source: "AX_TECH", target: "TEC_LING", type: "Classify" },
+        { source: "AX_PHIL", target: "SUB_EPI", type: "Classify" },
+        { source: "AX_PHIL", target: "SUB_ETH", type: "Classify" },
+
         // Ouroboros Base
         { source: "ATOM_SEM", target: "ATOM_CRI", type: "Ouroboros" },
         { source: "ATOM_CRI", target: "ATOM_ALG", type: "Ouroboros" },

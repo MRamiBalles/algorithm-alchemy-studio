@@ -12,6 +12,8 @@ const roleColors: Record<string, string> = {
     degree: '#0088FF',
     subject: '#64748b',
     legendary: '#FF0000',
+    epistem: '#FFD700',
+    axis: '#C0C0C0',
 };
 
 const UniversitasGraph = () => {
@@ -143,6 +145,8 @@ const UniversitasGraph = () => {
     };
 
     const getNodeRadius = (node: GraphNode): number => {
+        if (node.group === 'EPISTEM') return node.size || 16;
+        if (node.group === 'AXIS') return node.size || 12;
         if (node.role === 'atom') return node.size || 18;
         if (node.role === 'legendary') return 16;
         if (node.level < 0) return 14; // Foundations
