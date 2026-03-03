@@ -175,10 +175,13 @@ const UniversitasGraph = () => {
 
     return (
         <div className="relative w-full h-[600px] border border-cyan-500/20 rounded-xl bg-black/95 overflow-hidden shadow-2xl">
-            {/* HUD Overlay: Version */}
-            <div className="absolute top-3 left-3 z-10 pointer-events-none">
+            {/* HUD Overlay: Version & Axiom */}
+            <div className="absolute top-3 left-3 z-10 pointer-events-none max-w-[55%]">
                 <p className="text-[10px] font-mono text-cyan-500/60 tracking-widest uppercase">
-                    Universitas v12.0 · The Neural Taxonomy
+                    Universitas v13.0 · The Neural Taxonomy
+                </p>
+                <p className="text-[10px] italic text-amber-200/40 mt-1 leading-snug font-serif">
+                    «La realidad nunca te va a permitir que la traiciones. La realidad es incompatible con el idealismo: la mentira está en las apariencias.»
                 </p>
             </div>
 
@@ -420,8 +423,8 @@ const UniversitasGraph = () => {
                                 key={path.id}
                                 onClick={() => setActivePath(activePath?.id === path.id ? null : path)}
                                 className={`whitespace-nowrap px-3 py-1 rounded-full text-[11px] font-medium transition-all border ${activePath?.id === path.id
-                                        ? 'text-white shadow-lg scale-105'
-                                        : 'text-slate-400 hover:text-white border-slate-700 hover:border-slate-500 bg-slate-900/50'
+                                    ? 'text-white shadow-lg scale-105'
+                                    : 'text-slate-400 hover:text-white border-slate-700 hover:border-slate-500 bg-slate-900/50'
                                     }`}
                                 style={activePath?.id === path.id ? {
                                     backgroundColor: path.color + '30',
