@@ -31,7 +31,7 @@ export const graphData = {
     },
     nodes: [
         // ─── CAPA Z-4: EPISTEMOLOGÍA PURA (Marco A) ───
-        { id: "EP_TRUTH", group: "EPISTEM", label: "VERDAD", level: -4, color: "#FFD700", size: 22, description: "Teorías de la Verdad: Correspondencia, Coherencia, Pragmática.", route: "/content/courses/epistem/verdad_master.md" },
+        { id: "EP_TRUTH", group: "EPISTEM", label: "VERDAD", level: -4, color: "#FFD700", size: 26, description: "Manifiesto Fundacional: Autocrítica epistemológica del sistema. Las reglas, los compromisos y los límites del Grafo.", route: "/content/courses/epistem/autocritica_epistemologica.md" },
         { id: "EP_LOGIC", group: "EPISTEM", label: "LÓGICA FORMAL", level: -4, color: "#FFD700", size: 22, description: "Sistemas axiomáticos, deducción y paradojas del lenguaje formal.", route: "/content/courses/epistem/logica_formal_master.md" },
         { id: "EP_METHOD", group: "EPISTEM", label: "MÉTODO", level: -4, color: "#FFD700", size: 22, description: "Filosofía de la Ciencia: Observación, Falsacionismo, Verosimilitud.", route: "/content/courses/epistem/filosofia_ciencia_master.md" },
         { id: "EP_PRAXIS", group: "EPISTEM", label: "PRAXIS", level: -4, color: "#FFD700", size: 22, description: "Pragmática y Ética del Discurso: Consenso, Falacias, Acción.", route: "/content/courses/epistem/pragmatica_etica_master.md" },
