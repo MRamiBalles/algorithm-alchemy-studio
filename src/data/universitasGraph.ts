@@ -235,7 +235,24 @@ export const learningPaths: LearningPath[] = [
             "Psicología Cognitiva: La mente emergente, los sesgos, Kahneman, el Sistema 1/2 y la ilusión del Yo.",
             "Macroeconomía y Derecho: Mentes egoístas compitiendo por recursos escasos. Nash, la Mano Invisible, el Estado.",
             "Historia Geopolítica: 10.000 años de imperios dictados por ríos, trigo, carbón y semiconductores.",
-            "Metaheurísticas: El cierre del círculo. Imitamos en silicio (Algoritmos Genéticos, Enjambres) exactamente lo que la biología hizo en carbono."
+            "Metaheurísticas: El cierre del círculo. Imitamos en silicio (Algoritmos Genéticos, Enjambres) exactamente lo que la biología hizo en carbono durante 3.800 millones de años."
+        ]
+    },
+    {
+        id: "PATH_AXIOM_ALGO",
+        name: "Del Axioma al Algoritmo",
+        subtitle: "El descenso vertical: de la epistemología pura al código ejecutable",
+        color: "#FFD700",
+        description: "Ruta fundacional que desciende desde las preguntas más abstractas sobre la Verdad (Z-4), cruza los Átomos del pensamiento (Z-3) y aterriza en los algoritmos ejecutables (Z7). Es la columna vertebral vertical del Grafo completo.",
+        nodes: ["EP_TRUTH", "EP_LOGIC", "ATOM_CRI", "SUB_DIS", "SUB_ALG", "SUB_MAC", "APEX_MBHB"],
+        acquisitions: [
+            "Verdad: ¿Qué significa que algo sea verdadero? Correspondencia, coherencia o utilidad pragmática. Sin esta pregunta resuelta, todo lo que sigue es castillo en el aire.",
+            "Lógica Formal: Silogismos, axiomas, Gödel. Las reglas inmutables del razonamiento válido y sus límites demostrados.",
+            "Lógica (Átomo): La capacidad operativa de deducir, la Razón como propiedad irreducible del pensamiento humano.",
+            "Matemática Discreta: Boole, Shannon, Grafos, Autómatas. La formalización que convierte la lógica en circuitos y algoritmos.",
+            "Algoritmia: Divide y vencerás, programación dinámica, teoría de grafos. El arte de resolver problemas eficientemente.",
+            "Modelos Avanzados de Computación: Turing, Halting Problem, P vs NP. Los límites teóricos absolutos de lo que una máquina puede calcular.",
+            "Metaheurísticas (Apex): Cuando los problemas son NP-Hard y la solución exacta es imposible, imitamos a la naturaleza: Algoritmos Genéticos, Enjambres, Recocido Simulado."
         ]
     }
 ];

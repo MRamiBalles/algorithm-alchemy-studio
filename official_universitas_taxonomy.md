@@ -1,58 +1,112 @@
-# Official Universitas Taxonomy v1.1 — "The Neural Taxonomy"
-> **Status**: ACTIVE · **Date**: 2026-02-21
+# Official Universitas Taxonomy v14.0 — «La Realidad es Incompatible con el Idealismo»
+> **Status**: ACTIVE · **Date**: 2026-03-03 · **Nodos**: 38 · **Learning Paths**: 4
 
-## LEVEL -3:## 🌍 El Horizonte Ontológico (Las Zonas/Pillars)
+> **Axioma Fundacional:** *«La realidad nunca te va a permitir que la traiciones. La realidad es incompatible con el idealismo: la mentira está en las apariencias.»*
 
-> **[NUEVO PARADIGMA: El Eje X Universal - El Tiempo y la Geopolítica]**
-> *La Historia no es un mero "nodo" ni una disciplina aislada en el Pilar Z5 de Sociedad. La Historia y la dialéctica geopolítica constituyen el "Eje X" universal que atraviesa diagonalmente cada una de estas zonas ontológicas. Ninguna ecuación, algoritmo o transistor fue creado por generación espontánea en el vacío platónico. Fueron forjados en crisoles de fuego, impulsados por guerras frías, revoluciones industriales, el patrocinio de imperios (ej. DARPA), las catástrofes económicas y el afán humano de dominancia sobre la naturaleza empírica. Cada disciplina, desde SUB_CALC hasta APEX_MBHB, arrastra consigo el peso del contexto histórico material que la parió.*
+---
 
-> **[METODOLOGÍA DIVULGATIVA: El Modelo Santaolalla-Veritasium]**
-> *La enseñanza en esta institución rechaza el "Axiomatismo Ciego" (arrojar fórmulas sin contexto). Asumiendo la influencia de grandes divulgadores físicos como Javier Santaolalla (Date un Vlog) o Derek Muller (Veritasium), el conocimiento se transmite mediante el "Storytelling Histórico". El arco narrativo del descubrimiento —el misterio, el error, las rivalidades de los científicos, el contexto de guerra o revolución— es el guion central. La fórmula matemática no es el punto de partida, es el clímax dramático (el 'plot twist') de una historia geopolítica de supervivencia humana.*
+## Metodología
+> **[Modelo Santaolalla-Veritasium]** La enseñanza rechaza el "Axiomatismo Ciego". El conocimiento se transmite mediante Storytelling Histórico: el arco narrativo del descubrimiento es el guion central. La fórmula es el clímax, no el punto de partida.
 
-La Universidad se divide geográficamente en 7 Zonas que representan el ascenso del espíritu y la complejidad:
-| ID | Label | Role | Level | description |
-|----|-------|------|-------|-------------|
-| Z0 | ATOMS | Constants | -3 | Lingüística, Álgebra, Lógica, Aisthesis |
+> **[Eje X Universal — La Historia]** Ningún algoritmo, transistor o ecuación fue creado en el vacío. Cada disciplina arrastra el peso del contexto histórico material que la parió: guerras, revoluciones, imperios y semiconductores.
 
-## LEVEL -2: THE SUBSTRATE (Epistemological Foundations)
-| ID | Label | Role | Level | UHU Subject Integration |
-|----|-------|------|-------|-------------------------|
-| Z0.1 | Mathematics | Foundation | -2 | Álgebra Lineal, Cálculo, Estadística |
-| Z0.2 | Physics | Foundation | -2 | Fund. Físicos de la Informática |
-| Z0.3 | Philosophy | Foundation | -2 | Ética, Legislación y Profesión |
+---
 
-## LEVEL 1: THE PILLARS (Ontological Satellites)
-| ID | Label | Role | Level |
-|----|-------|------|-------|
-| Z1 | MATTER | Pillar | 1 |
-| Z2 | ENGINEERING | Pillar | 1 |
-| Z3 | LIFE | Pillar | 1 |
-| Z4 | MIND | Pillar | 1 |
-| Z5 | SOCIETY | Pillar | 1 |
-| Z6 | CULTURE | Pillar | 1 |
+## CAPA Z-4: EPISTEMOLOGÍA PURA (Marco A — Oro)
+*CÓMO sabe la humanidad que sabe. El filtro de validación universal.*
 
-## LEVEL 1.5: THE AXIS MUNDI (Cybernetic Nexus)
-| ID | Label | Role | Level | UHU Subject |
-|----|-------|------|-------|-------------|
-| Z7 | COMPUTER SCIENCE | Nexus | 1.5 | Central Hub for all Domains |
+| ID | Label | Descripción |
+|---|---|---|
+| EP_TRUTH | VERDAD | Teorías de la Verdad: Correspondencia, Coherencia, Pragmática |
+| EP_LOGIC | LÓGICA FORMAL | Sistemas axiomáticos, deducción, Gödel |
+| EP_METHOD | MÉTODO | Filosofía de la Ciencia: Falsacionismo, Verosimilitud |
+| EP_PRAXIS | PRAXIS | Racionalidad comunicativa, Falacias, Acción social |
 
-## LEVEL 2-3: THE FOLIAGE (Degrees & Subjects)
-| ID | Degree / Subject | Role | Level |
-|----|------------------|------|-------|
-| L2 | Law, History, CS | Domain | 2 |
-| L3 | Calculus, Data Struct | Subject | 3 |
+**Cadena:** VERDAD → LÓGICA FORMAL → MÉTODO → PRAXIS
 
-## LEVEL 4: THE APEX (Transcendental Synthesis)
-| ID | Label | Role | Level |
-|----|-------|------|-------|
-| Z8 | LEGENDARY NODES | Apex | 4 |
+---
 
-## 8 ACADEMY TRACKS (Refined)
-1. **Atoms & Foundations** (Level -3 to -2)
-2. **Core Computing** (Level 1.5)
-3. **Systems & Architecture** (Level 1.5)
-4. **Networks & Cloud** (Level 1.5)
-5. **Software & Data** (Level 1.5 to 3)
-6. **Intelligence & MBHB** (Level 3 to 4) ← Meta-Focus
-7. **Visual & Arts** (Level 1 to 3)
-8. **Security & Ethics** (Level 1 to 2)
+## CAPA Z-3: ÁTOMOS (Propiedades Irreducibles — Blanco)
+*Las 4 capacidades primordiales del pensamiento humano.*
+
+| ID | Label | Propiedad |
+|---|---|---|
+| ATOM_SEM | LINGÜÍSTICA | El Verbo — Capacidad simbólica |
+| ATOM_ALG | ÁLGEBRA | El Número — Precisión cuantitativa |
+| ATOM_CRI | LÓGICA | La Razón — Deducción y validación |
+| ATOM_AIS | AISTHESIS | El Sentido — Percepción material |
+
+**Estructura:** Ouroboros triangular (SEM↔CRI↔ALG) + Aisthesis como ancla sensorial.
+
+---
+
+## CAPA Z-2: EJES ONTOLÓGICOS (Marco B — Plata)
+*QUÉ tipo de saber produce la humanidad. Clasificación materialista.*
+
+| ID | Label | Criterio |
+|---|---|---|
+| AX_RADIAL | C. RADIALES | El sujeto desaparece del resultado (Física, Química) |
+| AX_CIRCULAR | C. CIRCULARES | El sujeto es ineliminable (Historia, Psicología) |
+| AX_TECH | TECNOLOGÍAS | Fabricar herramientas, no descubrir verdades |
+| AX_PHIL | FILOSOFÍA | Saber de 2º grado: interpretar Ideas transversales |
+| AX_LIT | LITERATURA | Laboratorio racional de ficción humana |
+
+---
+
+## CAPAS Z0 a Z7: CURSOS CONCRETOS
+
+### Zona 0: Substrato Matemático y Filosófico
+| ID | Label | Texto Canónico |
+|---|---|---|
+| SUB_CALC | Cálculo | Stewart |
+| SUB_LA | Álgebra Lineal | Strang |
+| SUB_DIS | Matemática Discreta | Rosen |
+| SUB_EST | Estadística | Devore |
+| SUB_FIS1 | Física y Electrónica | Tipler |
+| SUB_EPI | Epistemología | Popper |
+| SUB_ETH | Ética Tecnológica | Bostrom |
+
+### Zona 2: Ingeniería de Sistemas
+| ID | Label | Texto Canónico |
+|---|---|---|
+| SUB_AC | Arq. Computadores | Patterson/Hennessy |
+| SUB_SO | Sistemas Operativos | Silberschatz |
+| SUB_RED | Redes | Kurose/Ross |
+| TEC_LING | Tec. Lingüística | (Pilar Tecnológico) |
+
+### Zonas 3-6: Pilares Ontológicos Humanos
+| ID | Label | Texto Canónico |
+|---|---|---|
+| SUB_BIO | Biología Fundamental | Campbell |
+| SUB_PSY | Psicología Cognitiva | Eysenck/Keane |
+| SUB_LAW_ECON | Macroeconomía y Derecho | Mankiw |
+| SUB_HIST | Historia Geopolítica | Braudel |
+
+### Zona 7: Nexus Algorítmico
+| ID | Label | Texto Canónico |
+|---|---|---|
+| SUB_ALG | Algoritmia | Cormen |
+| SUB_BD | Bases de Datos | Silberschatz |
+| SUB_IS | Ingeniería Software | Brooks |
+| SUB_FIA | Fundamentos IA | Russell |
+| SUB_ML1 | Machine Learning I | Hastie |
+| SUB_MAC | Modelos Avz. Computación | Sipser |
+| SUB_AO | Animación por Ordenador | Parent |
+| SUB_RV | Realidad Virtual | LaValle |
+| SUB_PJ | Programación de Juegos | Gregory |
+
+### Apex (Nivel 4)
+| ID | Label |
+|---|---|
+| APEX_MBHB | Metaheurísticas Bioinspiradas |
+
+---
+
+## 4 LEARNING PATHS (Autopistas de Conocimiento)
+
+| # | Nombre | Color | Ruta |
+|---|---|---|---|
+| 🔵 | Del Verbo a la IA | #00AAFF | EPI → DIS → TEC_LING → FIA → ML1 → ETH |
+| 🟢 | De la Materia al Silicio | #00FFCC | ALG → CALC → FIS → AC → SO → RED → BD |
+| 🔴 | De la Célula a la Civilización | #FF4400 | AIS → BIO → PSY → ECON → HIST → MBHB |
+| 🟡 | Del Axioma al Algoritmo | #FFD700 | TRUTH → LOGIC → CRI → DIS → ALG → MAC → MBHB |
