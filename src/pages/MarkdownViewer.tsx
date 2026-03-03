@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { ArrowLeft } from "lucide-react";
 import { GeneticVisualizer } from "@/components/visualizers/GeneticVisualizer";
+import { AStarVisualizer } from "@/components/visualizers/AStarVisualizer";
 
 export default function MarkdownViewer() {
     const location = useLocation();
@@ -82,6 +83,9 @@ export default function MarkdownViewer() {
                                                 // Check for "type="Genetic""
                                                 if (codeContent.includes('type="Genetic"')) {
                                                     return <GeneticVisualizer />;
+                                                }
+                                                if (codeContent.includes('type="AStar"')) {
+                                                    return <AStarVisualizer />;
                                                 }
                                                 return <div className="p-4 bg-red-900/50 text-red-200 rounded border border-red-700">Visualizer unknown: {codeContent}</div>;
                                             }
