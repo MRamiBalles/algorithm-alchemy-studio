@@ -6,6 +6,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { ArrowLeft } from "lucide-react";
 import { GeneticVisualizer } from "@/components/visualizers/GeneticVisualizer";
 import { AStarVisualizer } from "@/components/visualizers/AStarVisualizer";
+import { NeuralNetVisualizer } from "@/components/visualizers/NeuralNetVisualizer";
 
 export default function MarkdownViewer() {
     const location = useLocation();
@@ -86,6 +87,9 @@ export default function MarkdownViewer() {
                                                 }
                                                 if (codeContent.includes('type="AStar"')) {
                                                     return <AStarVisualizer />;
+                                                }
+                                                if (codeContent.includes('type="NeuralNet"')) {
+                                                    return <NeuralNetVisualizer />;
                                                 }
                                                 return <div className="p-4 bg-red-900/50 text-red-200 rounded border border-red-700">Visualizer unknown: {codeContent}</div>;
                                             }

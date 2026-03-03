@@ -182,12 +182,21 @@ const UniversitasGraph = () => {
             {/* HUD Overlay: Version & Axiom */}
             <div className="absolute top-3 left-3 z-10 pointer-events-none max-w-[55%]">
                 <p className="text-[10px] font-mono text-cyan-500/60 tracking-widest uppercase">
-                    Universitas v13.0 · The Neural Taxonomy
+                    Universitas v14.0 · The Root Refactoring
                 </p>
                 <p className="text-[10px] italic text-amber-200/40 mt-1 leading-snug font-serif">
                     «La realidad nunca te va a permitir que la traiciones. La realidad es incompatible con el idealismo: la mentira está en las apariencias.»
                 </p>
             </div>
+
+            {/* Manifiesto Button */}
+            <button
+                onClick={() => navigate('/content/courses/epistem/autocritica_epistemologica.md')}
+                className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 bg-amber-900/30 border border-amber-500/30 rounded-lg text-amber-300/80 hover:text-amber-200 hover:bg-amber-900/50 transition-all text-[10px] font-mono uppercase tracking-wider"
+            >
+                <BookOpen className="w-3 h-3" />
+                Manifiesto
+            </button>
 
             <svg ref={svgRef} className="w-full h-full" viewBox="0 0 800 600">
                 {/* Glow Filters */}
@@ -214,7 +223,30 @@ const UniversitasGraph = () => {
                         <feComposite in="color" in2="blur" operator="in" result="shadow" />
                         <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
                     </filter>
+                    <filter id="glow-gold" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="5" result="blur" />
+                        <feFlood floodColor="#FFD700" floodOpacity="0.5" result="color" />
+                        <feComposite in="color" in2="blur" operator="in" result="shadow" />
+                        <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
+                    <filter id="glow-silver" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feFlood floodColor="#C0C0C0" floodOpacity="0.3" result="color" />
+                        <feComposite in="color" in2="blur" operator="in" result="shadow" />
+                        <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
                 </defs>
+
+                {/* Depth Zone Rings */}
+                <circle cx="400" cy="300" r="280" fill="none" stroke="#FFD70012" strokeWidth="1" strokeDasharray="6 4" />
+                <text x="400" y="28" textAnchor="middle" className="text-[8px] fill-amber-500/20 font-mono">Z-4 EPISTEMOLOGÍA</text>
+                <circle cx="400" cy="300" r="230" fill="none" stroke="#FFFFFF10" strokeWidth="1" strokeDasharray="4 4" />
+                <text x="686" y="300" textAnchor="middle" className="text-[7px] fill-white/15 font-mono" transform="rotate(90,686,300)">Z-3 ÁTOMOS</text>
+                <circle cx="400" cy="300" r="180" fill="none" stroke="#C0C0C010" strokeWidth="1" strokeDasharray="4 4" />
+                <text x="114" y="300" textAnchor="middle" className="text-[7px] fill-gray-400/15 font-mono" transform="rotate(-90,114,300)">Z-2 EJES</text>
+                <circle cx="400" cy="300" r="120" fill="none" stroke="#00FFCC08" strokeWidth="1" strokeDasharray="3 5" />
+                <circle cx="400" cy="300" r="50" fill="none" stroke="#FF000015" strokeWidth="1.5" strokeDasharray="2 3" />
+                <text x="400" y="256" textAnchor="middle" className="text-[7px] fill-red-500/20 font-mono">APEX</text>
 
                 {/* Links */}
                 {links.map((link, i) => {
@@ -249,15 +281,19 @@ const UniversitasGraph = () => {
                     const dimmed = activePath && !inPath;
                     const r = inPath ? getNodeRadius(node) + 3 : getNodeRadius(node);
                     const color = inPath ? activePath!.color : getNodeColor(node);
-                    const glowFilter = node.role === 'atom' && node.color === '#FF00DD'
-                        ? 'url(#glow-magenta)'
-                        : node.role === 'atom'
-                            ? 'url(#glow-white)'
-                            : node.role === 'legendary'
-                                ? 'url(#glow-red)'
-                                : node.color === '#8B5CF6'
-                                    ? 'url(#glow-violet)'
-                                    : undefined;
+                    const glowFilter = node.group === 'EPISTEM'
+                        ? 'url(#glow-gold)'
+                        : node.group === 'AXIS'
+                            ? 'url(#glow-silver)'
+                            : node.role === 'atom' && node.color === '#FF00DD'
+                                ? 'url(#glow-magenta)'
+                                : node.role === 'atom'
+                                    ? 'url(#glow-white)'
+                                    : node.role === 'legendary'
+                                        ? 'url(#glow-red)'
+                                        : node.color === '#8B5CF6'
+                                            ? 'url(#glow-violet)'
+                                            : undefined;
 
                     // Path step number
                     const pathIndex = activePath ? activePath.nodes.indexOf(node.id) : -1;
@@ -313,12 +349,14 @@ const UniversitasGraph = () => {
                                 y={node.y! + r + 14}
                                 textAnchor="middle"
                                 className={`pointer-events-none select-none font-mono ${inPath ? 'text-[10px] font-bold' :
-                                    node.role === 'atom' ? 'text-[11px] fill-white font-bold' :
-                                        node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
-                                            node.role === 'degree' ? 'text-[9px] fill-gray-300' :
-                                                'text-[8px] fill-gray-500'
+                                    node.group === 'EPISTEM' ? 'text-[10px] font-bold' :
+                                        node.group === 'AXIS' ? 'text-[9px] font-semibold' :
+                                            node.role === 'atom' ? 'text-[11px] fill-white font-bold' :
+                                                node.role === 'legendary' ? 'text-[10px] fill-red-400 font-bold' :
+                                                    node.role === 'degree' ? 'text-[9px] fill-gray-300' :
+                                                        'text-[8px] fill-gray-500'
                                     }`}
-                                fill={inPath ? activePath!.color : undefined}
+                                fill={inPath ? activePath!.color : node.group === 'EPISTEM' ? '#FFD700' : node.group === 'AXIS' ? '#C0C0C0' : undefined}
                             >
                                 {node.label}
                             </text>
