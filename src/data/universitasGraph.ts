@@ -139,3 +139,65 @@ export const graphData = {
         { source: "SUB_MAC", target: "APEX_MBHB", type: "NeuralPath" },
     ] as GraphLink[]
 };
+
+export interface LearningPath {
+    id: string;
+    name: string;
+    subtitle: string;
+    color: string;
+    description: string;
+    nodes: string[]; // Ordered sequence of node IDs
+    acquisitions: string[]; // What the student gains at each hop
+}
+
+export const learningPaths: LearningPath[] = [
+    {
+        id: "PATH_VERB_IA",
+        name: "Del Verbo a la Inteligencia Artificial",
+        subtitle: "Cómo el lenguaje humano se formaliza hasta convertirse en IA",
+        color: "#00AAFF",
+        description: "Ruta epistemológica que traza el arco completo desde los límites de la certeza humana, pasando por la formalización lógica y tecnológica del lenguaje, hasta los modelos de aprendizaje automático y sus dilemas éticos.",
+        nodes: ["SUB_EPI", "SUB_DIS", "TEC_LING", "SUB_FIA", "SUB_ML1", "SUB_ETH"],
+        acquisitions: [
+            "Límites de la Certeza: Comprender qué puede y qué no puede ser demostrado (Popper, Gödel). El filtro epistemológico que impide construir IA sin saber qué es 'verdad'.",
+            "Lógica Formal y Grafos: Traducir el razonamiento a estructuras discretas operables por máquinas (Boole → Shannon → Autómatas).",
+            "Ingeniería del Lenguaje: De las gramáticas de Chomsky a BNF, compiladores y embeddings vectoriales. El lenguaje como tecnología optimizable.",
+            "Fundamentos de IA: Búsqueda, representación del conocimiento, planificación. La IA simbólica clásica (GOFAI) y sus límites.",
+            "Machine Learning: Redes Neuronales, Gradient Descent, CNNs y Transformers. El salto estadístico que reemplazó las reglas manuales.",
+            "Ética y Alineación: El Value Alignment Problem, las alucinaciones de los LLMs, y por qué la Epistemología del primer nodo vuelve a ser crítica al final."
+        ]
+    },
+    {
+        id: "PATH_MATTER_SILICON",
+        name: "De la Materia al Silicio",
+        subtitle: "Cómo la física construye computadoras",
+        color: "#00FFCC",
+        description: "Ruta ingenieril que muestra cómo las leyes de la física se solidifican en transistores, se abstraen en sistemas operativos, se interconectan en redes y persisten datos a escala planetaria.",
+        nodes: ["ATOM_ALG", "SUB_CALC", "SUB_FIS1", "SUB_AC", "SUB_SO", "SUB_RED", "SUB_BD"],
+        acquisitions: [
+            "El Número abstracto: La propiedad cuantitativa del universo antes de tocar materia.",
+            "Cálculo Diferencial: Dominar el infinito continuo para describir el movimiento y la electricidad.",
+            "Física y Electrónica: Del campo electromagnético al transistor MOSFET. El hardware del universo.",
+            "Arquitectura de Computadores: Cómo los transistores se organizan en CPUs, caches y buses (Von Neumann, RISC-V).",
+            "Sistemas Operativos: El software que gestiona el hardware: procesos, memoria virtual, scheduling.",
+            "Redes de Computadores: TCP/IP, routing, DNS. La infraestructura planetaria de comunicación.",
+            "Bases de Datos: Persistencia, SQL, índices B-Tree. El destino final del dato procesado."
+        ]
+    },
+    {
+        id: "PATH_CELL_CIVILIZATION",
+        name: "De la Célula a la Civilización",
+        subtitle: "Cómo la vida genera sociedades y éstas generan algoritmos",
+        color: "#FF4400",
+        description: "Ruta biológico-social que traza cómo la materia viva evoluciona hasta producir mentes, mercados, imperios y finalmente algoritmos bioinspirados que imitan el proceso completo.",
+        nodes: ["ATOM_AIS", "SUB_BIO", "SUB_PSY", "SUB_LAW_ECON", "SUB_HIST", "APEX_MBHB"],
+        acquisitions: [
+            "El Sentido: La percepción cruda como interfaz primordial entre el organismo y el caos entrópico.",
+            "Biología: El ADN como código fuente, la célula como nanofábrica, la evolución como algoritmo genético natural.",
+            "Psicología Cognitiva: La mente emergente, los sesgos, Kahneman, el Sistema 1/2 y la ilusión del Yo.",
+            "Macroeconomía y Derecho: Mentes egoístas compitiendo por recursos escasos. Nash, la Mano Invisible, el Estado.",
+            "Historia Geopolítica: 10.000 años de imperios dictados por ríos, trigo, carbón y semiconductores.",
+            "Metaheurísticas: El cierre del círculo. Imitamos en silicio (Algoritmos Genéticos, Enjambres) exactamente lo que la biología hizo en carbono."
+        ]
+    }
+];
