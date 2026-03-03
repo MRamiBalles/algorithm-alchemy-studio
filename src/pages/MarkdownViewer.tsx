@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { GeneticVisualizer } from "@/components/visualizers/GeneticVisualizer";
 import { AStarVisualizer } from "@/components/visualizers/AStarVisualizer";
 import { NeuralNetVisualizer } from "@/components/visualizers/NeuralNetVisualizer";
+import { SortingVisualizer } from "@/components/visualizers/SortingVisualizer";
 
 export default function MarkdownViewer() {
     const location = useLocation();
@@ -90,6 +91,9 @@ export default function MarkdownViewer() {
                                                 }
                                                 if (codeContent.includes('type="NeuralNet"')) {
                                                     return <NeuralNetVisualizer />;
+                                                }
+                                                if (codeContent.includes('type="Sorting"')) {
+                                                    return <SortingVisualizer />;
                                                 }
                                                 return <div className="p-4 bg-red-900/50 text-red-200 rounded border border-red-700">Visualizer unknown: {codeContent}</div>;
                                             }
