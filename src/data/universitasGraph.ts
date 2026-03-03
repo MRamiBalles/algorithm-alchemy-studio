@@ -39,6 +39,7 @@ export const graphData = {
         // ─── PILARES ONTOLÓGICOS (ZONAS 1-6) ───
         { id: "Z1_MATTER", group: "PILLAR", label: "MATERIA", level: 1, color: "#AAAAAA" },
         { id: "Z2_ENG", group: "PILLAR", label: "INGENIERÍA", level: 1, color: "#00FFCC" },
+        { id: "TEC_LING", group: "PILLAR", label: "TEC. LINGÜÍSTICA", level: 2, color: "#E8AA00", role: "subject", route: "/content/courses/z2_eng/tecnologia_linguistica_master.md", description: "Ingeniería del Verbo. Diseño y optimización de idiomas como herramientas operativas." },
         { id: "Z3_LIFE", group: "PILLAR", label: "VIDA", level: 1, color: "#00CC00", route: "/content/courses/z3_life/biologia_fundamental_master.md" },
         { id: "Z4_MIND", group: "PILLAR", label: "MENTE", level: 1, color: "#FF00DD", route: "/content/courses/z4_mind/fundamentos_psicologia_master.md" },
         { id: "Z5_SOCIETY", group: "PILLAR", label: "SOCIEDAD", level: 1, color: "#FF4400", route: "/content/courses/z5_society/macroeconomia_derecho_master.md" },
@@ -91,6 +92,11 @@ export const graphData = {
         { source: "ATOM_CRI", target: "ATOM_ALG", type: "Ouroboros" },
         { source: "ATOM_ALG", target: "ATOM_SEM", type: "Ouroboros" },
         { source: "ATOM_AIS", target: "ATOM_ALG", type: "Proportion" },
+
+        // Tecnología Lingüística
+        { source: "ATOM_SEM", target: "TEC_LING", type: "Technology" },
+        { source: "TEC_LING", target: "SUB_IS", type: "Formalization" },
+        { source: "TEC_LING", target: "SUB_MAC", type: "Grammar" },
 
         // Z0 Conexiones
         { source: "SUB_CALC", target: "SUB_FIS1", type: "Prerequisite" },
