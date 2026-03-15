@@ -163,6 +163,7 @@ const UniversitasGraph = () => {
 
     const getLinkColor = (link: GraphLink): string => {
         if (link.type === 'Ouroboros') return '#FFFFFF';
+        if (link.type === 'Genesis') return '#66CCFF';
         if (link.type === 'NeuralPath') return '#8B5CF6';
         if (link.type === 'Prerequisite') return '#8B5CF6';
         if (link.type === 'Specialization') return '#A78BFA';
