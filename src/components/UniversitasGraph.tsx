@@ -90,8 +90,9 @@ const UniversitasGraph = () => {
                         const d = Math.sqrt(dx * dx + dy * dy) || 1;
                         const targetDist =
                             link.type === 'Ouroboros' ? 60 :
-                                link.type === 'Foundation' ? 80 :
-                                    link.type === 'Pillar' ? 100 : 120;
+                                link.type === 'Genesis' ? 70 :
+                                    link.type === 'Foundation' ? 80 :
+                                        link.type === 'Pillar' ? 100 : 120;
                         const force = (d - targetDist) * 0.05;
 
                         const fx = (dx / d) * force;
