@@ -26,7 +26,7 @@ export interface GraphLink {
 
 export const graphData = {
     meta: {
-        version: "15.0 (Capa 0 — 6 Átomos Irreducibles)",
+        version: "16.0 (Capas 0-1-2 — Modelo Completo de Dependencias)",
         description: "Unified Knowledge Graph: -4 (Epistemology) to 4 (Apexes)"
     },
     nodes: [

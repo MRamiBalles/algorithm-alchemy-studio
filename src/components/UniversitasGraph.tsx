@@ -243,7 +243,9 @@ const UniversitasGraph = () => {
                 <circle cx="400" cy="300" r="280" fill="none" stroke="#FFD70012" strokeWidth="1" strokeDasharray="6 4" />
                 <text x="400" y="28" textAnchor="middle" className="text-[8px] fill-amber-500/20 font-mono">Z-4 EPISTEMOLOGÍA</text>
                 <circle cx="400" cy="300" r="230" fill="none" stroke="#FFFFFF10" strokeWidth="1" strokeDasharray="4 4" />
-                <text x="686" y="300" textAnchor="middle" className="text-[7px] fill-white/15 font-mono" transform="rotate(90,686,300)">Z-3 ÁTOMOS</text>
+                <text x="686" y="300" textAnchor="middle" className="text-[7px] fill-white/15 font-mono" transform="rotate(90,686,300)">Z-3 ÁTOMOS (CAPA 0)</text>
+                <circle cx="400" cy="300" r="205" fill="none" stroke="#66CCFF08" strokeWidth="1" strokeDasharray="3 5" />
+                <text x="605" y="300" textAnchor="middle" className="text-[6px] fill-cyan-400/12 font-mono" transform="rotate(90,605,300)">CAPA 1</text>
                 <circle cx="400" cy="300" r="180" fill="none" stroke="#C0C0C010" strokeWidth="1" strokeDasharray="4 4" />
                 <text x="114" y="300" textAnchor="middle" className="text-[7px] fill-gray-400/15 font-mono" transform="rotate(-90,114,300)">Z-2 EJES</text>
                 <circle cx="400" cy="300" r="120" fill="none" stroke="#00FFCC08" strokeWidth="1" strokeDasharray="3 5" />
