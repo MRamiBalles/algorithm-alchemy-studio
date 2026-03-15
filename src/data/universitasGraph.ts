@@ -343,5 +343,38 @@ export const learningPaths: LearningPath[] = [
             "Modelos Avanzados de Computación: Turing, Halting Problem, P vs NP. Los límites teóricos absolutos de lo que una máquina puede calcular.",
             "Metaheurísticas (Apex): Cuando los problemas son NP-Hard y la solución exacta es imposible, imitamos a la naturaleza: Algoritmos Genéticos, Enjambres, Recocido Simulado."
         ]
+    },
+    {
+        id: "PATH_CROSS_LAYERS",
+        name: "Travesía de las 3 Capas",
+        subtitle: "Del átomo irreducible al código ejecutable, cruzando cada estrato",
+        color: "#FF00DD",
+        description: "La ruta que demuestra cómo un átomo de Capa 0 (Lógica) se combina en Capa 1 (Recursión), se formaliza en Capa 2 (Programación teórica) y cristaliza en una asignatura universitaria (Algoritmia). Es la prueba viviente del modelo de dependencia del conocimiento.",
+        nodes: ["ATOM_LOG", "ATOM_ARIT", "C1_REC", "C1_ALG", "SUB_DIS", "SUB_ALG", "SUB_MAC"],
+        acquisitions: [
+            "Lógica (Capa 0): Deducción, inducción, abducción. Las operaciones irreducibles del pensamiento que ninguna capa posterior puede eludir.",
+            "Aritmética (Capa 0): El Número como propiedad cuantitativa del universo. Sin contar, no hay recursión ni algoritmo posible.",
+            "Recursión (Capa 1): Autorreferencia controlada + inducción matemática. El momento donde Lógica y Aritmética se fusionan en un patrón generativo.",
+            "Álgebra (Capa 1): La variable, la ecuación, la estructura. La abstracción que permite generalizar patrones numéricos en fórmulas universales.",
+            "Matemática Discreta (Asignatura): Boole, Shannon, Grafos, Autómatas. El puente formal entre la abstracción y la computabilidad.",
+            "Algoritmia (Asignatura): Divide y vencerás, programación dinámica, complejidad. El arte de resolver problemas eficientemente con máquinas.",
+            "Modelos Avanzados de Computación (Asignatura): Turing, Halting Problem, P vs NP. Los límites teóricos absolutos de lo computable."
+        ]
+    },
+    {
+        id: "PATH_VERB_LAW",
+        name: "Del Verbo a la Norma",
+        subtitle: "Cómo el lenguaje construye imperios jurídicos",
+        color: "#FF8800",
+        description: "Ruta que traza cómo el átomo del Lenguaje (Capa 0) se compone en Narrativa y Taxonomía (Capa 1), se axiomatiza en Norma Jurídica (Capa 2) y cristaliza en las asignaturas de Derecho e Historia.",
+        nodes: ["ATOM_LANG", "ATOM_CAUS", "C1_NAR", "C1_TAX", "SUB_LAW_ECON", "SUB_HIST"],
+        acquisitions: [
+            "Lenguaje (Capa 0): El Verbo como tecnología biológica de compresión de la realidad. Sin palabra, no hay contrato ni ley.",
+            "Causalidad (Capa 0): El motor de toda explicación. Sin causa-efecto, no hay responsabilidad jurídica ni narrativa histórica.",
+            "Narrativa (Capa 1): Secuencia, conflicto, resolución. La estructura que convierte hechos brutos en relato con sentido.",
+            "Taxonomía (Capa 1): Clasificar, nombrar, jerarquizar. La herramienta que organiza el derecho en códigos y la biología en especies.",
+            "Macroeconomía y Derecho (Asignatura): El Estado como acumulación de actas operativas. Nash, Kelsen, la Constitución como contrato verbal supremo.",
+            "Historia Geopolítica (Asignatura): 10.000 años de imperios dictados por ríos, trigo, carbón y la palabra escrita en piedra."
+        ]
     }
 ];
