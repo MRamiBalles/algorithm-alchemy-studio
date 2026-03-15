@@ -47,6 +47,17 @@ export const graphData = {
         { id: "ATOM_CAUS", group: "ATOM", label: "CAUSALIDAD", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Porqué. Causa-efecto, correlación vs causalidad, contrafactuales. El motor de toda explicación.", route: "/content/courses/atoms/capa0_causalidad_master.md" },
         { id: "ATOM_ANAL", group: "ATOM", label: "ANALOGÍA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Puente. Isomorfismo, metáfora y transferencia estructural entre dominios. El motor del descubrimiento.", route: "/content/courses/atoms/capa0_analogia_master.md" },
 
+        // ─── CAPA Z-2.5: CONTENIDOS COMPUESTOS ELEMENTALES (Capa 1) ───
+        { id: "C1_ALG", group: "CAPA1", label: "ÁLGEBRA", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lógica + Aritmética → la variable, la ecuación, la estructura algebraica.", route: "/content/courses/atoms/capa1_algebra_master.md" },
+        { id: "C1_FUNC", group: "CAPA1", label: "FUNCIONES", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Aritmética + Causalidad + Lógica → correspondencia, dominio, composición.", route: "/content/courses/atoms/capa1_funciones_master.md" },
+        { id: "C1_COMB", group: "CAPA1", label: "COMBINATORIA", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lógica + Aritmética → contar posibilidades sin enumerar.", route: "/content/courses/atoms/capa1_combinatoria_master.md" },
+        { id: "C1_PROB", group: "CAPA1", label: "PROBABILIDAD", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Aritmética + Causalidad + Lógica → cuantificación de la incertidumbre.", route: "/content/courses/atoms/capa1_probabilidad_master.md" },
+        { id: "C1_CONJ", group: "CAPA1", label: "CONJUNTOS/GRAFOS", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lógica + Geometría → pertenencia, relación, conexión.", route: "/content/courses/atoms/capa1_conjuntos_grafos_master.md" },
+        { id: "C1_TAX", group: "CAPA1", label: "TAXONOMÍA", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lógica + Lenguaje + Analogía → clasificar, nombrar, jerarquizar.", route: "/content/courses/atoms/capa1_taxonomia_master.md" },
+        { id: "C1_NAR", group: "CAPA1", label: "NARRATIVA", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lenguaje + Causalidad + Analogía → secuencia, conflicto, resolución.", route: "/content/courses/atoms/capa1_narrativa_master.md" },
+        { id: "C1_MED", group: "CAPA1", label: "MEDICIÓN", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Aritmética + Geometría + Causalidad → magnitud, unidad, escala, error.", route: "/content/courses/atoms/capa1_medicion_master.md" },
+        { id: "C1_REC", group: "CAPA1", label: "RECURSIÓN", level: -2.5, color: "#66CCFF", size: 22, role: "atom", description: "Lógica + Aritmética → autorreferencia controlada, inducción matemática.", route: "/content/courses/atoms/capa1_recursion_master.md" },
+
         // ─── CAPA Z-2: EJES ONTOLÓGICOS (Marco B) ───
         { id: "AX_RADIAL", group: "AXIS", label: "C. RADIALES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto desaparece del resultado: Física, Química, Matemáticas puras.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
         { id: "AX_CIRCULAR", group: "AXIS", label: "C. CIRCULARES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto es ineliminable: Historia, Psicología, Economía.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
@@ -137,6 +148,53 @@ export const graphData = {
         { source: "AX_TECH", target: "TEC_LING", type: "Classify" },
         { source: "AX_PHIL", target: "SUB_EPI", type: "Classify" },
         { source: "AX_PHIL", target: "SUB_ETH", type: "Classify" },
+
+        // Capa 0 → Capa 1: Átomos generan contenidos compuestos
+        { source: "ATOM_LOG", target: "C1_ALG", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_ALG", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_FUNC", type: "Genesis" },
+        { source: "ATOM_CAUS", target: "C1_FUNC", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_FUNC", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_COMB", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_COMB", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_PROB", type: "Genesis" },
+        { source: "ATOM_CAUS", target: "C1_PROB", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_PROB", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_CONJ", type: "Genesis" },
+        { source: "ATOM_GEO", target: "C1_CONJ", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_TAX", type: "Genesis" },
+        { source: "ATOM_LANG", target: "C1_TAX", type: "Genesis" },
+        { source: "ATOM_ANAL", target: "C1_TAX", type: "Genesis" },
+        { source: "ATOM_LANG", target: "C1_NAR", type: "Genesis" },
+        { source: "ATOM_CAUS", target: "C1_NAR", type: "Genesis" },
+        { source: "ATOM_ANAL", target: "C1_NAR", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_MED", type: "Genesis" },
+        { source: "ATOM_GEO", target: "C1_MED", type: "Genesis" },
+        { source: "ATOM_CAUS", target: "C1_MED", type: "Genesis" },
+        { source: "ATOM_LOG", target: "C1_REC", type: "Genesis" },
+        { source: "ATOM_ARIT", target: "C1_REC", type: "Genesis" },
+
+        // Capa 1 → Capa 1: Conexiones internas
+        { source: "C1_COMB", target: "C1_PROB", type: "Foundation" },
+        { source: "C1_ALG", target: "C1_FUNC", type: "Foundation" },
+        { source: "C1_FUNC", target: "C1_REC", type: "Foundation" },
+        { source: "C1_CONJ", target: "C1_TAX", type: "Foundation" },
+
+        // Capa 1 → Asignaturas
+        { source: "C1_ALG", target: "SUB_CALC", type: "Foundation" },
+        { source: "C1_ALG", target: "SUB_LA", type: "Foundation" },
+        { source: "C1_FUNC", target: "SUB_CALC", type: "Foundation" },
+        { source: "C1_MED", target: "SUB_FIS1", type: "Foundation" },
+        { source: "C1_MED", target: "SUB_EST", type: "Foundation" },
+        { source: "C1_PROB", target: "SUB_EST", type: "Foundation" },
+        { source: "C1_CONJ", target: "SUB_DIS", type: "Foundation" },
+        { source: "C1_REC", target: "SUB_ALG", type: "Foundation" },
+        { source: "C1_REC", target: "SUB_DIS", type: "Foundation" },
+        { source: "C1_COMB", target: "SUB_DIS", type: "Foundation" },
+        { source: "C1_TAX", target: "SUB_BIO", type: "Foundation" },
+        { source: "C1_NAR", target: "SUB_HIST", type: "Foundation" },
+        { source: "C1_NAR", target: "SUB_LAW_ECON", type: "Foundation" },
+        { source: "C1_PROB", target: "SUB_ML1", type: "Foundation" },
 
         // Ouroboros Capa 0: Los 6 átomos se retroalimentan
         { source: "ATOM_LANG", target: "ATOM_LOG", type: "Ouroboros" },
