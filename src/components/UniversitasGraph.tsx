@@ -184,7 +184,7 @@ const UniversitasGraph = () => {
             {/* HUD Overlay: Version & Axiom */}
             <div className="absolute top-3 left-3 z-10 pointer-events-none max-w-[55%]">
                 <p className="text-[10px] font-mono text-cyan-500/60 tracking-widest uppercase">
-                    Universitas v14.0 · The Root Refactoring
+                    Universitas v16.0 · Capa 0 + Capa 1 + Capa 2
                 </p>
                 <p className="text-[10px] italic text-amber-200/40 mt-1 leading-snug font-serif">
                     «La realidad nunca te va a permitir que la traiciones. La realidad es incompatible con el idealismo: la mentira está en las apariencias.»
