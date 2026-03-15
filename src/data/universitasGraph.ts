@@ -242,7 +242,7 @@ export const learningPaths: LearningPath[] = [
         subtitle: "Cómo la física construye computadoras",
         color: "#00FFCC",
         description: "Ruta ingenieril que muestra cómo las leyes de la física se solidifican en transistores, se abstraen en sistemas operativos, se interconectan en redes y persisten datos a escala planetaria.",
-        nodes: ["ATOM_ALG", "SUB_CALC", "SUB_FIS1", "SUB_AC", "SUB_SO", "SUB_RED", "SUB_BD"],
+        nodes: ["ATOM_ARIT", "SUB_CALC", "SUB_FIS1", "SUB_AC", "SUB_SO", "SUB_RED", "SUB_BD"],
         acquisitions: [
             "El Número abstracto: La propiedad cuantitativa del universo antes de tocar materia.",
             "Cálculo Diferencial: Dominar el infinito continuo para describir el movimiento y la electricidad.",
