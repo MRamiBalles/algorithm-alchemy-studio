@@ -36,11 +36,16 @@ export const graphData = {
         { id: "EP_METHOD", group: "EPISTEM", label: "MÉTODO", level: -4, color: "#FFD700", size: 22, description: "Filosofía de la Ciencia: Observación, Falsacionismo, Verosimilitud.", route: "/content/courses/epistem/filosofia_ciencia_master.md" },
         { id: "EP_PRAXIS", group: "EPISTEM", label: "PRAXIS", level: -4, color: "#FFD700", size: 22, description: "Pragmática y Ética del Discurso: Consenso, Falacias, Acción.", route: "/content/courses/epistem/pragmatica_etica_master.md" },
 
-        // ─── CAPA Z-3: ÁTOMOS (propiedades irreducibles) ───
-        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Capacidad simbólica de expresar conocimiento.", route: "/content/courses/atoms/linguistica_master.md" },
-        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Precisión cuantitativa estructurante.", route: "/content/courses/atoms/algebra_master.md" },
-        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Mecanismo de deducción y validación.", route: "/content/courses/atoms/logica_master.md" },
-        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa.", route: "/content/courses/atoms/aisthesis_master.md" },
+        // ─── CAPA Z-3.5: COGNITIVA (prerrequisitos biológicos) ───
+        { id: "ATOM_AIS", group: "COGNITIVE", label: "AISTHESIS", level: -3.5, color: "#FF00DD", size: 26, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa. Prerrequisito biológico de todo conocimiento.", route: "/content/courses/atoms/aisthesis_master.md" },
+
+        // ─── CAPA Z-3: ÁTOMOS IRREDUCIBLES (Capa 0 del conocimiento) ───
+        { id: "ATOM_LOG", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Deducción, inducción, abducción y validación. El mecanismo que separa lo verdadero de lo falso.", route: "/content/courses/atoms/capa0_logica_master.md" },
+        { id: "ATOM_LANG", group: "ATOM", label: "LENGUAJE", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Sintaxis, semántica, pragmática y argumentación. La primera tecnología de la especie.", route: "/content/courses/atoms/capa0_lenguaje_master.md" },
+        { id: "ATOM_ARIT", group: "ATOM", label: "ARITMÉTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Conteo, operaciones, orden y proporción. La cuantificación irreducible.", route: "/content/courses/atoms/capa0_aritmetica_master.md" },
+        { id: "ATOM_GEO", group: "ATOM", label: "GEOMETRÍA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Espacio. Forma, distancia, simetría y transformación. La intuición espacial formalizada.", route: "/content/courses/atoms/capa0_geometria_master.md" },
+        { id: "ATOM_CAUS", group: "ATOM", label: "CAUSALIDAD", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Porqué. Causa-efecto, correlación vs causalidad, contrafactuales. El motor de toda explicación.", route: "/content/courses/atoms/capa0_causalidad_master.md" },
+        { id: "ATOM_ANAL", group: "ATOM", label: "ANALOGÍA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Puente. Isomorfismo, metáfora y transferencia estructural entre dominios. El motor del descubrimiento.", route: "/content/courses/atoms/capa0_analogia_master.md" },
 
         // ─── CAPA Z-2: EJES ONTOLÓGICOS (Marco B) ───
         { id: "AX_RADIAL", group: "AXIS", label: "C. RADIALES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto desaparece del resultado: Física, Química, Matemáticas puras.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
