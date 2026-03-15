@@ -26,7 +26,7 @@ export interface GraphLink {
 
 export const graphData = {
     meta: {
-        version: "14.0 (The Root Refactoring)",
+        version: "15.0 (Capa 0 — 6 Átomos Irreducibles)",
         description: "Unified Knowledge Graph: -4 (Epistemology) to 4 (Apexes)"
     },
     nodes: [
@@ -36,11 +36,16 @@ export const graphData = {
         { id: "EP_METHOD", group: "EPISTEM", label: "MÉTODO", level: -4, color: "#FFD700", size: 22, description: "Filosofía de la Ciencia: Observación, Falsacionismo, Verosimilitud.", route: "/content/courses/epistem/filosofia_ciencia_master.md" },
         { id: "EP_PRAXIS", group: "EPISTEM", label: "PRAXIS", level: -4, color: "#FFD700", size: 22, description: "Pragmática y Ética del Discurso: Consenso, Falacias, Acción.", route: "/content/courses/epistem/pragmatica_etica_master.md" },
 
-        // ─── CAPA Z-3: ÁTOMOS (propiedades irreducibles) ───
-        { id: "ATOM_SEM", group: "ATOM", label: "LINGÜÍSTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Capacidad simbólica de expresar conocimiento.", route: "/content/courses/atoms/linguistica_master.md" },
-        { id: "ATOM_ALG", group: "ATOM", label: "ÁLGEBRA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Precisión cuantitativa estructurante.", route: "/content/courses/atoms/algebra_master.md" },
-        { id: "ATOM_CRI", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Mecanismo de deducción y validación.", route: "/content/courses/atoms/logica_master.md" },
-        { id: "ATOM_AIS", group: "ATOM", label: "AISTHESIS", level: -3, color: "#FF00DD", size: 30, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa.", route: "/content/courses/atoms/aisthesis_master.md" },
+        // ─── CAPA Z-3.5: COGNITIVA (prerrequisitos biológicos) ───
+        { id: "ATOM_AIS", group: "COGNITIVE", label: "AISTHESIS", level: -3.5, color: "#FF00DD", size: 26, role: "atom", description: "El Sentido. Percepción, soma y experiencia directa. Prerrequisito biológico de todo conocimiento.", route: "/content/courses/atoms/aisthesis_master.md" },
+
+        // ─── CAPA Z-3: ÁTOMOS IRREDUCIBLES (Capa 0 del conocimiento) ───
+        { id: "ATOM_LOG", group: "ATOM", label: "LÓGICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "La Razón. Deducción, inducción, abducción y validación. El mecanismo que separa lo verdadero de lo falso.", route: "/content/courses/atoms/capa0_logica_master.md" },
+        { id: "ATOM_LANG", group: "ATOM", label: "LENGUAJE", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Verbo. Sintaxis, semántica, pragmática y argumentación. La primera tecnología de la especie.", route: "/content/courses/atoms/capa0_lenguaje_master.md" },
+        { id: "ATOM_ARIT", group: "ATOM", label: "ARITMÉTICA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Número. Conteo, operaciones, orden y proporción. La cuantificación irreducible.", route: "/content/courses/atoms/capa0_aritmetica_master.md" },
+        { id: "ATOM_GEO", group: "ATOM", label: "GEOMETRÍA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Espacio. Forma, distancia, simetría y transformación. La intuición espacial formalizada.", route: "/content/courses/atoms/capa0_geometria_master.md" },
+        { id: "ATOM_CAUS", group: "ATOM", label: "CAUSALIDAD", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Porqué. Causa-efecto, correlación vs causalidad, contrafactuales. El motor de toda explicación.", route: "/content/courses/atoms/capa0_causalidad_master.md" },
+        { id: "ATOM_ANAL", group: "ATOM", label: "ANALOGÍA", level: -3, color: "#FFFFFF", size: 30, role: "atom", description: "El Puente. Isomorfismo, metáfora y transferencia estructural entre dominios. El motor del descubrimiento.", route: "/content/courses/atoms/capa0_analogia_master.md" },
 
         // ─── CAPA Z-2: EJES ONTOLÓGICOS (Marco B) ───
         { id: "AX_RADIAL", group: "AXIS", label: "C. RADIALES", level: -2, color: "#C0C0C0", size: 18, description: "Ciencias donde el sujeto desaparece del resultado: Física, Química, Matemáticas puras.", route: "/content/courses/axes/ejes_ontologicos_master.md" },
@@ -105,11 +110,19 @@ export const graphData = {
         { source: "EP_LOGIC", target: "EP_METHOD", type: "Epistem" },
         { source: "EP_METHOD", target: "EP_PRAXIS", type: "Epistem" },
 
-        // Z-4 → Z-3 (Epistemología alimenta Átomos)
-        { source: "EP_TRUTH", target: "ATOM_CRI", type: "Foundation" },
-        { source: "EP_LOGIC", target: "ATOM_ALG", type: "Foundation" },
-        { source: "EP_METHOD", target: "ATOM_AIS", type: "Foundation" },
-        { source: "EP_PRAXIS", target: "ATOM_SEM", type: "Foundation" },
+        // Z-4 → Cognitiva → Z-3 (Epistemología alimenta Aisthesis, Aisthesis alimenta Átomos)
+        { source: "EP_TRUTH", target: "ATOM_LOG", type: "Foundation" },
+        { source: "EP_LOGIC", target: "ATOM_ARIT", type: "Foundation" },
+        { source: "EP_METHOD", target: "ATOM_CAUS", type: "Foundation" },
+        { source: "EP_PRAXIS", target: "ATOM_LANG", type: "Foundation" },
+
+        // Aisthesis (Capa -1 Cognitiva) → alimenta todos los átomos
+        { source: "ATOM_AIS", target: "ATOM_LOG", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_LANG", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_ARIT", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_GEO", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_CAUS", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_ANAL", type: "Cognitive" },
 
         // Z-2 ← Cursos (Ejes clasifican nodos existentes)
         { source: "AX_RADIAL", target: "SUB_CALC", type: "Classify" },
@@ -125,14 +138,32 @@ export const graphData = {
         { source: "AX_PHIL", target: "SUB_EPI", type: "Classify" },
         { source: "AX_PHIL", target: "SUB_ETH", type: "Classify" },
 
-        // Ouroboros Base
-        { source: "ATOM_SEM", target: "ATOM_CRI", type: "Ouroboros" },
-        { source: "ATOM_CRI", target: "ATOM_ALG", type: "Ouroboros" },
-        { source: "ATOM_ALG", target: "ATOM_SEM", type: "Ouroboros" },
-        { source: "ATOM_AIS", target: "ATOM_ALG", type: "Proportion" },
+        // Ouroboros Capa 0: Los 6 átomos se retroalimentan
+        { source: "ATOM_LANG", target: "ATOM_LOG", type: "Ouroboros" },
+        { source: "ATOM_LOG", target: "ATOM_ARIT", type: "Ouroboros" },
+        { source: "ATOM_ARIT", target: "ATOM_GEO", type: "Ouroboros" },
+        { source: "ATOM_GEO", target: "ATOM_LANG", type: "Ouroboros" },
+        { source: "ATOM_CAUS", target: "ATOM_LOG", type: "Ouroboros" },
+        { source: "ATOM_ANAL", target: "ATOM_CAUS", type: "Ouroboros" },
+        { source: "ATOM_ANAL", target: "ATOM_LANG", type: "Ouroboros" },
+        { source: "ATOM_ARIT", target: "ATOM_ANAL", type: "Proportion" },
+
+        // Átomos → Asignaturas (dependencias directas)
+        { source: "ATOM_ARIT", target: "SUB_CALC", type: "Foundation" },
+        { source: "ATOM_ARIT", target: "SUB_LA", type: "Foundation" },
+        { source: "ATOM_ARIT", target: "SUB_EST", type: "Foundation" },
+        { source: "ATOM_GEO", target: "SUB_LA", type: "Foundation" },
+        { source: "ATOM_GEO", target: "SUB_FIS1", type: "Foundation" },
+        { source: "ATOM_LOG", target: "SUB_DIS", type: "Foundation" },
+        { source: "ATOM_LOG", target: "SUB_EPI", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_FIS1", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_BIO", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_EST", type: "Foundation" },
+        { source: "ATOM_ANAL", target: "SUB_FIA", type: "Foundation" },
+        { source: "ATOM_ANAL", target: "SUB_PSY", type: "Foundation" },
 
         // Tecnología Lingüística
-        { source: "ATOM_SEM", target: "TEC_LING", type: "Technology" },
+        { source: "ATOM_LANG", target: "TEC_LING", type: "Technology" },
         { source: "TEC_LING", target: "SUB_IS", type: "Formalization" },
         { source: "TEC_LING", target: "SUB_MAC", type: "Grammar" },
 
@@ -211,7 +242,7 @@ export const learningPaths: LearningPath[] = [
         subtitle: "Cómo la física construye computadoras",
         color: "#00FFCC",
         description: "Ruta ingenieril que muestra cómo las leyes de la física se solidifican en transistores, se abstraen en sistemas operativos, se interconectan en redes y persisten datos a escala planetaria.",
-        nodes: ["ATOM_ALG", "SUB_CALC", "SUB_FIS1", "SUB_AC", "SUB_SO", "SUB_RED", "SUB_BD"],
+        nodes: ["ATOM_ARIT", "SUB_CALC", "SUB_FIS1", "SUB_AC", "SUB_SO", "SUB_RED", "SUB_BD"],
         acquisitions: [
             "El Número abstracto: La propiedad cuantitativa del universo antes de tocar materia.",
             "Cálculo Diferencial: Dominar el infinito continuo para describir el movimiento y la electricidad.",
@@ -244,11 +275,11 @@ export const learningPaths: LearningPath[] = [
         subtitle: "El descenso vertical: de la epistemología pura al código ejecutable",
         color: "#FFD700",
         description: "Ruta fundacional que desciende desde las preguntas más abstractas sobre la Verdad (Z-4), cruza los Átomos del pensamiento (Z-3) y aterriza en los algoritmos ejecutables (Z7). Es la columna vertebral vertical del Grafo completo.",
-        nodes: ["EP_TRUTH", "EP_LOGIC", "ATOM_CRI", "SUB_DIS", "SUB_ALG", "SUB_MAC", "APEX_MBHB"],
+        nodes: ["EP_TRUTH", "EP_LOGIC", "ATOM_LOG", "SUB_DIS", "SUB_ALG", "SUB_MAC", "APEX_MBHB"],
         acquisitions: [
             "Verdad: ¿Qué significa que algo sea verdadero? Correspondencia, coherencia o utilidad pragmática. Sin esta pregunta resuelta, todo lo que sigue es castillo en el aire.",
             "Lógica Formal: Silogismos, axiomas, Gödel. Las reglas inmutables del razonamiento válido y sus límites demostrados.",
-            "Lógica (Átomo): La capacidad operativa de deducir, la Razón como propiedad irreducible del pensamiento humano.",
+            "Lógica (Átomo Capa 0): Deducción, inducción y abducción como operaciones irreducibles del pensamiento. Bacon, Peirce y Piaget.",
             "Matemática Discreta: Boole, Shannon, Grafos, Autómatas. La formalización que convierte la lógica en circuitos y algoritmos.",
             "Algoritmia: Divide y vencerás, programación dinámica, teoría de grafos. El arte de resolver problemas eficientemente.",
             "Modelos Avanzados de Computación: Turing, Halting Problem, P vs NP. Los límites teóricos absolutos de lo que una máquina puede calcular.",
