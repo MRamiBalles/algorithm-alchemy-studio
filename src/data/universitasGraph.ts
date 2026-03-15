@@ -110,11 +110,19 @@ export const graphData = {
         { source: "EP_LOGIC", target: "EP_METHOD", type: "Epistem" },
         { source: "EP_METHOD", target: "EP_PRAXIS", type: "Epistem" },
 
-        // Z-4 → Z-3 (Epistemología alimenta Átomos)
-        { source: "EP_TRUTH", target: "ATOM_CRI", type: "Foundation" },
-        { source: "EP_LOGIC", target: "ATOM_ALG", type: "Foundation" },
-        { source: "EP_METHOD", target: "ATOM_AIS", type: "Foundation" },
-        { source: "EP_PRAXIS", target: "ATOM_SEM", type: "Foundation" },
+        // Z-4 → Cognitiva → Z-3 (Epistemología alimenta Aisthesis, Aisthesis alimenta Átomos)
+        { source: "EP_TRUTH", target: "ATOM_LOG", type: "Foundation" },
+        { source: "EP_LOGIC", target: "ATOM_ARIT", type: "Foundation" },
+        { source: "EP_METHOD", target: "ATOM_CAUS", type: "Foundation" },
+        { source: "EP_PRAXIS", target: "ATOM_LANG", type: "Foundation" },
+
+        // Aisthesis (Capa -1 Cognitiva) → alimenta todos los átomos
+        { source: "ATOM_AIS", target: "ATOM_LOG", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_LANG", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_ARIT", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_GEO", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_CAUS", type: "Cognitive" },
+        { source: "ATOM_AIS", target: "ATOM_ANAL", type: "Cognitive" },
 
         // Z-2 ← Cursos (Ejes clasifican nodos existentes)
         { source: "AX_RADIAL", target: "SUB_CALC", type: "Classify" },
@@ -130,14 +138,32 @@ export const graphData = {
         { source: "AX_PHIL", target: "SUB_EPI", type: "Classify" },
         { source: "AX_PHIL", target: "SUB_ETH", type: "Classify" },
 
-        // Ouroboros Base
-        { source: "ATOM_SEM", target: "ATOM_CRI", type: "Ouroboros" },
-        { source: "ATOM_CRI", target: "ATOM_ALG", type: "Ouroboros" },
-        { source: "ATOM_ALG", target: "ATOM_SEM", type: "Ouroboros" },
-        { source: "ATOM_AIS", target: "ATOM_ALG", type: "Proportion" },
+        // Ouroboros Capa 0: Los 6 átomos se retroalimentan
+        { source: "ATOM_LANG", target: "ATOM_LOG", type: "Ouroboros" },
+        { source: "ATOM_LOG", target: "ATOM_ARIT", type: "Ouroboros" },
+        { source: "ATOM_ARIT", target: "ATOM_GEO", type: "Ouroboros" },
+        { source: "ATOM_GEO", target: "ATOM_LANG", type: "Ouroboros" },
+        { source: "ATOM_CAUS", target: "ATOM_LOG", type: "Ouroboros" },
+        { source: "ATOM_ANAL", target: "ATOM_CAUS", type: "Ouroboros" },
+        { source: "ATOM_ANAL", target: "ATOM_LANG", type: "Ouroboros" },
+        { source: "ATOM_ARIT", target: "ATOM_ANAL", type: "Proportion" },
+
+        // Átomos → Asignaturas (dependencias directas)
+        { source: "ATOM_ARIT", target: "SUB_CALC", type: "Foundation" },
+        { source: "ATOM_ARIT", target: "SUB_LA", type: "Foundation" },
+        { source: "ATOM_ARIT", target: "SUB_EST", type: "Foundation" },
+        { source: "ATOM_GEO", target: "SUB_LA", type: "Foundation" },
+        { source: "ATOM_GEO", target: "SUB_FIS1", type: "Foundation" },
+        { source: "ATOM_LOG", target: "SUB_DIS", type: "Foundation" },
+        { source: "ATOM_LOG", target: "SUB_EPI", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_FIS1", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_BIO", type: "Foundation" },
+        { source: "ATOM_CAUS", target: "SUB_EST", type: "Foundation" },
+        { source: "ATOM_ANAL", target: "SUB_FIA", type: "Foundation" },
+        { source: "ATOM_ANAL", target: "SUB_PSY", type: "Foundation" },
 
         // Tecnología Lingüística
-        { source: "ATOM_SEM", target: "TEC_LING", type: "Technology" },
+        { source: "ATOM_LANG", target: "TEC_LING", type: "Technology" },
         { source: "TEC_LING", target: "SUB_IS", type: "Formalization" },
         { source: "TEC_LING", target: "SUB_MAC", type: "Grammar" },
 
