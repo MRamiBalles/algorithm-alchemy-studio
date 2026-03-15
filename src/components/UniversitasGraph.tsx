@@ -90,8 +90,9 @@ const UniversitasGraph = () => {
                         const d = Math.sqrt(dx * dx + dy * dy) || 1;
                         const targetDist =
                             link.type === 'Ouroboros' ? 60 :
-                                link.type === 'Foundation' ? 80 :
-                                    link.type === 'Pillar' ? 100 : 120;
+                                link.type === 'Genesis' ? 70 :
+                                    link.type === 'Foundation' ? 80 :
+                                        link.type === 'Pillar' ? 100 : 120;
                         const force = (d - targetDist) * 0.05;
 
                         const fx = (dx / d) * force;
@@ -162,6 +163,7 @@ const UniversitasGraph = () => {
 
     const getLinkColor = (link: GraphLink): string => {
         if (link.type === 'Ouroboros') return '#FFFFFF';
+        if (link.type === 'Genesis') return '#66CCFF';
         if (link.type === 'NeuralPath') return '#8B5CF6';
         if (link.type === 'Prerequisite') return '#8B5CF6';
         if (link.type === 'Specialization') return '#A78BFA';
@@ -182,7 +184,7 @@ const UniversitasGraph = () => {
             {/* HUD Overlay: Version & Axiom */}
             <div className="absolute top-3 left-3 z-10 pointer-events-none max-w-[55%]">
                 <p className="text-[10px] font-mono text-cyan-500/60 tracking-widest uppercase">
-                    Universitas v14.0 · The Root Refactoring
+                    Universitas v16.0 · Capa 0 + Capa 1 + Capa 2
                 </p>
                 <p className="text-[10px] italic text-amber-200/40 mt-1 leading-snug font-serif">
                     «La realidad nunca te va a permitir que la traiciones. La realidad es incompatible con el idealismo: la mentira está en las apariencias.»
@@ -241,7 +243,9 @@ const UniversitasGraph = () => {
                 <circle cx="400" cy="300" r="280" fill="none" stroke="#FFD70012" strokeWidth="1" strokeDasharray="6 4" />
                 <text x="400" y="28" textAnchor="middle" className="text-[8px] fill-amber-500/20 font-mono">Z-4 EPISTEMOLOGÍA</text>
                 <circle cx="400" cy="300" r="230" fill="none" stroke="#FFFFFF10" strokeWidth="1" strokeDasharray="4 4" />
-                <text x="686" y="300" textAnchor="middle" className="text-[7px] fill-white/15 font-mono" transform="rotate(90,686,300)">Z-3 ÁTOMOS</text>
+                <text x="686" y="300" textAnchor="middle" className="text-[7px] fill-white/15 font-mono" transform="rotate(90,686,300)">Z-3 ÁTOMOS (CAPA 0)</text>
+                <circle cx="400" cy="300" r="205" fill="none" stroke="#66CCFF08" strokeWidth="1" strokeDasharray="3 5" />
+                <text x="605" y="300" textAnchor="middle" className="text-[6px] fill-cyan-400/12 font-mono" transform="rotate(90,605,300)">CAPA 1</text>
                 <circle cx="400" cy="300" r="180" fill="none" stroke="#C0C0C010" strokeWidth="1" strokeDasharray="4 4" />
                 <text x="114" y="300" textAnchor="middle" className="text-[7px] fill-gray-400/15 font-mono" transform="rotate(-90,114,300)">Z-2 EJES</text>
                 <circle cx="400" cy="300" r="120" fill="none" stroke="#00FFCC08" strokeWidth="1" strokeDasharray="3 5" />
