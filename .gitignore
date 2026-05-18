@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Large binary files (videos, PDFs, datasets)
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.pdf
+*.dat
+*.csv
+*.xlsx
+
+# Content directory (hosted externally, not in Git)
+public/content/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
